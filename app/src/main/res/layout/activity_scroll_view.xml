@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ScrollViewActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/smooth.scroll.cb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="smoothScroll"></CheckBox>
+
+            <SeekBar android:id="@+id/seek.bar"
+                android:max="100"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></SeekBar>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/page.up.button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="pageUp"></Button>
+
+            <Button
+                android:id="@+id/page.down.button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="pageDown"></Button>
+
+            <Button
+                android:id="@+id/full.up.button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="fullUp"
+                android:text="fullUp"></Button>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/full.down.button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="fullDown"
+                android:text="fullDown"></Button>
+
+            <Button
+                android:id="@+id/arrow.up.button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="arrowUp"
+                android:text="arrowUp"></Button>
+
+            <Button
+                android:id="@+id/arrow.down.button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="arrowDown"
+                android:text="arrowDown"></Button>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/fling.button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="fling"
+                android:text="fling"></Button>
+            <Button
+                android:id="@+id/scroll.mode.button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="setScrollMode"
+                android:text="scrollMode"></Button>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scroll.view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbarSize="20dp"
+        android:scrollbars="vertical">
+
+        <TextView android:id="@+id/text.view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:text="@string/long_hate_song"
+            android:textSize="20sp"></TextView>
+
+    </ScrollView>
+</LinearLayout>

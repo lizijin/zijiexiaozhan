@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView android:padding="20dp"
+        android:layout_width="match_parent"
+        android:scrollbars="vertical"
+        android:scrollbarSize="20dp"
+        android:scrollIndicators="top|bottom"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+         <Button
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="removeView"
+             android:onClick="gotoRemoveViews" />
+           <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CoordinatorLayout"
+                android:onClick="gotoCoordinator" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="sticky"
+                android:onClick="gotostickyActivity" />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="goBringToFront"
+                android:text="BringToFront" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="clipChildren"
+                android:text="clipChildren" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onVisibilityChanged"
+                android:text="onVisibilityChanged" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="goScrollActivity"
+                android:text="scroll" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="goLayoutTransition"
+                android:text="LayoutTransition" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="goLayoutAnimation"
+                android:text="LayoutAnimation" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="goScrollViewActivity"
+                android:text="ScrollView" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="goCoordinateLayoutActivity"
+                android:text="CoordinateLayout" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="goCoordinateScrollViewActivity"
+                android:text="Coordinate-ScrollView" />
+            <Button
+                android:text="Coordinator-Consume"
+                android:onClick="goCoordinatorConsumeActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:text="ColorStateList"
+                android:onClick="goColorStateListActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:text="Dialog"
+                android:onClick="goDialogActivity"
+                android:layout_width="match_parent"
+                android:id="@+id/center.button"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:text="BottomSheet"
+                android:onClick="goBottomSheet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:text="BottomSheet"
+                android:onClick="goBottomSheet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:text="BottomNavigation"
+                android:onClick="goBottomNavigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+            android:text="Transition"
+            android:onClick="goTransition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+            <Button
+                android:text="ActivityOptions"
+                android:onClick="goActivityOptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:text="WindowAnimation"
+                android:onClick="goWindowAnimation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:text="Scene"
+                android:onClick="goSceneActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:text="过度动画"
+                android:onClick="gotoActivityOptionsActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:text="GhostActivity"
+                android:onClick="gotoGhostActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:text="照片墙"
+                android:onClick="gotoListViewActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:text="ListView Scene"
+                android:onClick="gotoListViewScene"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="卡顿模拟"
+                android:onClick="gotoJankActivity" />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ExpandListView"
+                android:onClick="gotoExpandListViewActivity" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="约束布局"
+                android:onClick="gotoConstraintLayoutActivity" />
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

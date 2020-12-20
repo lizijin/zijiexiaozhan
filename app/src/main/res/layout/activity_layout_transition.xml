@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LayoutTransitionActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:onClick="addView"
+            android:text="addView"></Button>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:onClick="removeView"
+            android:text="removeView"></Button>
+
+        <Button
+            android:id="@+id/show.hide.button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:onClick="showOrHide"
+            android:text="show/hide"
+            android:visibility="gone"></Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/animate.layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="animation.button"></Button>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="animation.button"></Button>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/no.animate.layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:orientation="vertical">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="no.animation.button"></Button>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="no.animation.button"></Button>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

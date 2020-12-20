@@ -1,0 +1,26 @@
+2020-12-20 20:49:43.523 27430-27430/com.peter.viewgrouptutorial D/zijiexiaozhan: VP1 Behavior onInterceptTouchEvent ACTION_CANCEL
+2020-12-20 20:49:43.523 27430-27430/com.peter.viewgrouptutorial D/zijiexiaozhan: VP2 Behavior onInterceptTouchEvent ACTION_CANCEL
+2020-12-20 20:49:43.523 27430-27430/com.peter.viewgrouptutorial D/zijiexiaozhan: VP3 Behavior onInterceptTouchEvent ACTION_CANCEL
+2020-12-20 20:49:43.524 27430-27430/com.peter.viewgrouptutorial D/zijiexiaozhan: VP3 Behavior onInterceptTouchEvent ACTION_DOWN
+2020-12-20 20:49:43.524 27430-27430/com.peter.viewgrouptutorial D/zijiexiaozhan: VP2 Behavior onInterceptTouchEvent ACTION_DOWN
+2020-12-20 20:49:43.524 27430-27430/com.peter.viewgrouptutorial D/zijiexiaozhan: VP1 Behavior onInterceptTouchEvent ACTION_DOWN
+2020-12-20 20:49:43.524 27430-27430/com.peter.viewgrouptutorial D/zijiexiaozhan: VP3 onInterceptTouchEvent ACTION_DOWN
+2020-12-20 20:49:43.525 27430-27430/com.peter.viewgrouptutorial D/zijiexiaozhan: VP4 onInterceptTouchEvent ACTION_DOWN
+2020-12-20 20:49:43.526 27430-27430/com.peter.viewgrouptutorial D/zijiexiaozhan: view9 onTouchEvent ACTION_DOWN
+2020-12-20 20:49:43.526 27430-27430/com.peter.viewgrouptutorial D/zijiexiaozhan: view8 onTouchEvent ACTION_DOWN
+2020-12-20 20:49:43.526 27430-27430/com.peter.viewgrouptutorial D/zijiexiaozhan: view7 onTouchEvent ACTION_DOWN
+2020-12-20 20:49:43.527 27430-27430/com.peter.viewgrouptutorial D/zijiexiaozhan: VP4 onTouchEvent ACTION_DOWN
+2020-12-20 20:49:43.527 27430-27430/com.peter.viewgrouptutorial D/zijiexiaozhan: VP3 onTouchEvent ACTION_DOWN
+2020-12-20 20:49:43.527 27430-27430/com.peter.viewgrouptutorial D/zijiexiaozhan: VP2 onInterceptTouchEvent ACTION_DOWN
+2020-12-20 20:49:43.527 27430-27430/com.peter.viewgrouptutorial D/zijiexiaozhan: view6 onTouchEvent ACTION_DOWN
+2020-12-20 20:49:43.528 27430-27430/com.peter.viewgrouptutorial D/zijiexiaozhan: view5 onTouchEvent ACTION_DOWN
+2020-12-20 20:49:43.528 27430-27430/com.peter.viewgrouptutorial D/zijiexiaozhan: view4 onTouchEvent ACTION_DOWN
+2020-12-20 20:49:43.528 27430-27430/com.peter.viewgrouptutorial D/zijiexiaozhan: VP2 onTouchEvent ACTION_DOWN
+2020-12-20 20:49:43.528 27430-27430/com.peter.viewgrouptutorial D/zijiexiaozhan: VP1 onInterceptTouchEvent ACTION_DOWN
+2020-12-20 20:49:43.529 27430-27430/com.peter.viewgrouptutorial D/zijiexiaozhan: view3 onTouchEvent ACTION_DOWN
+2020-12-20 20:49:43.529 27430-27430/com.peter.viewgrouptutorial D/zijiexiaozhan: view2 onTouchEvent ACTION_DOWN
+2020-12-20 20:49:43.529 27430-27430/com.peter.viewgrouptutorial D/zijiexiaozhan: view1 onTouchEvent ACTION_DOWN
+2020-12-20 20:49:43.529 27430-27430/com.peter.viewgrouptutorial D/zijiexiaozhan: VP1 onTouchEvent ACTION_DOWN
+2020-12-20 20:49:43.530 27430-27430/com.peter.viewgrouptutorial D/zijiexiaozhan: VP3 Behavior onTouchEvent ACTION_DOWN
+2020-12-20 20:49:43.530 27430-27430/com.peter.viewgrouptutorial D/zijiexiaozhan: VP2 Behavior onTouchEvent ACTION_DOWN
+2020-12-20 20:49:43.530 27430-27430/com.peter.viewgrouptutorial D/zijiexiaozhan: VP1 Behavior onTouchEvent ACTION_DOWN

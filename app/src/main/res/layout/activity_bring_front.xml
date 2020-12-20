@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/root.frameLayout"
+    tools:context=".BringToFrontActivity">
+
+    <TextView android:id="@+id/red.text"
+        android:layout_width="400dp"
+        android:layout_height="200dp"
+        android:text="Hello World!"
+        android:gravity="center"
+        android:background="#ff0000" />
+    <TextView
+        android:id="@+id/green.text"
+        android:layout_width="200dp"
+        android:layout_height="400dp"
+        android:text="Hello World!"
+        android:gravity="center"
+        android:background="#00ff00" />
+
+    <Button android:layout_gravity="bottom|center"
+        android:id="@+id/bring.button"
+        android:contentDescription="click"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="bringToFront"></Button>
+
+
+</FrameLayout>

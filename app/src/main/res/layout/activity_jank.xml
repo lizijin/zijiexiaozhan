@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".JankActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="doLongWork"
+            android:text="主线程做耗时操作"></Button>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="drawLongWork"
+            android:text="绘制超过17ms"></Button>
+
+        <view
+            android:id="@+id/over.draw.view"
+            class="com.peter.viewgrouptutorial.JankActivity$OverDrawView"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="#f00"
+            android:visibility="gone" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="showNormalView"
+            android:text="normal View"></Button>
+        <view
+            android:id="@+id/normal.draw.view"
+
+            class="com.peter.viewgrouptutorial.JankActivity$NormalDrawView"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="#ff0" />
+    </LinearLayout>
+</ScrollView>

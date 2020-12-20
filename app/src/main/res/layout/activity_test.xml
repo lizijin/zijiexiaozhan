@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/long_hate_song"></TextView>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:gravity="center"
+            android:background="#f00"
+            android:text="HEAD1"
+            app:layout_scrollFlags="scroll"
+
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+
+        <TextView
+            android:gravity="center"
+            android:background="#ff0"
+            android:text="HEAD2"
+            app:layout_scrollFlags="enterAlways|scroll"
+
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+        </TextView>
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+
+            android:minHeight="50dp"
+            app:layout_scrollFlags="enterAlways|scroll|exitUntilCollapsed"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:gravity="center"
+                android:background="#00f"
+                android:text="HEAD4"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
+            <TextView android:id="@+id/text.view3"
+                android:gravity="center"
+                android:background="#f0f"
+                android:text="HEAD3"
+                app:layout_collapseMode="pin"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"/>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

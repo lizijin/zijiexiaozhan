@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ScrollActivity">
+
+    <TextView
+        android:id="@+id/scroll.text"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="#f00"
+        android:gravity="center"
+        android:text="Hello World"></TextView>
+
+    <com.peter.viewgrouptutorial.coordinatorlayout.MyOrderLinearLayout
+        android:id="@+id/linear.layout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="150dp"
+        android:background="#00ff00"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="button1"></Button>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="button2"
+            ></Button>
+
+        <Button
+            android:id="@+id/button3"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="button3"></Button>
+    </com.peter.viewgrouptutorial.coordinatorlayout.MyOrderLinearLayout>>
+
+    <Button
+        android:id="@+id/scroll.button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="50dp"
+        android:onClick="scrollTo"
+        android:text="scrollTo" />
+
+    <Button
+        android:id="@+id/offset.button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="100dp"
+        android:onClick="offsetTopAndBottom"
+        android:text="offset">
+
+    </Button>
+
+    <TextView
+        android:id="@+id/scroll.result.text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"></TextView>
+
+</FrameLayout>

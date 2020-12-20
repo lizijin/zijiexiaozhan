@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.peter.viewgrouptutorial.nestedscroll.MyScrollingViewMixinFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/outer.scroll.view"
+    tools:context=".nestedscroll.ScrollingFiveActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ff0"
+            android:text="@string/long_outer_string"></TextView>
+
+        <com.peter.viewgrouptutorial.nestedscroll.MyScrollingViewMixinFrameLayout
+            android:layout_width="match_parent"
+            android:id="@+id/inner.scroll.view"
+            android:layout_height="300dp">
+
+            <TextView android:background="#00f"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/long_inner_string"></TextView>
+        </com.peter.viewgrouptutorial.nestedscroll.MyScrollingViewMixinFrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ff0"
+            android:text="@string/long_outer_string"></TextView>
+    </LinearLayout>
+</com.peter.viewgrouptutorial.nestedscroll.MyScrollingViewMixinFrameLayout>

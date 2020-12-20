@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".coordinatorlayout.jd.JdStickyHeaderAppBarLayoutActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/long_hate_song"></TextView>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/pic1"
+            android:contentDescription="吸顶区域一"
+            android:gravity="center"
+            android:scaleType="fitXY"
+            app:layout_scrollFlags="scroll" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/pic2"
+            android:contentDescription="吸顶区域二"
+            android:gravity="center"
+            app:layout_scrollFlags="enterAlways|scroll"></ImageView>
+
+        <com.peter.viewgrouptutorial.coordinatorlayout.jd.FloatLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_scrollFlags="enterAlways|scroll|exitUntilCollapsed">
+
+
+            <ImageView
+                android:id="@+id/text.view3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/pic3"
+                android:contentDescription="吸顶区域三"
+                android:gravity="center"
+                android:text="HEAD3"
+                app:layout_pin="true" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/pic4"
+                android:contentDescription="吸顶区域四"
+                android:gravity="center"
+                app:layout_pin="false" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/pic5"
+                android:contentDescription="吸顶区域四"
+                app:layout_pin="false" />
+        </com.peter.viewgrouptutorial.coordinatorlayout.jd.FloatLinearLayout>
+        >
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

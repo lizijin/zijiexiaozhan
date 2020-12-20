@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.peter.viewgrouptutorial">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".dispatchevent.CoordinatorLayoutEventOneActivity"></activity>
+        <activity android:name=".dispatchevent.CoordinatorLayoutEventTwoActivity"></activity>
+        <activity android:name=".dispatchevent.CoordinatorLayoutEventThreeActivity"></activity>
+        <activity android:name=".dispatchevent.CoordinatorLayoutEventFourActivity"></activity>
+        <activity android:name=".textview.TransformationTextViewActivity" />
+        <activity android:name=".textview.PromiseTextViewActivity" />
+        <activity android:name=".jetpack.navigation.NavigationActivity" />
+        <activity android:name=".activity.DashboardActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".RemoveViewsActivity" />
+        <activity android:name=".coordinatorlayout.CoordinatorLayoutAnchorActivity" />
+        <activity android:name=".coordinatorlayout.CoordinatorEventActivity" />
+        <activity android:name=".coordinatorlayout.jd.JdStickyHeaderAppBarLayoutActivity" />
+        <activity android:name=".coordinatorlayout.AppbarLayoutExampleActivity" />
+        <activity android:name=".coordinatorlayout.CoordinatorLayoutActivity" />
+        <activity android:name=".nestedscroll.ScrollingFiveActivity" />
+        <activity android:name=".nestedscroll.ScrollFourActivity" />
+        <activity android:name=".nestedscroll.ScrollSixActivity" />
+        <activity android:name=".nestedscroll.ScrollThreeActivity" />
+        <activity android:name=".nestedscroll.ScrollOneActivity" />
+        <activity android:name=".nestedscroll.ScrollTwoActivity" />
+        <activity android:name=".recyclerview.RecyclerViewActivityComplexLayout" />
+        <activity android:name=".recyclerview.RecyclerViewActivityNotify" />
+        <activity android:name=".recyclerview.RecyclerViewActivityDiffUtil" />
+        <activity android:name=".recyclerview.RecyclerViewNestedActivity" />
+        <activity android:name=".recyclerview.RecyclerViewActivity2" />
+        <activity android:name=".recyclerview.RecyclerViewActivity1" />
+        <activity android:name=".recyclerview.RecyclerViewActivityAnimate" />
+        <activity android:name=".recyclerview.RecyclerViewTestActivity" />
+        <activity android:name=".stickyheader.MyRecyclerViewActivity" />
+        <activity android:name=".measure.MeasureLinearLayoutTreeActivity" />
+        <activity android:name=".measure.MeasureFrameLayoutTreeActivity" />
+        <activity android:name=".measure.MeasureRelativeLayoutTreeActivity" />
+        <activity android:name=".stickyheader.MainActivity" />
+        <activity android:name=".measure.TextViewMeasureActivity" />
+        <activity android:name=".measure.ViewMeasureActivity" />
+        <activity android:name=".dispatchevent.CoordinatorLayoutActivity" />
+        <activity android:name=".dispatchevent.ScrollConflictActivity" />
+        <activity android:name=".dispatchevent.MyScrollViewActivity" />
+        <activity android:name=".constraintlayout.ConstraintLayoutActivity" />
+        <activity android:name=".dispatchevent.TouchThreeActivity" />
+        <activity android:name=".dispatchevent.TouchFourActivity" />
+        <activity android:name=".dispatchevent.TouchTwoActivity" />
+        <activity android:name=".dispatchevent.TouchOneActivity" />
+        <activity android:name=".dispatchevent.TouchFiveActivity" />
+        <activity android:name=".JankActivity" />
+        <activity android:name=".ViewPageActivity" />
+        <activity android:name=".ListViewSceneActivity" />
+        <activity android:name=".PhotoDetailActivity" />
+        <activity android:name=".PhotoListActivity" />
+        <activity android:name=".GhostActivity" />
+        <activity android:name=".PictureActivity" />
+        <activity android:name=".ActivityOptionsActivity" />
+        <activity android:name=".SceneActivity" />
+        <activity
+            android:name=".AnimatedSubActivity"
+            android:windowBackground="@android:color/transparent"
+            android:windowIsTranslucent="true" />
+        <activity android:name=".WindowAnimationActivity" />
+        <activity
+            android:name=".BottomNavigation"
+            android:label="@string/title_activity_bottom_navigation"
+            android:theme="@style/Theme.MaterialComponents" />
+        <activity android:name=".BottomSheetActivity" />
+        <activity
+            android:name=".DialogActivity"
+            android:theme="@style/Theme.MaterialComponents" />
+        <activity android:name=".ColorStateListActivity" />
+        <activity android:name=".CoordinateConsumeActivity" />
+        <activity android:name=".CoordinateScrollViewActivity" />
+        <activity android:name=".CoordinateLayoutActivity" />
+        <activity android:name=".ScrollViewActivity" />
+        <activity android:name=".LayoutAnimationActivity" />
+        <activity android:name=".LayoutTransitionActivity" />
+        <activity android:name=".ScrollActivity" />
+        <activity android:name=".ClipChildrenActivity" />
+        <activity android:name=".VisibilityChangedActivity" />
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".BringToFrontActivity" />
+    </application>
+
+</manifest>

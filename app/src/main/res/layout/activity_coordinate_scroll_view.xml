@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/coordinator.layout"
+    android:layout_height="match_parent"
+    tools:context=".CoordinateScrollViewActivity">
+
+    <Button android:id="@+id/left.button"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_behavior=".MyBehavior"
+        android:text="go left"></Button>
+
+    <Button android:id="@+id/right.button"
+        app:layout_anchor="@id/left.button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_behavior=".MyBehavior"
+        app:layout_anchorGravity="bottom|center"
+        android:text="go to right"></Button>
+
+    <ScrollView
+         android:id="@+id/scroll.view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView android:id="@+id/scroll.text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/long_hate_song"></TextView>
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

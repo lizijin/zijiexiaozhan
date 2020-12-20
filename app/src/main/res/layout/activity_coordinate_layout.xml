@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root.coordinate.layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:keylines="@array/keylines"
+    app:statusBarBackground="@mipmap/ic_launcher"
+    tools:context=".CoordinateLayoutActivity">
+
+
+    <TextView
+        android:id="@+id/hello.text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="This is Hello"
+        android:layout_marginLeft="100dp"></TextView>
+
+    <TextView
+        android:id="@+id/hi.text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="This is HI"
+        app:layout_anchor="@id/hello.text"
+        app:layout_keyline="1"></TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_marginTop="100dp"
+
+        android:layout_height="wrap_content"
+        android:text="This is 你好"
+        app:layout_keyline="2"></TextView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
