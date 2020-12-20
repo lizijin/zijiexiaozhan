@@ -15,7 +15,6 @@ import com.peter.viewgrouptutorial.bean.HeaderItem
 import com.peter.viewgrouptutorial.bean.RouteItem
 import com.peter.viewgrouptutorial.coordinatorlayout.AppbarLayoutExampleActivity
 import com.peter.viewgrouptutorial.coordinatorlayout.CoordinatorEventActivity
-import com.peter.viewgrouptutorial.coordinatorlayout.CoordinatorLayoutAnchorActivity
 import com.peter.viewgrouptutorial.coordinatorlayout.jd.JdStickyHeaderAppBarLayoutActivity
 import com.peter.viewgrouptutorial.dispatchevent.*
 import com.peter.viewgrouptutorial.jetpack.navigation.NavigationActivity
@@ -83,6 +82,11 @@ class DashboardActivity : AppCompatActivity() {
             "场景四",
             "Vp2 Behavior onIntercept返回true onTouch返回true",
             CoordinatorLayoutEventFourActivity::class.java
+        )
+        addRouteItem(
+            "场景五",
+            "使用Layout_Anchor",
+            CoordinatorLayoutAnchorActivity::class.java
         )
     }
 

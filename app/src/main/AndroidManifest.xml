@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".dispatchevent.CoordinatorLayoutAnchorActivity" />
         <activity android:name=".dispatchevent.CoordinatorLayoutEventOneActivity"></activity>
         <activity android:name=".dispatchevent.CoordinatorLayoutEventTwoActivity"></activity>
         <activity android:name=".dispatchevent.CoordinatorLayoutEventThreeActivity"></activity>
@@ -24,7 +25,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".RemoveViewsActivity" />
-        <activity android:name=".coordinatorlayout.CoordinatorLayoutAnchorActivity" />
         <activity android:name=".coordinatorlayout.CoordinatorEventActivity" />
         <activity android:name=".coordinatorlayout.jd.JdStickyHeaderAppBarLayoutActivity" />
         <activity android:name=".coordinatorlayout.AppbarLayoutExampleActivity" />

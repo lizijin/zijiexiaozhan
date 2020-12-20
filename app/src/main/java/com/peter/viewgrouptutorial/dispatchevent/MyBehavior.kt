@@ -1,6 +1,8 @@
 package com.peter.viewgrouptutorial.dispatchevent
 
+import android.content.Context
 import android.os.Build
+import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
@@ -10,6 +12,9 @@ import com.peter.viewgrouptutorial.LogTag
 
 class MyBehavior @JvmOverloads constructor() :
     CoordinatorLayout.Behavior<View>() {
+    constructor(context:Context,attributeSet: AttributeSet) :this()
+
+
     var interceptValue = false
     var touchValue = false
     var name = ""

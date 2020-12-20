@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.peter.viewgrouptutorial.R
 import com.peter.viewgrouptutorial.coordinatorlayout.jd.JdStickyHeaderAppBarLayoutActivity
+import com.peter.viewgrouptutorial.dispatchevent.CoordinatorLayoutAnchorActivity
 
 class CoordinatorLayoutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

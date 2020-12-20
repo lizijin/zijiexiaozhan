@@ -4,35 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".coordinatorlayout.CoordinatorLayoutAnchorActivity">
-    <LinearLayout
+    tools:context=".dispatchevent.CoordinatorLayoutAnchorActivity">
+
+    <com.peter.viewgrouptutorial.dispatchevent.MyFrameLayout
+        android:id="@+id/child1"
         android:layout_width="match_parent"
-        android:layout_height="200dp" android:orientation="vertical">
-        <TextView
-            android:id="@+id/hello"
-            android:text="HELLO"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </TextView>
-        <View
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"></View>
+        android:layout_height="match_parent"
+        android:background="#f00"
+        >
 
-        <TextView
-            android:id="@+id/world"
-            android:text="WORLD"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    </com.peter.viewgrouptutorial.dispatchevent.MyFrameLayout>
 
-        </TextView>
-    </LinearLayout>
+    <com.peter.viewgrouptutorial.dispatchevent.MyFrameLayout
+        android:id="@+id/child2"
 
-    <TextView
-        app:layout_anchor="@id/hello"
-        app:layout_anchorGravity="bottom"
-        android:text="ooooooooooooo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></TextView>
 
+        android:layout_height="match_parent"
+
+        android:background="#0f0"
+        app:layout_anchor="@id/child1">
+
+    </com.peter.viewgrouptutorial.dispatchevent.MyFrameLayout>
+
+    <com.peter.viewgrouptutorial.dispatchevent.MyFrameLayout
+        android:id="@+id/child3"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:background="#00f"
+        app:layout_anchor="@id/child2">
+
+    </com.peter.viewgrouptutorial.dispatchevent.MyFrameLayout>
+
+    <com.peter.viewgrouptutorial.dispatchevent.MyFrameLayout
+        android:id="@+id/child4"
+        app:layout_anchor="@id/child3"
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+        android:background="#ff0">
+
+    </com.peter.viewgrouptutorial.dispatchevent.MyFrameLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
