@@ -10,9 +10,10 @@ import androidx.annotation.RequiresApi
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.peter.viewgrouptutorial.LogTag
 
-class MyBehavior @JvmOverloads constructor() :
-    CoordinatorLayout.Behavior<View>() {
-    constructor(context:Context,attributeSet: AttributeSet) :this()
+open class MyBehavior :
+    CoordinatorLayout.Behavior<View> {
+    constructor() : super()
+    constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet)
 
 
     var interceptValue = false
@@ -25,13 +26,13 @@ class MyBehavior @JvmOverloads constructor() :
         child: View,
         ev: MotionEvent
     ): Boolean {
-        Log.d(LogTag.tag,"$name onInterceptTouchEvent "+MotionEvent.actionToString(ev.action))
+        Log.d(LogTag.tag, "$name onInterceptTouchEvent " + MotionEvent.actionToString(ev.action))
         return interceptValue
     }
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onTouchEvent(parent: CoordinatorLayout, child: View, ev: MotionEvent): Boolean {
-        Log.d(LogTag.tag,"$name onTouchEvent "+MotionEvent.actionToString(ev.action))
+        Log.d(LogTag.tag, "$name onTouchEvent " + MotionEvent.actionToString(ev.action))
         return touchValue
     }
 }

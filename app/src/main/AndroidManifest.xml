@@ -9,11 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".dispatchevent.CoordinatorLayoutDependentActivity"></activity>
         <activity android:name=".dispatchevent.CoordinatorLayoutAnchorActivity" />
-        <activity android:name=".dispatchevent.CoordinatorLayoutEventOneActivity"></activity>
-        <activity android:name=".dispatchevent.CoordinatorLayoutEventTwoActivity"></activity>
-        <activity android:name=".dispatchevent.CoordinatorLayoutEventThreeActivity"></activity>
-        <activity android:name=".dispatchevent.CoordinatorLayoutEventFourActivity"></activity>
+        <activity android:name=".dispatchevent.CoordinatorLayoutEventOneActivity" />
+        <activity android:name=".dispatchevent.CoordinatorLayoutEventTwoActivity" />
+        <activity android:name=".dispatchevent.CoordinatorLayoutEventThreeActivity" />
+        <activity android:name=".dispatchevent.CoordinatorLayoutEventFourActivity" />
         <activity android:name=".textview.TransformationTextViewActivity" />
         <activity android:name=".textview.PromiseTextViewActivity" />
         <activity android:name=".jetpack.navigation.NavigationActivity" />
@@ -91,7 +92,7 @@
         <activity android:name=".ScrollActivity" />
         <activity android:name=".ClipChildrenActivity" />
         <activity android:name=".VisibilityChangedActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".BringToFrontActivity" />
     </application>
 

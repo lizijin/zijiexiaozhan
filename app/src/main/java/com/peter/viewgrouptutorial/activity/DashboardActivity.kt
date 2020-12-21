@@ -88,6 +88,11 @@ class DashboardActivity : AppCompatActivity() {
             "使用Layout_Anchor",
             CoordinatorLayoutAnchorActivity::class.java
         )
+        addRouteItem(
+            "场景六",
+            "Dependency 案例",
+            CoordinatorLayoutDependentActivity::class.java
+        )
     }
 
     private fun addTextView() {
