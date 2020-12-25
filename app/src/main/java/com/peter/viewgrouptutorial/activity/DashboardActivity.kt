@@ -43,12 +43,12 @@ class DashboardActivity : AppCompatActivity() {
         mRecyclerView = findViewById(R.id.main_recycler_view)
         mHeaderLayout = findViewById(R.id.header_layout)
         mRecyclerView!!.layoutManager = LinearLayoutManager(this)
+        addRecyclerView()
         addCoordinatorEvent()
 //        addTextView()
         addDispatchTouchEvent()
         addMeasure()
         addNestedScroll()
-        addRecyclerView()
         addMaterialDesign()
         addJetpack()
 
@@ -128,6 +128,26 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun addRecyclerView() {
         addHeaderItem("RecyclerView测试")
+        addRouteItem(
+            "删除动画",
+            "每次删除两个Item",
+            RemoveItemsRecyclerViewActivity::class.java
+        )
+        addRouteItem(
+            "增加动画",
+            "每次增加两个Item",
+            InsertItemsRecyclerViewActivity::class.java
+        )
+        addRouteItem(
+            "update动画",
+            "每次update两个Item",
+            UpdateItemsRecyclerViewActivity::class.java
+        )
+        addRouteItem(
+            "Move动画",
+            "每次move两个Item",
+            MoveItemsRecyclerViewActivity::class.java
+        )
         addRouteItem("RecyclerView场景一", "博客文章场景一", RecyclerViewActivity1::class.java)
         addRouteItem("RecyclerView场景二", "博客文章场景二", RecyclerViewActivity2::class.java)
         addRouteItem("RecyclerView场景三", "RecyclerView动画", RecyclerViewActivityAnimate::class.java)
@@ -144,6 +164,7 @@ class DashboardActivity : AppCompatActivity() {
             "LayoutManager相关",
             RecyclerViewActivityComplexLayout::class.java
         )
+
     }
 
     private fun addNestedScroll() {

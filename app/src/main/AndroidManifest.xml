@@ -37,6 +37,10 @@
         <activity android:name=".nestedscroll.ScrollOneActivity" />
         <activity android:name=".nestedscroll.ScrollTwoActivity" />
         <activity android:name=".recyclerview.RecyclerViewActivityComplexLayout" />
+        <activity android:name=".recyclerview.RemoveItemsRecyclerViewActivity" />
+        <activity android:name=".recyclerview.InsertItemsRecyclerViewActivity" />
+        <activity android:name=".recyclerview.UpdateItemsRecyclerViewActivity" />
+        <activity android:name=".recyclerview.MoveItemsRecyclerViewActivity" />
         <activity android:name=".recyclerview.RecyclerViewActivityNotify" />
         <activity android:name=".recyclerview.RecyclerViewActivityDiffUtil" />
         <activity android:name=".recyclerview.RecyclerViewNestedActivity" />
@@ -62,9 +66,6 @@
         <activity android:name=".dispatchevent.TouchFiveActivity" />
         <activity android:name=".JankActivity" />
         <activity android:name=".ViewPageActivity" />
-        <activity android:name=".ListViewSceneActivity" />
-        <activity android:name=".PhotoDetailActivity" />
-        <activity android:name=".PhotoListActivity" />
         <activity android:name=".GhostActivity" />
         <activity android:name=".PictureActivity" />
         <activity android:name=".ActivityOptionsActivity" />
