@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#0ff"
+    android:layout_height="300dp">
+
+    <TextView
+        android:id="@+id/text.view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/white_touch"
+        android:clickable="true"
+        android:padding="@dimen/small"
+        android:textSize="14sp"
+        tools:text="Aardvark" />
+
+    <View android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#ff0"></View>
+</FrameLayout>

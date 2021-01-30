@@ -1,12 +1,13 @@
 package com.peter.viewgrouptutorial.recyclerview
 
+import android.graphics.Rect
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.peter.viewgrouptutorial.R
@@ -15,16 +16,26 @@ import java.util.*
 /**
  * 测试删除Item时动画
  */
-class InsertItemsRecyclerViewActivity : AppCompatActivity() {
+class ItemDecorationRecyclerViewActivity : AppCompatActivity() {
     private lateinit var mRecyclerView: RecyclerView
-    private lateinit var mCheckBox: CheckBox
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recycler_view_insert_item)
         mRecyclerView = findViewById(R.id.recyclerview)
-        mCheckBox = findViewById(R.id.checkbox)
         mRecyclerView.setHasFixedSize(true)
-//        mRecyclerView.setItemViewCacheSize(4)
+        val dividerItemDecoration = object:DividerItemDecoration(this,DividerItemDecoration.VERTICAL){
+            override fun getItemOffsets(
+                outRect: Rect,
+                view: View,
+                parent: RecyclerView,
+                state: RecyclerView.State
+            ) {
+                super.getItemOffsets(outRect, view, parent, state)
+
+            }
+        }
+        dividerItemDecoration.setDrawable(resources.getDrawable(R.drawable.pic2))
+        mRecyclerView.addItemDecoration(dividerItemDecoration)
         mRecyclerView.layoutManager =
             LinearLayoutManager(this).apply {
                 orientation = LinearLayoutManager.VERTICAL
@@ -65,43 +76,4 @@ class InsertItemsRecyclerViewActivity : AppCompatActivity() {
     }
 
 
-    fun addMiddleItems(view: View) {
-        val topPosition = mRecyclerView.getChildAdapterPosition(mRecyclerView.getChildAt(0))
-        val lastPosition =
-            mRecyclerView.getChildAdapterPosition(mRecyclerView.getChildAt(mRecyclerView.childCount - 1))
-        val deletePosition = (topPosition + lastPosition) / 2
-        (mRecyclerView.adapter as MyAdapter).mStrings.add(deletePosition, "addItem2")
-        (mRecyclerView.adapter as MyAdapter).mStrings.add(deletePosition+1, "addItem1")
-        if (!mCheckBox.isChecked) {
-            (mRecyclerView.adapter as MyAdapter).notifyItemRangeInserted(deletePosition, 2)
-        } else {
-            (mRecyclerView.adapter as MyAdapter).notifyDataSetChanged()
-
-        }
-    }
-
-    fun addTailItems(view: View) {
-        val lastPosition =
-            mRecyclerView.getChildAdapterPosition(mRecyclerView.getChildAt(mRecyclerView.childCount - 2))
-        (mRecyclerView.adapter as MyAdapter).mStrings.add(lastPosition, "added Item2")
-        (mRecyclerView.adapter as MyAdapter).mStrings.add(lastPosition, "added Item1")
-        if (!mCheckBox.isChecked) {
-            (mRecyclerView.adapter as MyAdapter).notifyItemRangeInserted(lastPosition, 2)
-        } else {
-            (mRecyclerView.adapter as MyAdapter).notifyDataSetChanged()
-
-        }
-    }
-
-    fun addHeadItems(view: View) {
-        val topPosition = mRecyclerView.getChildAdapterPosition(mRecyclerView.getChildAt(0))
-        (mRecyclerView.adapter as MyAdapter).mStrings.add(topPosition, "added Item2")
-        (mRecyclerView.adapter as MyAdapter).mStrings.add(topPosition, "added Item1")
-        if (!mCheckBox.isChecked) {
-            (mRecyclerView.adapter as MyAdapter).notifyItemRangeInserted(topPosition, 2)
-        } else {
-            (mRecyclerView.adapter as MyAdapter).notifyDataSetChanged()
-
-        }
-    }
 }

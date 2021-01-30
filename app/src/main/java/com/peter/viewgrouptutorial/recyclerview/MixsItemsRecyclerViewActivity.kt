@@ -13,14 +13,14 @@ import com.peter.viewgrouptutorial.R
 import java.util.*
 
 /**
- * 测试删除Item时动画
+ * 测试mixItem时动画
  */
-class InsertItemsRecyclerViewActivity : AppCompatActivity() {
+class MixsItemsRecyclerViewActivity : AppCompatActivity() {
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mCheckBox: CheckBox
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_recycler_view_insert_item)
+        setContentView(R.layout.activity_recycler_view_mix_item)
         mRecyclerView = findViewById(R.id.recyclerview)
         mCheckBox = findViewById(R.id.checkbox)
         mRecyclerView.setHasFixedSize(true)
@@ -41,7 +41,7 @@ class InsertItemsRecyclerViewActivity : AppCompatActivity() {
     inner class MyAdapter(val mStrings: MutableList<String>) :
         RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-            println("RecyclerView 测试增加Item时动画 onCreateViewHolder ")
+            println("RecyclerView 测试mixItem时动画 onCreateViewHolder ")
             val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.view_item, parent, false)
             return object : RecyclerView.ViewHolder(view) {}
@@ -52,14 +52,14 @@ class InsertItemsRecyclerViewActivity : AppCompatActivity() {
         }
 
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-            println("RecyclerView 测试增加Item时动画 onBindViewHolder $position ${mStrings[position]}")
+            println("RecyclerView 测试mixItem时动画 onBindViewHolder $position ${mStrings[position]}")
             val textView = holder.itemView as TextView
             textView.layoutParams.height = (resources.displayMetrics.density * 100).toInt()
             textView.text = mStrings[position]
         }
 
         override fun onViewRecycled(holder: RecyclerView.ViewHolder) {
-            println("RecyclerView 测试增加Item时动画 发生回收 " + (holder.itemView as TextView).text)
+            println("RecyclerView 测试mixItem时动画 发生回收 " + (holder.itemView as TextView).text)
             super.onViewRecycled(holder)
         }
     }
@@ -70,14 +70,25 @@ class InsertItemsRecyclerViewActivity : AppCompatActivity() {
         val lastPosition =
             mRecyclerView.getChildAdapterPosition(mRecyclerView.getChildAt(mRecyclerView.childCount - 1))
         val deletePosition = (topPosition + lastPosition) / 2
-        (mRecyclerView.adapter as MyAdapter).mStrings.add(deletePosition, "addItem2")
-        (mRecyclerView.adapter as MyAdapter).mStrings.add(deletePosition+1, "addItem1")
+//        (mRecyclerView.adapter as MyAdapter).mStrings.removeAt(deletePosition)
+//        (mRecyclerView.adapter as MyAdapter).notifyItemRemoved(deletePosition)
+        (mRecyclerView.adapter as MyAdapter).mStrings.add(deletePosition, "addItem1")
+        (mRecyclerView.adapter as MyAdapter).mStrings.add(deletePosition + 1, "addItem2")
+        (mRecyclerView.adapter as MyAdapter).mStrings.add(deletePosition + 2, "addItem3")
+        (mRecyclerView.adapter as MyAdapter).mStrings.add(deletePosition + 3, "addItem4")
+
         if (!mCheckBox.isChecked) {
-            (mRecyclerView.adapter as MyAdapter).notifyItemRangeInserted(deletePosition, 2)
+            (mRecyclerView.adapter as MyAdapter).notifyItemRangeInserted(deletePosition, 6)
+            (mRecyclerView.adapter as MyAdapter).mStrings.set(deletePosition + 4, "UpdateItem1")
+            (mRecyclerView.adapter as MyAdapter).mStrings.set(deletePosition + 5, "UpdateItem2")
+            (mRecyclerView.adapter as MyAdapter).notifyItemRangeChanged(deletePosition + 4, 2)
+
         } else {
             (mRecyclerView.adapter as MyAdapter).notifyDataSetChanged()
 
         }
+
+
     }
 
     fun addTailItems(view: View) {

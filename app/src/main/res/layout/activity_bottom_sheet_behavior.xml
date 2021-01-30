@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".coordinatorlayout.BottomSheetBehaviorActivity">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:background="#00f"
+        android:layout_height="match_parent">
+
+        <LinearLayout android:orientation="vertical"
+            android:id="@+id/bottom.behavior.layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:behavior_fitToContents="false"
+            app:behavior_peekHeight="auto"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+            <LinearLayout
+                 android:onClick="onRedClick"
+                android:orientation="vertical"
+                android:id="@+id/red_region"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="#f00"></LinearLayout>
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/long_hate_song"></TextView>
+        </LinearLayout>
+        <FrameLayout
+            android:onClick="onRedClick"
+            android:layout_gravity="bottom"
+            android:background="#ff0"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"></FrameLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="setCollapsed"
+                android:text="折叠状态"></Button>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="setExpanded"
+                android:text="展开状态"></Button>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="setHalf"
+                android:text="Half状态"></Button>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="setHidden"
+                android:text="隐藏状态"></Button>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="openDialog"
+                android:text="open"></Button>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="openDialog2"
+                android:text="open2"></Button>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

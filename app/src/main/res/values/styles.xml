@@ -6,5 +6,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="CouponDialog" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:windowBackground">@drawable/trade_shape_popup_bg_bottom</item>
+    </style>
 
 </resources>

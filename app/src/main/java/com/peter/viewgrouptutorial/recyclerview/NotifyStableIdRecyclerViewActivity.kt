@@ -13,16 +13,14 @@ import com.peter.viewgrouptutorial.R
 import java.util.*
 
 /**
- * 测试删除Item时动画
+ * 测试NotifyDataSetChanged
  */
-class InsertItemsRecyclerViewActivity : AppCompatActivity() {
+class NotifyStableIdRecyclerViewActivity : AppCompatActivity() {
     private lateinit var mRecyclerView: RecyclerView
-    private lateinit var mCheckBox: CheckBox
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_recycler_view_insert_item)
+        setContentView(R.layout.activity_recycler_view_notify_data)
         mRecyclerView = findViewById(R.id.recyclerview)
-        mCheckBox = findViewById(R.id.checkbox)
         mRecyclerView.setHasFixedSize(true)
 //        mRecyclerView.setItemViewCacheSize(4)
         mRecyclerView.layoutManager =
@@ -40,6 +38,10 @@ class InsertItemsRecyclerViewActivity : AppCompatActivity() {
 
     inner class MyAdapter(val mStrings: MutableList<String>) :
         RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+        init {
+            setHasStableIds(true)
+        }
+
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
             println("RecyclerView 测试增加Item时动画 onCreateViewHolder ")
             val view = LayoutInflater.from(parent.context)
@@ -62,46 +64,17 @@ class InsertItemsRecyclerViewActivity : AppCompatActivity() {
             println("RecyclerView 测试增加Item时动画 发生回收 " + (holder.itemView as TextView).text)
             super.onViewRecycled(holder)
         }
-    }
 
-
-    fun addMiddleItems(view: View) {
-        val topPosition = mRecyclerView.getChildAdapterPosition(mRecyclerView.getChildAt(0))
-        val lastPosition =
-            mRecyclerView.getChildAdapterPosition(mRecyclerView.getChildAt(mRecyclerView.childCount - 1))
-        val deletePosition = (topPosition + lastPosition) / 2
-        (mRecyclerView.adapter as MyAdapter).mStrings.add(deletePosition, "addItem2")
-        (mRecyclerView.adapter as MyAdapter).mStrings.add(deletePosition+1, "addItem1")
-        if (!mCheckBox.isChecked) {
-            (mRecyclerView.adapter as MyAdapter).notifyItemRangeInserted(deletePosition, 2)
-        } else {
-            (mRecyclerView.adapter as MyAdapter).notifyDataSetChanged()
-
+        override fun getItemId(position: Int): Long {
+            return mStrings[position].hashCode().toLong();
         }
     }
 
-    fun addTailItems(view: View) {
-        val lastPosition =
-            mRecyclerView.getChildAdapterPosition(mRecyclerView.getChildAt(mRecyclerView.childCount - 2))
-        (mRecyclerView.adapter as MyAdapter).mStrings.add(lastPosition, "added Item2")
-        (mRecyclerView.adapter as MyAdapter).mStrings.add(lastPosition, "added Item1")
-        if (!mCheckBox.isChecked) {
-            (mRecyclerView.adapter as MyAdapter).notifyItemRangeInserted(lastPosition, 2)
-        } else {
-            (mRecyclerView.adapter as MyAdapter).notifyDataSetChanged()
 
+    fun notifyData(view: View) {
+        if (findViewById<CheckBox>(R.id.checkbox).isChecked) {
+            (mRecyclerView.adapter as NotifyStableIdRecyclerViewActivity.MyAdapter).mStrings.reverse();
         }
-    }
-
-    fun addHeadItems(view: View) {
-        val topPosition = mRecyclerView.getChildAdapterPosition(mRecyclerView.getChildAt(0))
-        (mRecyclerView.adapter as MyAdapter).mStrings.add(topPosition, "added Item2")
-        (mRecyclerView.adapter as MyAdapter).mStrings.add(topPosition, "added Item1")
-        if (!mCheckBox.isChecked) {
-            (mRecyclerView.adapter as MyAdapter).notifyItemRangeInserted(topPosition, 2)
-        } else {
-            (mRecyclerView.adapter as MyAdapter).notifyDataSetChanged()
-
-        }
+        (mRecyclerView.adapter as MyAdapter).notifyDataSetChanged()
     }
 }

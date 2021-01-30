@@ -9,7 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".dispatchevent.CoordinatorLayoutDependentActivity"></activity>
+        <activity android:name=".coordinatorlayout.GaodeActivity"></activity>
+        <activity android:name=".coordinatorlayout.BottomSheetBehaviorActivity" />
+        <activity android:name=".coordinatorlayout.BottomSheetBehaviorActivity2" />
+        <activity android:name=".coordinatorlayout.BottomSheetBehaviorActivity3" />
+        <activity android:name=".coordinatorlayout.BottomSheetBehaviorActivity4" />
+        <activity android:name=".coordinatorlayout.BottomSheetBehaviorActivity5" />
+        <activity android:name=".activity.TestLinearLayoutActivity" />
+        <activity android:name=".fragments.FragmentActivity1" />
+        <activity android:name=".fragments.FragmentActivity2" />
+        <activity android:name=".dispatchevent.CoordinatorLayoutDependentActivity" />
         <activity android:name=".dispatchevent.CoordinatorLayoutAnchorActivity" />
         <activity android:name=".dispatchevent.CoordinatorLayoutEventOneActivity" />
         <activity android:name=".dispatchevent.CoordinatorLayoutEventTwoActivity" />
@@ -36,11 +45,21 @@
         <activity android:name=".nestedscroll.ScrollThreeActivity" />
         <activity android:name=".nestedscroll.ScrollOneActivity" />
         <activity android:name=".nestedscroll.ScrollTwoActivity" />
+        <activity android:name=".viewpager2.ViewPager2RecyclerViewActivity" />
+        <activity android:name=".viewpager2.ViewPager2WithFragmentsActivity" />
+        <activity android:name=".recyclerview.DragAndSwipeRecyclerViewActivity" />
+        <activity android:name=".recyclerview.ItemDecorationRecyclerViewActivity" />
+        <activity android:name=".recyclerview.ItemLongClickRecyclerViewActivity" />
+        <activity android:name=".recyclerview.LinearSnapRecyclerViewActivity" />
+        <activity android:name=".recyclerview.ViewPagerSnapRecyclerViewActivity" />
         <activity android:name=".recyclerview.RecyclerViewActivityComplexLayout" />
         <activity android:name=".recyclerview.RemoveItemsRecyclerViewActivity" />
         <activity android:name=".recyclerview.InsertItemsRecyclerViewActivity" />
         <activity android:name=".recyclerview.UpdateItemsRecyclerViewActivity" />
         <activity android:name=".recyclerview.MoveItemsRecyclerViewActivity" />
+        <activity android:name=".recyclerview.MixsItemsRecyclerViewActivity" />
+        <activity android:name=".recyclerview.NotifyNoneStableIdRecyclerViewActivity" />
+        <activity android:name=".recyclerview.NotifyStableIdRecyclerViewActivity" />
         <activity android:name=".recyclerview.RecyclerViewActivityNotify" />
         <activity android:name=".recyclerview.RecyclerViewActivityDiffUtil" />
         <activity android:name=".recyclerview.RecyclerViewNestedActivity" />
@@ -95,6 +114,16 @@
         <activity android:name=".VisibilityChangedActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".BringToFrontActivity" />
+        <activity android:name=".viewpager2.CardViewActivity" />
+        <activity android:name=".viewpager2.CardFragmentActivity" />
+        <activity android:name=".viewpager2.MutableCollectionFragmentActivity" />
+        <activity android:name=".viewpager2.MutableCollectionViewActivity" />
+        <activity android:name=".viewpager2.CardViewTabLayoutActivity" />
+        <activity android:name=".viewpager2.FakeDragActivity" />
+        <activity android:name=".viewpager2.PageTransformerActivity" />
+        <activity android:name=".viewpager2.PreviewPagesActivity" />
+        <activity android:name=".viewpager2.ParallelNestedScrollingActivity" />
+        <activity android:name=".viewpager2.BrowseActivity" />
     </application>
 
 </manifest>

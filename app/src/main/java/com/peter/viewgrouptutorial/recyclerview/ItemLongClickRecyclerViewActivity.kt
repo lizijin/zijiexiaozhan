@@ -1,11 +1,12 @@
 package com.peter.viewgrouptutorial.recyclerview
 
 import android.os.Bundle
+import android.view.GestureDetector
 import android.view.LayoutInflater
-import android.view.View
+import android.view.MotionEvent
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,18 +14,15 @@ import com.peter.viewgrouptutorial.R
 import java.util.*
 
 /**
- * 测试删除Item时动画
+ * ItemLongClick RecyclerView
  */
-class InsertItemsRecyclerViewActivity : AppCompatActivity() {
+class ItemLongClickRecyclerViewActivity : AppCompatActivity() {
     private lateinit var mRecyclerView: RecyclerView
-    private lateinit var mCheckBox: CheckBox
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_recycler_view_insert_item)
+        setContentView(R.layout.activity_recycler_view_item_long_click)
         mRecyclerView = findViewById(R.id.recyclerview)
-        mCheckBox = findViewById(R.id.checkbox)
         mRecyclerView.setHasFixedSize(true)
-//        mRecyclerView.setItemViewCacheSize(4)
         mRecyclerView.layoutManager =
             LinearLayoutManager(this).apply {
                 orientation = LinearLayoutManager.VERTICAL
@@ -36,6 +34,35 @@ class InsertItemsRecyclerViewActivity : AppCompatActivity() {
             list.add("item $it")
         }
         mRecyclerView.adapter = MyAdapter(list)
+        mRecyclerView.addOnItemTouchListener(MyItemTouchListener())
+    }
+
+    inner class MyItemTouchListener : RecyclerView.OnItemTouchListener {
+        val gestureDetector = GestureDetector(this@ItemLongClickRecyclerViewActivity,
+            object : GestureDetector.SimpleOnGestureListener() {
+                override fun onLongPress(e: MotionEvent?) {
+                    super.onLongPress(e)
+                    Toast.makeText(
+                        this@ItemLongClickRecyclerViewActivity,
+                        " onLongPress ",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        )
+
+        override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {
+            gestureDetector.onTouchEvent(e)
+        }
+
+        override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+            gestureDetector.onTouchEvent(e)
+            return false
+        }
+
+        override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {
+        }
+
     }
 
     inner class MyAdapter(val mStrings: MutableList<String>) :
@@ -56,6 +83,21 @@ class InsertItemsRecyclerViewActivity : AppCompatActivity() {
             val textView = holder.itemView as TextView
             textView.layoutParams.height = (resources.displayMetrics.density * 100).toInt()
             textView.text = mStrings[position]
+            textView.setOnClickListener {
+                Toast.makeText(
+                    this@ItemLongClickRecyclerViewActivity,
+                    "on Click ",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            textView.setOnLongClickListener { v ->
+                Toast.makeText(
+                    this@ItemLongClickRecyclerViewActivity,
+                    "setOnLongClickListener ",
+                    Toast.LENGTH_SHORT
+                ).show()
+                true
+            }
         }
 
         override fun onViewRecycled(holder: RecyclerView.ViewHolder) {
@@ -64,44 +106,4 @@ class InsertItemsRecyclerViewActivity : AppCompatActivity() {
         }
     }
 
-
-    fun addMiddleItems(view: View) {
-        val topPosition = mRecyclerView.getChildAdapterPosition(mRecyclerView.getChildAt(0))
-        val lastPosition =
-            mRecyclerView.getChildAdapterPosition(mRecyclerView.getChildAt(mRecyclerView.childCount - 1))
-        val deletePosition = (topPosition + lastPosition) / 2
-        (mRecyclerView.adapter as MyAdapter).mStrings.add(deletePosition, "addItem2")
-        (mRecyclerView.adapter as MyAdapter).mStrings.add(deletePosition+1, "addItem1")
-        if (!mCheckBox.isChecked) {
-            (mRecyclerView.adapter as MyAdapter).notifyItemRangeInserted(deletePosition, 2)
-        } else {
-            (mRecyclerView.adapter as MyAdapter).notifyDataSetChanged()
-
-        }
-    }
-
-    fun addTailItems(view: View) {
-        val lastPosition =
-            mRecyclerView.getChildAdapterPosition(mRecyclerView.getChildAt(mRecyclerView.childCount - 2))
-        (mRecyclerView.adapter as MyAdapter).mStrings.add(lastPosition, "added Item2")
-        (mRecyclerView.adapter as MyAdapter).mStrings.add(lastPosition, "added Item1")
-        if (!mCheckBox.isChecked) {
-            (mRecyclerView.adapter as MyAdapter).notifyItemRangeInserted(lastPosition, 2)
-        } else {
-            (mRecyclerView.adapter as MyAdapter).notifyDataSetChanged()
-
-        }
-    }
-
-    fun addHeadItems(view: View) {
-        val topPosition = mRecyclerView.getChildAdapterPosition(mRecyclerView.getChildAt(0))
-        (mRecyclerView.adapter as MyAdapter).mStrings.add(topPosition, "added Item2")
-        (mRecyclerView.adapter as MyAdapter).mStrings.add(topPosition, "added Item1")
-        if (!mCheckBox.isChecked) {
-            (mRecyclerView.adapter as MyAdapter).notifyItemRangeInserted(topPosition, 2)
-        } else {
-            (mRecyclerView.adapter as MyAdapter).notifyDataSetChanged()
-
-        }
-    }
 }

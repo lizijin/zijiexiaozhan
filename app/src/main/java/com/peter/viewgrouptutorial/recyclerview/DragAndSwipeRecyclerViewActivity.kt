@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.ItemTouchHelper.SimpleCallback
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.peter.viewgrouptutorial.R
@@ -15,7 +17,7 @@ import java.util.*
 /**
  * 测试删除Item时动画
  */
-class InsertItemsRecyclerViewActivity : AppCompatActivity() {
+class DragAndSwipeRecyclerViewActivity : AppCompatActivity() {
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mCheckBox: CheckBox
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +26,31 @@ class InsertItemsRecyclerViewActivity : AppCompatActivity() {
         mRecyclerView = findViewById(R.id.recyclerview)
         mCheckBox = findViewById(R.id.checkbox)
         mRecyclerView.setHasFixedSize(true)
+
+        val callback = object : SimpleCallback(
+            ItemTouchHelper.UP or ItemTouchHelper.DOWN,
+            ItemTouchHelper.LEFT
+        ) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                val fromPos = viewHolder.adapterPosition
+                val toPos = target.adapterPosition
+                (mRecyclerView.adapter as DragAndSwipeRecyclerViewActivity.MyAdapter).mStrings.swap(
+                    fromPos,
+                    toPos
+                )
+                (mRecyclerView.adapter as MyAdapter).notifyItemMoved(fromPos,toPos)
+                return true
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+//                TODO("Not yet implemented")
+            }
+        }
+        ItemTouchHelper(callback).attachToRecyclerView(mRecyclerView)
 //        mRecyclerView.setItemViewCacheSize(4)
         mRecyclerView.layoutManager =
             LinearLayoutManager(this).apply {
@@ -71,7 +98,7 @@ class InsertItemsRecyclerViewActivity : AppCompatActivity() {
             mRecyclerView.getChildAdapterPosition(mRecyclerView.getChildAt(mRecyclerView.childCount - 1))
         val deletePosition = (topPosition + lastPosition) / 2
         (mRecyclerView.adapter as MyAdapter).mStrings.add(deletePosition, "addItem2")
-        (mRecyclerView.adapter as MyAdapter).mStrings.add(deletePosition+1, "addItem1")
+        (mRecyclerView.adapter as MyAdapter).mStrings.add(deletePosition, "addItem1")
         if (!mCheckBox.isChecked) {
             (mRecyclerView.adapter as MyAdapter).notifyItemRangeInserted(deletePosition, 2)
         } else {
@@ -79,6 +106,13 @@ class InsertItemsRecyclerViewActivity : AppCompatActivity() {
 
         }
     }
+
+    private fun <T> MutableList<T>.swap(a: Int, b: Int): List<T> = this
+        .also {
+            val temp = this[a]
+            it[a] = this[b]
+            it[b] = temp
+        }
 
     fun addTailItems(view: View) {
         val lastPosition =
@@ -94,7 +128,7 @@ class InsertItemsRecyclerViewActivity : AppCompatActivity() {
     }
 
     fun addHeadItems(view: View) {
-        val topPosition = mRecyclerView.getChildAdapterPosition(mRecyclerView.getChildAt(0))
+        val topPosition = mRecyclerView.getChildAdapterPosition(mRecyclerView.getChildAt(1))
         (mRecyclerView.adapter as MyAdapter).mStrings.add(topPosition, "added Item2")
         (mRecyclerView.adapter as MyAdapter).mStrings.add(topPosition, "added Item1")
         if (!mCheckBox.isChecked) {

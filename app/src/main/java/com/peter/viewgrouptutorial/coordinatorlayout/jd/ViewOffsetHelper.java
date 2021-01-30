@@ -5,7 +5,7 @@ import android.view.View;
 import androidx.core.view.ViewCompat;
 
 
-class ViewOffsetHelper {
+public  class ViewOffsetHelper {
 
     private final View view;
 

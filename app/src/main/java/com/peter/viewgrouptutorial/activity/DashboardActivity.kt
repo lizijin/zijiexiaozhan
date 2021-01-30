@@ -13,10 +13,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.peter.viewgrouptutorial.R
 import com.peter.viewgrouptutorial.bean.HeaderItem
 import com.peter.viewgrouptutorial.bean.RouteItem
-import com.peter.viewgrouptutorial.coordinatorlayout.AppbarLayoutExampleActivity
-import com.peter.viewgrouptutorial.coordinatorlayout.CoordinatorEventActivity
+import com.peter.viewgrouptutorial.coordinatorlayout.*
 import com.peter.viewgrouptutorial.coordinatorlayout.jd.JdStickyHeaderAppBarLayoutActivity
 import com.peter.viewgrouptutorial.dispatchevent.*
+import com.peter.viewgrouptutorial.dispatchevent.CoordinatorLayoutActivity
+import com.peter.viewgrouptutorial.fragments.FragmentActivity1
+import com.peter.viewgrouptutorial.fragments.FragmentActivity2
 import com.peter.viewgrouptutorial.jetpack.navigation.NavigationActivity
 import com.peter.viewgrouptutorial.measure.*
 import com.peter.viewgrouptutorial.nestedscroll.*
@@ -24,6 +26,7 @@ import com.peter.viewgrouptutorial.recyclerview.*
 import com.peter.viewgrouptutorial.stickyheader.MyRecyclerViewActivity
 import com.peter.viewgrouptutorial.textview.PromiseTextViewActivity
 import com.peter.viewgrouptutorial.textview.TransformationTextViewActivity
+import com.peter.viewgrouptutorial.viewpager2.*
 import com.xuanyu.stickyheader.BaseStickyHeaderModel
 import com.xuanyu.stickyheader.StickyHeaderAdapter
 import com.xuanyu.stickyheader.StickyHeaderHelper
@@ -43,8 +46,11 @@ class DashboardActivity : AppCompatActivity() {
         mRecyclerView = findViewById(R.id.main_recycler_view)
         mHeaderLayout = findViewById(R.id.header_layout)
         mRecyclerView!!.layoutManager = LinearLayoutManager(this)
-        addRecyclerView()
         addCoordinatorEvent()
+
+        addFragment()
+        addViewPager2()
+        addRecyclerView()
 //        addTextView()
         addDispatchTouchEvent()
         addMeasure()
@@ -61,6 +67,19 @@ class DashboardActivity : AppCompatActivity() {
         )
     }
 
+    private fun addFragment(){
+        addHeaderItem("Fragment Test")
+        addRouteItem(
+            "有回退栈Fragment",
+            "FragmentActivity1",
+            FragmentActivity1::class.java
+        )
+        addRouteItem(
+            "没有回退栈Fragment",
+            "FragmentActivity2",
+            FragmentActivity2::class.java
+        )
+    }
     private fun addCoordinatorEvent() {
         addHeaderItem("CoordinatorLayoutEvent")
         addRouteItem(
@@ -92,6 +111,37 @@ class DashboardActivity : AppCompatActivity() {
             "场景六",
             "Dependency 案例",
             CoordinatorLayoutDependentActivity::class.java
+        )
+        addRouteItem(
+            "场景七",
+            "BottomSheetBehavior",
+            BottomSheetBehaviorActivity::class.java
+        )
+        addRouteItem(
+            "场景八",
+            "仿高德地图",
+            GaodeActivity::class.java
+        )
+        addRouteItem(
+            "场景9",
+            "BottomBehavior不在topmost之一",
+            BottomSheetBehaviorActivity2::class.java
+        )
+
+        addRouteItem(
+            "场景10",
+            "BottomBehavior不在topmost之二",
+            BottomSheetBehaviorActivity3::class.java
+        )
+        addRouteItem(
+            "场景11",
+            "BackgroundTint",
+            BottomSheetBehaviorActivity4::class.java
+        )
+        addRouteItem(
+            "场景12",
+            "BottomSheetBehavior固定高度",
+            BottomSheetBehaviorActivity5::class.java
         )
     }
 
@@ -126,8 +176,92 @@ class DashboardActivity : AppCompatActivity() {
         )
     }
 
+    private fun addViewPager2() {
+        addHeaderItem("ViewPager2 测试")
+
+        addRouteItem(
+            "ViewPager2 With Views",
+            "ViewPager2 With Views",
+            ViewPager2RecyclerViewActivity::class.java
+        )
+        addRouteItem(
+            "ViewPager2 With Fragments",
+            "ViewPager2 With Fragments",
+            ViewPager2WithFragmentsActivity::class.java
+        )
+        addRouteItem(
+            "CardViewActivity",
+            "CardViewActivity",
+            CardViewActivity::class.java
+        )
+        addRouteItem(
+            "CardFragmentActivity",
+            "CardFragmentActivity",
+            CardFragmentActivity::class.java
+        )
+
+        addRouteItem(
+            "MutableCollectionFragmentActivity",
+            "MutableCollectionFragmentActivity",
+            MutableCollectionFragmentActivity::class.java
+        )
+
+        addRouteItem(
+            "MutableCollectionViewActivity",
+            "MutableCollectionViewActivity",
+            MutableCollectionViewActivity::class.java
+        )
+
+
+        addRouteItem(
+            "CardViewTabLayoutActivity",
+            "CardViewTabLayoutActivity",
+            CardViewTabLayoutActivity::class.java
+        )
+
+        addRouteItem(
+                "FakeDragActivity",
+        "FakeDragActivity",
+        FakeDragActivity::class.java
+        )
+
+        addRouteItem(
+            "PageTransformerActivity",
+            "PageTransformerActivity",
+            PageTransformerActivity::class.java
+        )
+
+        addRouteItem(
+            "PreviewPagesActivity",
+            "PreviewPagesActivity",
+            PreviewPagesActivity::class.java
+        )
+
+        addRouteItem(
+            "ParallelNestedScrollingActivity",
+            "ParallelNestedScrollingActivity",
+            ParallelNestedScrollingActivity::class.java
+        )
+
+        addRouteItem(
+            "BrowseActivity",
+            "BrowseActivity",
+            BrowseActivity::class.java
+        )
+    }
+
     private fun addRecyclerView() {
         addHeaderItem("RecyclerView测试")
+        addRouteItem(
+            "Drag Move",
+            "测试Drag Move",
+            DragAndSwipeRecyclerViewActivity::class.java
+        )
+        addRouteItem(
+            "ItemDecoration",
+            "测试ItemDecoration",
+            ItemDecorationRecyclerViewActivity::class.java
+        )
         addRouteItem(
             "删除动画",
             "每次删除两个Item",
@@ -148,6 +282,38 @@ class DashboardActivity : AppCompatActivity() {
             "每次move两个Item",
             MoveItemsRecyclerViewActivity::class.java
         )
+        addRouteItem(
+            "mix动画",
+            "测试mix",
+            MixsItemsRecyclerViewActivity::class.java
+        )
+
+        addRouteItem(
+            "NotifyData None Stable Id",
+            "NotifyData None Stable Id",
+            NotifyNoneStableIdRecyclerViewActivity::class.java
+        )
+        addRouteItem(
+            "NotifyData With Stable Id",
+            "NotifyData With Stable Id",
+            NotifyStableIdRecyclerViewActivity::class.java
+        )
+        addRouteItem(
+            "ItemLongClick",
+            "ItemLongClick Use ItemTouch",
+            ItemLongClickRecyclerViewActivity::class.java
+        )
+        addRouteItem(
+            "LinearSnap",
+            "LinearSnap",
+            LinearSnapRecyclerViewActivity::class.java
+        )
+        addRouteItem(
+            "ViewPagerSnap",
+            "ViewPagerSnap",
+            ViewPagerSnapRecyclerViewActivity::class.java
+        )
+
         addRouteItem("RecyclerView场景一", "博客文章场景一", RecyclerViewActivity1::class.java)
         addRouteItem("RecyclerView场景二", "博客文章场景二", RecyclerViewActivity2::class.java)
         addRouteItem("RecyclerView场景三", "RecyclerView动画", RecyclerViewActivityAnimate::class.java)
