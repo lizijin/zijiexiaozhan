@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.peter.viewgrouptutorial.offsetproblem.OffsetLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".offsetproblem.OffsetProblemConfirmActivity">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="offsetBottom"
+        android:text="offset 100px"></Button>
+
+    <com.peter.viewgrouptutorial.offsetproblem.OffsetButton
+        android:id="@+id/offset.button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f00"
+        android:text="click the above button to offset me!"></com.peter.viewgrouptutorial.offsetproblem.OffsetButton>
+
+</com.peter.viewgrouptutorial.offsetproblem.OffsetLinearLayout>

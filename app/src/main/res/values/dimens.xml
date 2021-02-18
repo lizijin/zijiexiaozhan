@@ -6,6 +6,9 @@
     <dimen name="spacer_large">20dp</dimen>
     <dimen name="spacer_small">5dp</dimen>
     <dimen name="halfPageMargin">16dp</dimen><!-- half of distance between pages -->
-    <dimen name="peekOffset">50dp</dimen><!-- how much of adjacent pages is shown -->
+    <dimen name="peekOffset">50dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen><!-- how much of adjacent pages is shown -->
 
 </resources>

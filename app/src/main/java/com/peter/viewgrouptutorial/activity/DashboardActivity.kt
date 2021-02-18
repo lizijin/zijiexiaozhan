@@ -22,6 +22,7 @@ import com.peter.viewgrouptutorial.fragments.FragmentActivity2
 import com.peter.viewgrouptutorial.jetpack.navigation.NavigationActivity
 import com.peter.viewgrouptutorial.measure.*
 import com.peter.viewgrouptutorial.nestedscroll.*
+import com.peter.viewgrouptutorial.offsetproblem.*
 import com.peter.viewgrouptutorial.recyclerview.*
 import com.peter.viewgrouptutorial.stickyheader.MyRecyclerViewActivity
 import com.peter.viewgrouptutorial.textview.PromiseTextViewActivity
@@ -46,6 +47,7 @@ class DashboardActivity : AppCompatActivity() {
         mRecyclerView = findViewById(R.id.main_recycler_view)
         mHeaderLayout = findViewById(R.id.header_layout)
         mRecyclerView!!.layoutManager = LinearLayoutManager(this)
+        addOffsetProblem()
         addCoordinatorEvent()
 
         addFragment()
@@ -67,7 +69,18 @@ class DashboardActivity : AppCompatActivity() {
         )
     }
 
-    private fun addFragment(){
+    private fun addOffsetProblem() {
+        addHeaderItem("OffsetProblem")
+        addRouteItem("还原offset现场", "简单Demo还原Offset不偏移问题", OffsetProblemActivity::class.java)
+        addRouteItem("定位问题", "默认开启硬件加速 offset方法会触发哪些操作", OffsetProblemConfirmActivity::class.java)
+        addRouteItem("定位问题", "关闭硬件加速后 offset方法会触发哪些操作", OffsetProblemConfirmActivity2::class.java)
+        addRouteItem("解决问题", "使用View.post解决问题", FixOffsetProblemActivityWithPost::class.java)
+        addRouteItem("解决问题", "使用View.post和alpha解决问题", FixOffsetProblemActivityWithAlpha::class.java)
+        addRouteItem("解决问题", "用View.post和preDrawListener解决问题", FixOffsetProblemActivityWithPreDraw::class.java)
+
+    }
+
+    private fun addFragment() {
         addHeaderItem("Fragment Test")
         addRouteItem(
             "有回退栈Fragment",
@@ -80,8 +93,14 @@ class DashboardActivity : AppCompatActivity() {
             FragmentActivity2::class.java
         )
     }
+
     private fun addCoordinatorEvent() {
         addHeaderItem("CoordinatorLayoutEvent")
+        addRouteItem(
+            "FloatingActionButton",
+            "FloatingActionButton",
+            FloatScrollingActivity::class.java
+        )
         addRouteItem(
             "场景一",
             "所有的Behavior和View都不拦截事件不处理事件",
@@ -220,9 +239,9 @@ class DashboardActivity : AppCompatActivity() {
         )
 
         addRouteItem(
-                "FakeDragActivity",
-        "FakeDragActivity",
-        FakeDragActivity::class.java
+            "FakeDragActivity",
+            "FakeDragActivity",
+            FakeDragActivity::class.java
         )
 
         addRouteItem(

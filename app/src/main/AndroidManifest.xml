@@ -9,7 +9,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".coordinatorlayout.GaodeActivity"></activity>
+        <activity
+            android:name=".offsetproblem.FixOffsetProblemActivityWithPreDraw"
+            android:hardwareAccelerated="false"></activity>
+        <activity
+            android:name=".offsetproblem.FixOffsetProblemActivityWithPost"
+            android:hardwareAccelerated="false"></activity>
+        <activity
+            android:name=".offsetproblem.FixOffsetProblemActivityWithAlpha"
+            android:hardwareAccelerated="false"></activity>
+        <activity android:name=".offsetproblem.OffsetProblemConfirmActivity" />
+        <activity
+            android:name=".offsetproblem.OffsetProblemConfirmActivity2"
+            android:hardwareAccelerated="false" />
+        <activity
+            android:name=".offsetproblem.OffsetProblemActivity"
+            android:hardwareAccelerated="false" />
+        <activity
+            android:name=".coordinatorlayout.FloatScrollingActivity"
+            android:label="@string/title_activity_float_scrolling"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".coordinatorlayout.FloatingActionButtonActivity" />
+        <activity android:name=".coordinatorlayout.GaodeActivity" />
         <activity android:name=".coordinatorlayout.BottomSheetBehaviorActivity" />
         <activity android:name=".coordinatorlayout.BottomSheetBehaviorActivity2" />
         <activity android:name=".coordinatorlayout.BottomSheetBehaviorActivity3" />

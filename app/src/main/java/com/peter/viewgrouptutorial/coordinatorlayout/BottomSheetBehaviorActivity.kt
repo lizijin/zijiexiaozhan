@@ -81,7 +81,7 @@ class BottomSheetBehaviorActivity : AppCompatActivity() {
 
         dialog.setContentView(R.layout.layout_for_bottom_sheet_dialog)
 
-        val decorView = dialog.window.decorView
+        val decorView = dialog.window!!.decorView
 
         decorView.findViewById<View>(R.id.design_bottom_sheet).setBackgroundResource(android.R.color.transparent);
 
@@ -119,7 +119,7 @@ class BottomSheetBehaviorActivity : AppCompatActivity() {
     fun openDialog2(view: View) {
         val dialog = BottomSheetDialog(this);
         dialog.setContentView(R.layout.layout_for_bottom_sheet_dialog)
-        val decorView = dialog.window.decorView
+        val decorView = dialog.window!!.decorView
         var coordinatorLayout = findCoordinatorLayout(decorView)
         val nested = dialog.findViewById<View>(R.id.nested)
 

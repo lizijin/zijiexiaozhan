@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".offsetproblem.FixOffsetProblemActivityWithPreDraw">
+
+    <Button android:onClick="addAndOffset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add And Offset" />
+
+    <com.peter.viewgrouptutorial.offsetproblem.OffsetLinearLayout
+        android:id="@+id/root.layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:background="#ff0000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="This is origin button"></Button>
+    </com.peter.viewgrouptutorial.offsetproblem.OffsetLinearLayout>
+</LinearLayout>
