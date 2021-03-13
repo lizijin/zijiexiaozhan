@@ -2,7 +2,6 @@ package com.peter.viewgrouptutorial
 
 import android.annotation.SuppressLint
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.transition.Explode
 import android.transition.Scene
@@ -10,6 +9,7 @@ import android.transition.TransitionManager
 import android.view.View
 import android.widget.FrameLayout
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 
 class SceneActivity : AppCompatActivity() {
     private lateinit var sceneRoot: FrameLayout
@@ -41,11 +41,11 @@ class SceneActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     fun changeBounds(view: View) {
-        val view1 = findViewById<View>(R.id.view1)
+//        val view1 = findViewById<View>(R.id.view1)
         TransitionManager.beginDelayedTransition(sceneRoot)
-        val layoutParams = view1.layoutParams
-        layoutParams.width = 1000
-        layoutParams.height = 1000
-        view1.layoutParams = layoutParams
+//        val layoutParams = view1.layoutParams
+//        layoutParams.width = 1000
+//        layoutParams.height = 1000
+//        view1.layoutParams = layoutParams
     }
 }

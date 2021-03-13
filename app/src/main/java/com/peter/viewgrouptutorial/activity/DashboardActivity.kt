@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.peter.viewgrouptutorial.ClipChildrenActivity
 import com.peter.viewgrouptutorial.R
 import com.peter.viewgrouptutorial.bean.HeaderItem
 import com.peter.viewgrouptutorial.bean.RouteItem
@@ -23,6 +24,7 @@ import com.peter.viewgrouptutorial.jetpack.navigation.NavigationActivity
 import com.peter.viewgrouptutorial.measure.*
 import com.peter.viewgrouptutorial.nestedscroll.*
 import com.peter.viewgrouptutorial.offsetproblem.*
+import com.peter.viewgrouptutorial.popupwindow.PopupWindowActivity
 import com.peter.viewgrouptutorial.recyclerview.*
 import com.peter.viewgrouptutorial.stickyheader.MyRecyclerViewActivity
 import com.peter.viewgrouptutorial.textview.PromiseTextViewActivity
@@ -47,12 +49,14 @@ class DashboardActivity : AppCompatActivity() {
         mRecyclerView = findViewById(R.id.main_recycler_view)
         mHeaderLayout = findViewById(R.id.header_layout)
         mRecyclerView!!.layoutManager = LinearLayoutManager(this)
+
+        addPopupWindow()
+        addRecyclerView()
         addOffsetProblem()
         addCoordinatorEvent()
 
         addFragment()
         addViewPager2()
-        addRecyclerView()
 //        addTextView()
         addDispatchTouchEvent()
         addMeasure()
@@ -62,11 +66,17 @@ class DashboardActivity : AppCompatActivity() {
 
         mMainAdapter = MainAdapter(mRouteItems)
         mRecyclerView!!.adapter = mMainAdapter
+        mRecyclerView!!.setItemViewCacheSize(10)
         StickyHeaderHelper.init<Any>(mRecyclerView, mHeaderLayout, 0)
         StickyHeaderRegistry.registerTransfer(
             HeaderItem::class.java,
             HeaderStickyHeaderModel::class.java
         )
+    }
+
+    private fun addPopupWindow() {
+        addHeaderItem("PopupWindow")
+        addRouteItem("PopupWindow", "PopupWindow", PopupWindowActivity::class.java)
     }
 
     private fun addOffsetProblem() {
@@ -271,6 +281,11 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun addRecyclerView() {
         addHeaderItem("RecyclerView测试")
+        addRouteItem(
+            "ClipChild",
+            "ClipChild",
+            ClipChildrenActivity::class.java
+        )
         addRouteItem(
             "Drag Move",
             "测试Drag Move",

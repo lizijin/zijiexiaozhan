@@ -1,0 +1,38 @@
+ViewInfoStore
+
+1.1 addToPreLayout
+预布局前 先将当前屏幕上的View的信息保存到ViewInfoStore里面
+标记为 FLAG_PRE
+mViewInfoStore.addToPreLayout(holder, animationInfo);
+
+1.2 addToAppearedInPreLayoutHolders
+
+预布局后，如果屏幕上新增加了View，notifyItemRemoved，最后补位的View会调用
+添加 FLAG_APPEARED_IN_PRE_LAYOUT
+final ItemHolderInfo animationInfo = mItemAnimator.recordPreLayoutInformation(
+                            mState, viewHolder, flags, viewHolder.getUnmodifiedPayloads());
+
+添加 FLAG_APPEAR
+mViewInfoStore.addToAppearedInPreLayoutHolders(viewHolder, animationInfo);
+
+1.3 addToDisappearedInLayout
+1.3.1 预布局中 如果碰到removed的会放到消失列表，调用notifyItemRemoved对应的View
+LinearLayoutManager#layoutChunk   addView(view, 0);
+
+1.3.2 布局中 Scrap中剩下的 会放入到这个列表中
+addDisappearingView(view, 0);
+添加FLAG_DISAPPEARED
+
+1.4 addToPostLayout
+布局后，会倒序遍历，将布局好的View 放入到post中
+添加FLAG_POST
+
+动画结束后会removeAnimatingView
+RecyclerView#removeAnimatingView()
+
+
+# ViewInfoStore方法
+1. addToAppearedInPreLayoutHolders
+2. addToDisappearedInLayout
+3. addToPreLayout
+4. addToPostLayout

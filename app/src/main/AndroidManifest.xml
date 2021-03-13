@@ -9,15 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".popupwindow.PopupWindowActivity"></activity>
+        <activity android:name=".dialog.DialogActivity2" />
+        <activity
+            android:name=".dialog.DialogActivity"
+            android:theme="@style/dialogstyle" />
+        <activity android:name=".dialog.MainDialogActivity" />
+        <activity android:name=".dialog.TestDialogActivity" />
         <activity
             android:name=".offsetproblem.FixOffsetProblemActivityWithPreDraw"
-            android:hardwareAccelerated="false"></activity>
+            android:hardwareAccelerated="false" />
         <activity
             android:name=".offsetproblem.FixOffsetProblemActivityWithPost"
-            android:hardwareAccelerated="false"></activity>
+            android:hardwareAccelerated="false" />
         <activity
             android:name=".offsetproblem.FixOffsetProblemActivityWithAlpha"
-            android:hardwareAccelerated="false"></activity>
+            android:hardwareAccelerated="false" />
         <activity android:name=".offsetproblem.OffsetProblemConfirmActivity" />
         <activity
             android:name=".offsetproblem.OffsetProblemConfirmActivity2"
@@ -122,7 +129,7 @@
         <activity android:name=".BottomSheetActivity" />
         <activity
             android:name=".DialogActivity"
-            android:theme="@style/Theme.MaterialComponents" />
+            android:theme="@style/dialogstyle" />
         <activity android:name=".ColorStateListActivity" />
         <activity android:name=".CoordinateConsumeActivity" />
         <activity android:name=".CoordinateScrollViewActivity" />

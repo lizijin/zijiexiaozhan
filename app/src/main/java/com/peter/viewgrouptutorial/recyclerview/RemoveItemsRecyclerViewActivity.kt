@@ -22,6 +22,7 @@ class RemoveItemsRecyclerViewActivity : AppCompatActivity() {
         mRecyclerView = findViewById(R.id.recyclerview)
         mRecyclerView.setHasFixedSize(true)
         mRecyclerView.setItemViewCacheSize(4)
+        mRecyclerView.itemAnimator = MyItemAnimator()
         mRecyclerView.layoutManager =
             LinearLayoutManager(this).apply {
                 orientation = LinearLayoutManager.VERTICAL
@@ -76,9 +77,12 @@ class RemoveItemsRecyclerViewActivity : AppCompatActivity() {
         val lastPosition =
             mRecyclerView.getChildAdapterPosition(mRecyclerView.getChildAt(mRecyclerView.childCount - 1))
         val deletePosition = (topPosition + lastPosition) / 2
-        (mRecyclerView.adapter as MyAdapter).mStrings.removeAt(deletePosition)
-        (mRecyclerView.adapter as MyAdapter).mStrings.removeAt(deletePosition)
-        (mRecyclerView.adapter as MyAdapter).notifyItemRangeRemoved(deletePosition, 2)
+//        (mRecyclerView.adapter as MyAdapter).mStrings.removeAt(deletePosition)
+//        (mRecyclerView.adapter as MyAdapter).mStrings.removeAt(deletePosition)
+//        (mRecyclerView.adapter as MyAdapter).notifyItemRangeRemoved(deletePosition, 2)
+        (mRecyclerView.adapter as MyAdapter).notifyItemRemoved(deletePosition)
+        (mRecyclerView.adapter as MyAdapter).notifyItemRemoved(deletePosition+2)
+
     }
 
     fun removeTailItems(view: View) {
