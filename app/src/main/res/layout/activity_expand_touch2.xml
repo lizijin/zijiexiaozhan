@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frame.layout.content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".expandtouch.ExpandTouchActivity1">
+
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="周边Button设置事件监听"></CheckBox>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/bottom.button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn.click.me"
+            android:layout_alignLeft="@id/btn.click.me"
+            android:layout_alignRight="@id/btn.click.me"
+            android:text="bottom around"></Button>
+
+        <Button
+            android:id="@+id/top.button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/btn.click.me"
+            android:layout_alignLeft="@id/btn.click.me"
+            android:layout_alignRight="@id/btn.click.me"
+            android:text="top around"></Button>
+
+        <Button
+            android:id="@+id/left.button"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/btn.click.me"
+            android:layout_alignBottom="@id/btn.click.me"
+            android:layout_toLeftOf="@id/btn.click.me"
+            android:text="left around"></Button>
+
+        <Button
+            android:id="@+id/right.button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/btn.click.me"
+            android:layout_alignBottom="@id/btn.click.me"
+            android:layout_toRightOf="@id/btn.click.me"
+            android:text="right around"></Button>
+
+        <Button
+            android:id="@+id/btn.click.me"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="#f00"
+            android:text="click me!"></Button>
+    </RelativeLayout>
+</FrameLayout>

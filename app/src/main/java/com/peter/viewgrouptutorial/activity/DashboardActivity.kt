@@ -18,6 +18,10 @@ import com.peter.viewgrouptutorial.coordinatorlayout.*
 import com.peter.viewgrouptutorial.coordinatorlayout.jd.JdStickyHeaderAppBarLayoutActivity
 import com.peter.viewgrouptutorial.dispatchevent.*
 import com.peter.viewgrouptutorial.dispatchevent.CoordinatorLayoutActivity
+import com.peter.viewgrouptutorial.expandtouch.ExpandTouchActivity1
+import com.peter.viewgrouptutorial.expandtouch.ExpandTouchActivity2
+import com.peter.viewgrouptutorial.expandtouch.ExpandTouchActivity3
+import com.peter.viewgrouptutorial.expandtouch.ExpandTouchActivity4
 import com.peter.viewgrouptutorial.fragments.FragmentActivity1
 import com.peter.viewgrouptutorial.fragments.FragmentActivity2
 import com.peter.viewgrouptutorial.jetpack.navigation.NavigationActivity
@@ -49,7 +53,7 @@ class DashboardActivity : AppCompatActivity() {
         mRecyclerView = findViewById(R.id.main_recycler_view)
         mHeaderLayout = findViewById(R.id.header_layout)
         mRecyclerView!!.layoutManager = LinearLayoutManager(this)
-
+        addExpandTouch()
         addPopupWindow()
         addRecyclerView()
         addOffsetProblem()
@@ -74,9 +78,17 @@ class DashboardActivity : AppCompatActivity() {
         )
     }
 
+    private fun addExpandTouch() {
+        addHeaderItem("扩大事件区域")
+        addRouteItem("单个按钮扩大点击区域", "单个按钮扩大点击区域", ExpandTouchActivity1::class.java)
+        addRouteItem("单个按钮扩大点击区域", "扩大点击区域周边有Button", ExpandTouchActivity2::class.java)
+        addRouteItem("多个按钮扩大点击区域", "多个按钮设置扩大点击区域", ExpandTouchActivity3::class.java)
+        addRouteItem("突破限制", "加减购扩大点击区域", ExpandTouchActivity4::class.java)
+    }
+
     private fun addPopupWindow() {
-        addHeaderItem("PopupWindow")
-        addRouteItem("PopupWindow", "PopupWindow", PopupWindowActivity::class.java)
+        addHeaderItem("对话框")
+        addRouteItem("从点击出弹出对话框", "从点击出弹出对话框直到居中", PopupWindowActivity::class.java)
     }
 
     private fun addOffsetProblem() {

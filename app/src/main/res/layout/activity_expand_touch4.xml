@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frame.layout.content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".expandtouch.ExpandTouchActivity4">
+
+    <LinearLayout
+        android:id="@+id/add_subtract_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="#ff6666"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/subtract.image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/subtract_icon_selector"></ImageView>
+
+        <EditText
+            android:id="@+id/edit.text"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:gravity="center"
+            android:text="5"></EditText>
+
+        <ImageView
+            android:id="@+id/add.image"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/add_icon_selector"></ImageView>
+    </LinearLayout>
+
+</FrameLayout>
