@@ -1,0 +1,66 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.peter.viewgrouptutorial.performance.AViewGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:ignore="MissingDefaultResource">
+
+        <com.peter.viewgrouptutorial.performance.BViewGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.peter.viewgrouptutorial.performance.EViewGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </com.peter.viewgrouptutorial.performance.EViewGroup>
+
+            <com.peter.viewgrouptutorial.performance.FViewGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></com.peter.viewgrouptutorial.performance.FViewGroup>
+        </com.peter.viewgrouptutorial.performance.BViewGroup>
+
+        <com.peter.viewgrouptutorial.performance.CViewGroup
+            android:id="@+id/cview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button  android:id="@+id/button" android:layout_marginTop="100dp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/long_hate_song"></Button>
+
+            <com.peter.viewgrouptutorial.performance.GViewGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></com.peter.viewgrouptutorial.performance.GViewGroup>
+
+            <com.peter.viewgrouptutorial.performance.HViewGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></com.peter.viewgrouptutorial.performance.HViewGroup>
+        </com.peter.viewgrouptutorial.performance.CViewGroup>
+
+        <com.peter.viewgrouptutorial.performance.DViewGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.peter.viewgrouptutorial.performance.IViewGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></com.peter.viewgrouptutorial.performance.IViewGroup>
+
+            <com.peter.viewgrouptutorial.performance.JViewGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+            </com.peter.viewgrouptutorial.performance.JViewGroup>
+        </com.peter.viewgrouptutorial.performance.DViewGroup>
+
+
+    </com.peter.viewgrouptutorial.performance.AViewGroup>
+</merge>

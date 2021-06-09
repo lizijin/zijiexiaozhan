@@ -1,7 +1,18 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+//apply plugin: 'ad-add-trycatch'
+//apply plugin: 'android-aspectjx'
 
+//addTryCatch {
+//    hookPoint = [
+////            "com.xianlai.huyusdk.base.BaseAD": [
+////                    "setFetchTime","getFetchTime"
+////            ],
+//            "com.peter.viewgrouptutorial.activity.DashboardActivity\$MainAdapter":["getItemCount"]
+//
+//    ]
+//}
 android {
 
     compileSdkVersion 28
@@ -25,6 +36,12 @@ android {
         jvmTarget = '1.8'
     }
 }
+apply plugin: 'android-aspectjx'
+
+aspectjx {
+    //排除不需要的包
+    exclude 'versions.9'
+}
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -33,10 +50,14 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
     implementation project(":library")
+    implementation 'com.squareup.curtains:curtains:1.0.1'
+
 
 //    implementation 'com.xuanyu.stickyheader:stickyheader:1.0.1'
     implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.0'
     implementation 'androidx.navigation:navigation-fragment:2.3.0'
     implementation 'androidx.navigation:navigation-ui:2.3.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
@@ -46,6 +67,9 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'me.drakeet.multitype:multitype:3.5.0'
     implementation "com.afollestad.material-dialogs:core:0.9.6.0"
+    implementation 'androidx.asynclayoutinflater:asynclayoutinflater:1.0.0'
+    implementation "androidx.startup:startup-runtime:1.0.0"
+    implementation 'androidx.core:core:1.5.0'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

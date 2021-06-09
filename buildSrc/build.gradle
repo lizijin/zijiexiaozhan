@@ -1,0 +1,32 @@
+//apply plugin: 'java-gradle-plugin'
+
+//gradlePlugin {
+//    plugins {
+//        addTryCatchPlugin {
+//            id = 'add-trycatch'
+//            implementationClass = 'com.addtrycatch.AddTryCatchPlugin'
+//        }
+//    }
+//}
+
+dependencies {
+    implementation 'com.android.tools.build:gradle:4.0.0'
+    compile localGroovy()
+    implementation('com.quinn.hunter:hunter-transform:0.9.3') {
+        exclude group: 'com.android.tools.build'
+    }
+}
+repositories {
+    google()
+    jcenter()
+    mavenCentral()
+}
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+    }
+}
+apply plugin: 'com.github.dcendents.android-maven'

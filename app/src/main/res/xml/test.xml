@@ -1,0 +1,8 @@
+<paths >
+    <files-path name="apk" path="."/>
+    <cache-path name="cache" path="."/>
+    <external-path  name="image" path="."/>
+    <external-files-path name="log" path="."/>
+    <external-cache-path  name="video" path="."/>
+    <root-path name ="" path="."/>
+</paths>

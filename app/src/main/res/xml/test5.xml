@@ -1,0 +1,13 @@
+<paths >
+    <!--files-path  相当于 getFilesDir（）-->
+    <files-path name="file_path" path="."/>
+    <files-path name="file_path2" path="jiangbin6"/>
+    <!--cache-path  相当于 getCacheDir（）-->
+    <cache-path name="cache_file_path" path="img_cache_file_path"/>
+    <!--external-path  相当于 Environment.getExternalStorageDirectory()-->
+    <external-path  name="external_storage_path" path="img_external_storage_path"/>
+    <!--external-files-path  相当于 getExternalFilesDir("") -->
+    <external-files-path name="external_file_path" path="img_external_file_path"/>
+    <!--external-cache-path  相当于 getExternalCacheDir（） -->
+    <external-cache-path  name="external_cache_path" path="img_external_cache_path"/>
+</paths>

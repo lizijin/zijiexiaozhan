@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".performance.InflateMoreTagActivity">
+
+    <EditText
+        android:id="@+id/edit.text1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="this is edit 1">
+
+        <requestFocus>
+
+            <TextView></TextView>
+        </requestFocus>
+
+
+        <tag
+            android:id="@+id/tag1"
+            android:value="value1"></tag>
+    </EditText>
+
+    <EditText
+        android:id="@+id/edit.text2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="this is edit 2">
+
+        <requestFocus></requestFocus>
+
+        <tag
+            android:id="@id/tag1"
+            android:value="value2"></tag>
+    </EditText>
+
+    <blink
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_blue_bright"
+            android:text="闪烁内容" />
+    </blink>
+
+</LinearLayout>

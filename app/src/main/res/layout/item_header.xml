@@ -4,6 +4,7 @@
     android:background="#ff680a"
     android:textSize="22sp"
     android:gravity="center"
+    android:text="test"
     android:layout_width="match_parent"
     android:layout_height="50dp">
 

@@ -10,8 +10,13 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.peter.viewgrouptutorial.ClipChildrenActivity
+import com.peter.aspect.TraceDelay
+import com.peter.viewgrouptutorial.ChoreographerActivity
+import com.peter.viewgrouptutorial.InstallAppActivity
+import com.peter.viewgrouptutorial.LockActivity
 import com.peter.viewgrouptutorial.R
+import com.peter.viewgrouptutorial.ams.AnrServiceActivity
+import com.peter.viewgrouptutorial.ams.CrashActivity
 import com.peter.viewgrouptutorial.bean.HeaderItem
 import com.peter.viewgrouptutorial.bean.RouteItem
 import com.peter.viewgrouptutorial.coordinatorlayout.*
@@ -24,10 +29,13 @@ import com.peter.viewgrouptutorial.expandtouch.ExpandTouchActivity3
 import com.peter.viewgrouptutorial.expandtouch.ExpandTouchActivity4
 import com.peter.viewgrouptutorial.fragments.FragmentActivity1
 import com.peter.viewgrouptutorial.fragments.FragmentActivity2
+import com.peter.viewgrouptutorial.jetpack.lifecycle.LifeCycleActivity
 import com.peter.viewgrouptutorial.jetpack.navigation.NavigationActivity
+import com.peter.viewgrouptutorial.jetpack.viewmodel.MyViewModelActivity
 import com.peter.viewgrouptutorial.measure.*
 import com.peter.viewgrouptutorial.nestedscroll.*
 import com.peter.viewgrouptutorial.offsetproblem.*
+import com.peter.viewgrouptutorial.performance.*
 import com.peter.viewgrouptutorial.popupwindow.PopupWindowActivity
 import com.peter.viewgrouptutorial.recyclerview.*
 import com.peter.viewgrouptutorial.stickyheader.MyRecyclerViewActivity
@@ -46,16 +54,35 @@ class DashboardActivity : AppCompatActivity() {
     private var mMainAdapter: MainAdapter? = null
     private val mRouteItems: MutableList<Any> = ArrayList()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        println("jiangbin MyApp DashboardActivity")
+//        var uri = FileProvider.getUriForFile(
+//            this,
+//            "com.peter.viewgrouptutorial",
+//            File("/data/user/0/com.peter.viewgrouptutorial/files/jiangbin/1.txt")
+//        )
+//        println("jiangbin MyApp $uri")
+//        var uri2 = FileProvider.getUriForFile(
+//            this,
+//            "com.peter.viewgrouptutorial8",
+//            File("/data/user/0/com.peter.viewgrouptutorial/files/jiangbin/1.txt")
+//        )
+//        println("jiangbin MyApp $uri2")
+
         setContentView(R.layout.activity_dashboard)
         mRecyclerView = findViewById(R.id.main_recycler_view)
         mHeaderLayout = findViewById(R.id.header_layout)
         mRecyclerView!!.layoutManager = LinearLayoutManager(this)
+        addJetpack()
+
+        addRecyclerView()
+        addPerformance()
+        addAms()
+        addLayoutInflater()
         addExpandTouch()
         addPopupWindow()
-        addRecyclerView()
+
         addOffsetProblem()
         addCoordinatorEvent()
 
@@ -66,7 +93,6 @@ class DashboardActivity : AppCompatActivity() {
         addMeasure()
         addNestedScroll()
         addMaterialDesign()
-        addJetpack()
 
         mMainAdapter = MainAdapter(mRouteItems)
         mRecyclerView!!.adapter = mMainAdapter
@@ -77,6 +103,43 @@ class DashboardActivity : AppCompatActivity() {
             HeaderStickyHeaderModel::class.java
         )
     }
+
+    @TraceDelay
+    private fun addPerformance() {
+        addHeaderItem("性能优化")
+        addRouteItem("锁竞争", "锁竞争", LockActivity::class.java)
+    }
+
+    private fun addAms() {
+        addHeaderItem("AMS")
+        addRouteItem("测试崩溃", "测试崩溃", CrashActivity::class.java)
+        addRouteItem("Service超时ANR", "Service超时ANR", AnrServiceActivity::class.java)
+
+    }
+
+    private fun addLayoutInflater() {
+        addHeaderItem("LayoutInflate")
+        addRouteItem(
+            "AsyncLayoutInflater",
+            "AsyncLayoutInflater",
+            AsyncLayoutInflaterActivity::class.java
+        )
+        addRouteItem("Inflate Custom", "Inflate Custom", InflateCustomActivity::class.java)
+        addRouteItem("Inflate Merge", "Inflate Merge", MergeCustomActivity::class.java)
+        addRouteItem(
+            "Inflate More Tag",
+            "Inflate Inflate More Tag",
+            InflateMoreTagActivity::class.java
+        )
+        addRouteItem("四种Case", "四种Case", LayoutInflaterActivity::class.java)
+        addRouteItem(
+            "ChoreographerActivity",
+            "ChoreographerActivity",
+            ChoreographerActivity::class.java
+        )
+
+    }
+
 
     private fun addExpandTouch() {
         addHeaderItem("扩大事件区域")
@@ -98,7 +161,11 @@ class DashboardActivity : AppCompatActivity() {
         addRouteItem("定位问题", "关闭硬件加速后 offset方法会触发哪些操作", OffsetProblemConfirmActivity2::class.java)
         addRouteItem("解决问题", "使用View.post解决问题", FixOffsetProblemActivityWithPost::class.java)
         addRouteItem("解决问题", "使用View.post和alpha解决问题", FixOffsetProblemActivityWithAlpha::class.java)
-        addRouteItem("解决问题", "用View.post和preDrawListener解决问题", FixOffsetProblemActivityWithPreDraw::class.java)
+        addRouteItem(
+            "解决问题",
+            "用View.post和preDrawListener解决问题",
+            FixOffsetProblemActivityWithPreDraw::class.java
+        )
 
     }
 
@@ -292,11 +359,31 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     private fun addRecyclerView() {
-        addHeaderItem("RecyclerView测试")
+        addHeaderItem("RecyclerView")
+//        addRouteItem(
+//            "ClipChild",
+//            "ClipChild",
+//            ClipChildrenActivity::class.java
+//        )
         addRouteItem(
-            "ClipChild",
-            "ClipChild",
-            ClipChildrenActivity::class.java
+            "测试安装APP",
+            "测试安装App",
+            InstallAppActivity::class.java
+        )
+        addRouteItem(
+            "ConcatAdapter",
+            "测试ConcatAdapter",
+            ConcatAdapterDemoActivity::class.java
+        )
+        addRouteItem(
+            "预抓取",
+            "测试预抓取功能",
+            PrefetchRecyclerViewActivity::class.java
+        )
+        addRouteItem(
+            "DiffUtil",
+            "测试DiffUtil",
+            DiffUtilRecyclerViewActivity::class.java
         )
         addRouteItem(
             "Drag Move",
@@ -393,6 +480,8 @@ class DashboardActivity : AppCompatActivity() {
     private fun addJetpack() {
         addHeaderItem("Jetpack库研究")
         addRouteItem("Jetpack库之Navigation", "Navigation库研究", NavigationActivity::class.java)
+        addRouteItem("Jetpack库之ViewModel", "ViewModel 演示代码", MyViewModelActivity::class.java)
+        addRouteItem("Jetpack库之LifeCycle", "LifeCycle 演示代码", LifeCycleActivity::class.java)
 
     }
 
