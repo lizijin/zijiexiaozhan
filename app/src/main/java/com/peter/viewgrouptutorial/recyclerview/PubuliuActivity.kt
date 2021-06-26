@@ -106,15 +106,16 @@ class PubuliuActivity : AppCompatActivity() {
             }
         }
 
-//        mRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-//                super.onScrolled(recyclerView, dx, dy)
-//                val result = mCheckForGapMethod.invoke(mRecyclerView.layoutManager) as Boolean
-//                if (result) {
-//                    mMarkItemDecorInsetsDirtyMethod.invoke(mRecyclerView)
-//                }
-//            }
-//        })
+        mRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val result = mCheckForGapMethod.invoke(mRecyclerView.layoutManager) as Boolean
+                if (result) {
+                    println("zijiexiaozhan invoke mMarkItemDecorInsetsDirtyMethod")
+                    mMarkItemDecorInsetsDirtyMethod.invoke(mRecyclerView)
+                }
+            }
+        })
         mRecyclerView.addItemDecoration(object : RecyclerView.ItemDecoration() {
             override fun getItemOffsets(
                 outRect: Rect,
