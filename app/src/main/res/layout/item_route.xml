@@ -1,32 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="10dp">
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginBottom="5dp">
 
-    <TextView
-        android:id="@+id/main.title"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#222222"
-        android:textSize="20sp">
+        android:orientation="vertical">
 
-    </TextView>
 
-    <TextView
-        android:id="@+id/main.description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="#666666"
-        android:textSize="16sp"
-        android:layout_marginBottom="10dp">
+        <TextView
+            android:id="@+id/main.title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#222222"
+            android:textSize="20sp">
 
-    </TextView>
-    <View
-        android:background="#dddddd"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"></View>
+        </TextView>
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/main.description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="#666666"
+            android:textSize="16sp">
+
+        </TextView>
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

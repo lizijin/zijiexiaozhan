@@ -1,6 +1,7 @@
 package com.peter.viewgrouptutorial.activity;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -17,6 +18,8 @@ public class HeaderView extends FrameLayout {
         super(context);
         LayoutInflater.from(context).inflate(R.layout.item_header, this);
         mTextView = findViewById(R.id.header_text);
+        mTextView.setBackgroundColor(Color.RED);
+
     }
 
 }

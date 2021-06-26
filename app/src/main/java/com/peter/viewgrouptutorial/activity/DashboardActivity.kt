@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.peter.aspect.TraceDelay
 import com.peter.viewgrouptutorial.ChoreographerActivity
 import com.peter.viewgrouptutorial.InstallAppActivity
@@ -46,6 +47,7 @@ import com.xuanyu.stickyheader.BaseStickyHeaderModel
 import com.xuanyu.stickyheader.StickyHeaderAdapter
 import com.xuanyu.stickyheader.StickyHeaderHelper
 import com.xuanyu.stickyheader.StickyHeaderRegistry
+import java.lang.reflect.Method
 import java.util.*
 
 class DashboardActivity : AppCompatActivity() {
@@ -53,6 +55,12 @@ class DashboardActivity : AppCompatActivity() {
     private var mHeaderLayout: FrameLayout? = null
     private var mMainAdapter: MainAdapter? = null
     private val mRouteItems: MutableList<Any> = ArrayList()
+    private lateinit var checkForGapMethod: Method
+
+    companion object {
+        var useStaggeredGridLayoutManager: Boolean = true
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,8 +80,29 @@ class DashboardActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_dashboard)
         mRecyclerView = findViewById(R.id.main_recycler_view)
+//        mRecyclerView?.itemAnimator = null
+
         mHeaderLayout = findViewById(R.id.header_layout)
-        mRecyclerView!!.layoutManager = LinearLayoutManager(this)
+//        mRecyclerView!!.layoutManager = LinearLayoutManager(this)
+        if (useStaggeredGridLayoutManager) {
+            mRecyclerView!!.layoutManager =
+                StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL)
+            checkForGapMethod =
+                StaggeredGridLayoutManager::class.java.getDeclaredMethod("checkForGaps")
+            checkForGapMethod.isAccessible = true
+        } else {
+            mRecyclerView!!.layoutManager = LinearLayoutManager(this)
+        }
+
+        mRecyclerView?.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+//                if (useStaggeredGridLayoutManager) {
+//                    checkForGapMethod.invoke(mRecyclerView!!.layoutManager)
+//                }
+            }
+        })
+
         addJetpack()
 
         addRecyclerView()
@@ -366,6 +395,11 @@ class DashboardActivity : AppCompatActivity() {
 //            ClipChildrenActivity::class.java
 //        )
         addRouteItem(
+            "瀑布流",
+            "测试瀑布流",
+            PubuliuActivity::class.java
+        )
+        addRouteItem(
             "测试安装APP",
             "测试安装App",
             InstallAppActivity::class.java
@@ -556,6 +590,10 @@ class DashboardActivity : AppCompatActivity() {
                 }
             } else if (holder is HeaderViewHolder) {
                 val headerItem: HeaderItem = items[position] as HeaderItem
+                if (holder.itemView.layoutParams is StaggeredGridLayoutManager.LayoutParams) {
+                    (holder.itemView.layoutParams as StaggeredGridLayoutManager.LayoutParams).isFullSpan =
+                        true
+                }
                 holder.mTitleTextView.text = headerItem.title
             }
         }
@@ -594,5 +632,28 @@ class DashboardActivity : AppCompatActivity() {
         RecyclerView.ViewHolder(itemView) {
         var mTitleTextView: TextView = itemView.findViewById(R.id.header_text)
 
+    }
+
+    fun changeMode(view: View) {
+//        mRecyclerView?.adapter?.notifyDataSetChanged()
+        useStaggeredGridLayoutManager = !useStaggeredGridLayoutManager
+
+        if (useStaggeredGridLayoutManager) {
+            mRecyclerView!!.layoutManager =
+                StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL)
+        } else {
+            mRecyclerView!!.layoutManager = LinearLayoutManager(this)
+        }
+//
+//        mRecyclerView!!.adapter?.let {
+//            mRecyclerView?.adapter?.notifyItemRangeChanged(
+//                0,
+//                it.itemCount
+//            )
+//        }
+    }
+
+    fun refreshData(view: View) {
+        mRecyclerView?.adapter?.notifyDataSetChanged()
     }
 }
