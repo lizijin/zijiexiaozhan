@@ -2,20 +2,27 @@
 buildscript {
     ext.kotlin_version = "1.5.0"
     repositories {
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/groups/public/'
+        }
+        mavenCentral()
+
         google()
         mavenCentral()
         jcenter()
-        maven {
-            url "https://dl.bintray.com/xuanyudaddy/sticky-header-recyclerview"
-        }
+//        maven {
+//            url "https://dl.bintray.com/xuanyudaddy/sticky-header-recyclerview"
+//        }
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.0.0"
+        classpath "com.android.tools.build:gradle:4.0.2"
 
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
         classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.10'
+        classpath ("com.tencent.matrix:matrix-gradle-plugin:${MATRIX_VERSION}") { changing = true }
+
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -23,12 +30,17 @@ buildscript {
 
 allprojects {
     repositories {
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/groups/public/'
+        }
+        mavenCentral()
+
         google()
         mavenCentral()
         jcenter()
-        maven {
-            url "https://dl.bintray.com/xuanyudaddy/sticky-header-recyclerview"
-        }
+//        maven {
+//            url "https://dl.bintray.com/xuanyudaddy/sticky-header-recyclerview"
+//        }
     }
 }
 

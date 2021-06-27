@@ -81,7 +81,7 @@ class DashboardActivity : AppCompatActivity() {
         setContentView(R.layout.activity_dashboard)
         mRecyclerView = findViewById(R.id.main_recycler_view)
 //        mRecyclerView?.itemAnimator = null
-
+        Thread.sleep(1000)
         mHeaderLayout = findViewById(R.id.header_layout)
 //        mRecyclerView!!.layoutManager = LinearLayoutManager(this)
         if (useStaggeredGridLayoutManager) {
