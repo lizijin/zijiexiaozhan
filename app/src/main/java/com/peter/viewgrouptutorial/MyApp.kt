@@ -31,9 +31,21 @@ class MyApp : Application() {
 
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
-        println("jiangbin MyApp attachBaseContext")
+        println("zijiexiaozhan MyApp attachBaseContext")
         time1 = SystemClock.uptimeMillis()
         time3 = System.currentTimeMillis()
+
+        try {
+            val forName = Class.forName("android.app.ActivityThread")
+            val field = forName.getDeclaredField("sCurrentActivityThread")
+            field.isAccessible = true
+            val activityThreadValue = field[forName]
+            val mH = forName.getDeclaredField("mH")
+            mH.isAccessible = true
+            val handler = mH[activityThreadValue]
+            mHandler = handler as Handler
+        } catch (e: Exception) {
+        }
 
         val dynamicConfig = MatrixConfig()
         val matrixEnable: Boolean = dynamicConfig.isMatrixEnable
@@ -65,20 +77,6 @@ class MyApp : Application() {
 
         if (matrixEnable) {
 
-//            //resource
-//            Intent intent = new Intent();
-//            ResourceConfig.DumpMode mode = ResourceConfig.DumpMode.MANUAL_DUMP;
-//            MatrixLog.i(TAG, "Dump Activity Leak Mode=%s", mode);
-//            intent.setClassName(this.getPackageName(), "com.tencent.mm.ui.matrix.ManualDumpActivity");
-//            ResourceConfig resourceConfig = new ResourceConfig.Builder()
-//                    .dynamicConfig(dynamicConfig)
-//                    .setAutoDumpHprofMode(mode)
-////                .setDetectDebuger(true) //matrix test code
-////                    .set(intent)
-//                    .setManualDumpTargetActivity(ManualDumpActivity.class.getName())
-//                    .build();
-//            builder.plugin(new ResourcePlugin(resourceConfig));
-//            ResourcePlugin.activityLeakFixer(this);
 
             //io
             val ioCanaryPlugin = IOCanaryPlugin(
@@ -100,23 +98,10 @@ class MyApp : Application() {
             builder.plugin(SQLiteLintPlugin(sqlLiteConfig))
 
 
-//            BatteryMonitor batteryMonitor = new BatteryMonitor(new BatteryMonitor.Builder()
-//                    .installPlugin(LooperTaskMonitorPlugin.class)
-//                    .installPlugin(JiffiesMonitorPlugin.class)
-//                    .installPlugin(WakeLockMonitorPlugin.class)
-//                    .disableAppForegroundNotifyByMatrix(false)
-//                    .wakelockTimeout(2 * 60 * 1000)
-//                    .greyJiffiesTime(2 * 1000)
-//                    .build()
-//            );
-//            builder.plugin(batteryMonitor);
         }
 
         Matrix.init(builder.build())
 
-        //start only startup tracer, close other tracer.
-
-        //start only startup tracer, close other tracer.
         tracePlugin.start()
     }
 
@@ -129,10 +114,78 @@ class MyApp : Application() {
         time2 = SystemClock.uptimeMillis()
         time4 = System.currentTimeMillis()
 
-        println("jiangbin AutoApplication 222 " + (time2 - time1))
-        println("jiangbin AutoApplication 333 " + (time4 - time3))
+        println("zijiexiaozhan AutoApplication 222 " + (time2 - time1))
+        println("zijiexiaozhan AutoApplication 333 " + (time4 - time3))
+
+        mHandler.postAtFrontOfQueue(ApplicationTask())
 
 
     }
 
+    private fun A() {
+        B()
+        H()
+        L()
+        SystemClock.sleep(800)
+    }
+
+    private fun B() {
+        C()
+        G()
+        SystemClock.sleep(200)
+    }
+
+    private fun C() {
+        D()
+        E()
+        F()
+        SystemClock.sleep(100)
+    }
+
+    private fun D() {
+        SystemClock.sleep(20)
+    }
+
+    private fun E() {
+        SystemClock.sleep(20)
+    }
+
+    private fun F() {
+        SystemClock.sleep(20)
+    }
+
+    private fun G() {
+        SystemClock.sleep(20)
+    }
+
+    private fun H() {
+        SystemClock.sleep(20)
+        I()
+        J()
+        K()
+    }
+
+    private fun I() {
+        SystemClock.sleep(20)
+    }
+
+    private fun J() {
+        SystemClock.sleep(6)
+    }
+
+    private fun K() {
+        SystemClock.sleep(10)
+    }
+
+
+    private fun L() {
+        SystemClock.sleep(100)
+    }
+
+
+    inner class ApplicationTask : Runnable {
+        override fun run() {
+            A()
+        }
+    }
 }
