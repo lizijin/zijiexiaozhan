@@ -22,6 +22,7 @@ import com.peter.viewgrouptutorial.bean.HeaderItem
 import com.peter.viewgrouptutorial.bean.RouteItem
 import com.peter.viewgrouptutorial.coordinatorlayout.*
 import com.peter.viewgrouptutorial.coordinatorlayout.jd.JdStickyHeaderAppBarLayoutActivity
+import com.peter.viewgrouptutorial.coroutines.CoroutinesActivity
 import com.peter.viewgrouptutorial.dispatchevent.*
 import com.peter.viewgrouptutorial.dispatchevent.CoordinatorLayoutActivity
 import com.peter.viewgrouptutorial.expandtouch.ExpandTouchActivity1
@@ -516,7 +517,7 @@ class DashboardActivity : AppCompatActivity() {
         addRouteItem("Jetpack库之Navigation", "Navigation库研究", NavigationActivity::class.java)
         addRouteItem("Jetpack库之ViewModel", "ViewModel 演示代码", MyViewModelActivity::class.java)
         addRouteItem("Jetpack库之LifeCycle", "LifeCycle 演示代码", LifeCycleActivity::class.java)
-
+        addRouteItem("协程研究", "协程研究", CoroutinesActivity::class.java)
     }
 
     private fun addMeasure() {

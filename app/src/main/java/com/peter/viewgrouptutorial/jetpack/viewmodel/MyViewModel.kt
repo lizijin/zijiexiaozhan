@@ -8,11 +8,14 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MyViewModel : ViewModel() {
-    init{
-        viewModelScope.launch { withContext(this.coroutineContext){
+    init {
+        viewModelScope.launch {
+            withContext(this.coroutineContext) {
 
-        } }
+            }
+        }
     }
+
     private val greeting: MutableLiveData<String> by lazy {
         MutableLiveData<String>().apply {
             value = "Hello World"

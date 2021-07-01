@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 8.0之后安装apk需要该权限 -->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".MyApp"
@@ -14,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".recyclerview.PubuliuActivity"></activity>
+        <activity android:name=".coroutines.CoroutinesActivity"></activity>
+        <activity android:name=".recyclerview.PubuliuActivity" />
         <activity android:name=".jetpack.lifecycle.LifeCycleActivity" />
         <activity android:name=".jetpack.viewmodel.MyViewModelActivity" />
         <activity android:name=".InstallAppActivity" />
