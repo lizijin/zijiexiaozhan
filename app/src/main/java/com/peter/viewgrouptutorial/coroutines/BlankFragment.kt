@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import com.peter.viewgrouptutorial.R
 
 class BlankFragment : Fragment() {
@@ -14,7 +14,7 @@ class BlankFragment : Fragment() {
         fun newInstance() = BlankFragment()
     }
 
-    private lateinit var viewModel: BlankViewModel
+    private   val viewModel: BlankViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,7 +25,7 @@ class BlankFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(BlankViewModel::class.java)
+//        viewModel = ViewModelProvider(this).get(BlankViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

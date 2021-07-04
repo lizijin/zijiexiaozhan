@@ -8,6 +8,8 @@ object RetrofitClient {
     val webservice by lazy {
         Retrofit.Builder()
             .baseUrl("https://jsonplaceholder.typicode.com/")
+
+//            .baseUrl("https://my-json-server.typicode.com/lizijin/mock/")
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .build().create(Webservice::class.java)
     }

@@ -1,9 +1,6 @@
 package com.peter.viewgrouptutorial.coroutines
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 
 class TodoViewModel : ViewModel() {
@@ -14,8 +11,14 @@ class TodoViewModel : ViewModel() {
         MutableLiveData<Todo>()
     }
 
-    fun getTodo(): LiveData<Todo> {
-        return todoLiveData
+    //    val viewModelResult = Transformations.map()
+    val todoLiveDataString = Transformations.switchMap(todoLiveData) {
+        MutableLiveData<String>("hello ${it.toString()} ")
+    }
+
+
+    fun getTodo(): LiveData<String> {
+        return todoLiveDataString
     }
 
     fun fetchTodo(id: Int) {
