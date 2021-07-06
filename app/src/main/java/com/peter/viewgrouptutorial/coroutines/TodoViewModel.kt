@@ -4,22 +4,42 @@ import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 
 class TodoViewModel : ViewModel() {
-//    var test:MutableLiveData<String> = MutableLiveData("test")
 
     private val repository = TodoRepository()
     private val todoLiveData: MutableLiveData<Todo> by lazy {
         MutableLiveData<Todo>()
     }
 
-    //    val viewModelResult = Transformations.map()
-    val todoLiveDataString = Transformations.switchMap(todoLiveData) {
-        MutableLiveData<String>("hello ${it.toString()} ")
+
+    private val todoLiveData2: MutableLiveData<Todo> by lazy {
+        MutableLiveData<Todo>()
     }
 
-
-    fun getTodo(): LiveData<String> {
-        return todoLiveDataString
+    private val idLiveData: MutableLiveData<Int> by lazy {
+        MutableLiveData<Int>()
     }
+    val todoLiveDataSwitchMap = idLiveData.switchMap {
+        liveData {
+            emit(repository.getTodo(it))
+        }
+    }
+
+    private val todoLiveDataMap = Transformations.map(todoLiveData) {
+        "This is todo with Transformations.map ${it.toString()}"
+    }
+
+    fun getTodoNormal(): LiveData<Todo> {
+        return todoLiveData
+    }
+
+    fun getTodoMap(): LiveData<String> {
+        return todoLiveDataMap
+    }
+
+    fun getTodoSwitchMap(): LiveData<Todo> {
+        return todoLiveDataSwitchMap
+    }
+
 
     fun fetchTodo(id: Int) {
         viewModelScope.launch {
@@ -27,4 +47,17 @@ class TodoViewModel : ViewModel() {
             todoLiveData.value = todo
         }
     }
+
+    fun setId(parseInt: Int) {
+        idLiveData.value = parseInt
+
+    }
+
+//    fun fetchTodoSwitchMap(id: Int) {
+//        viewModelScope.launch {
+//            val todo = repository.getTodo(id)
+//            todoLiveData2.value = todo
+//        }
+//    }
+
 }

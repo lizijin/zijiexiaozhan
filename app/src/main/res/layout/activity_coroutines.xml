@@ -11,11 +11,50 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:onClick="startCoroutines"
-        android:text="请求数据"></Button>
+        android:onClick="normalUseLiveData"
+        android:text="正常使用LiveData"></Button>
 
     <TextView
         android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text=""></TextView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:onClick="liveDataWithMap"
+        android:text="使用Transformation.map"></Button>
+
+    <TextView
+        android:id="@+id/map_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text=""></TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edit_text_e"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></EditText>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="liveDataWithSwitchMap"
+            android:text="使用Transformation.switchMap"></Button>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/switch_map_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

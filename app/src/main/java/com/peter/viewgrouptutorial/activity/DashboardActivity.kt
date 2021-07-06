@@ -65,22 +65,19 @@ class DashboardActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        println("jiangbin MyApp DashboardActivity")
-//        var uri = FileProvider.getUriForFile(
-//            this,
-//            "com.peter.viewgrouptutorial",
-//            File("/data/user/0/com.peter.viewgrouptutorial/files/jiangbin/1.txt")
-//        )
-//        println("jiangbin MyApp $uri")
-//        var uri2 = FileProvider.getUriForFile(
-//            this,
-//            "com.peter.viewgrouptutorial8",
-//            File("/data/user/0/com.peter.viewgrouptutorial/files/jiangbin/1.txt")
-//        )
-//        println("jiangbin MyApp $uri2")
-
+        println("lifecycle dashboard onCreate")
         setContentView(R.layout.activity_dashboard)
         mRecyclerView = findViewById(R.id.main_recycler_view)
+        mRecyclerView!!.addOnAttachStateChangeListener(object :View.OnAttachStateChangeListener{
+            override fun onViewAttachedToWindow(v: View?) {
+                println("lifecycle dashboard onViewAttachedToWindow")
+            }
+
+            override fun onViewDetachedFromWindow(v: View?) {
+                println("lifecycle dashboard onViewDetachedFromWindow")
+            }
+
+        })
 //        mRecyclerView?.itemAnimator = null
         Thread.sleep(1000)
         mHeaderLayout = findViewById(R.id.header_layout)
@@ -132,6 +129,52 @@ class DashboardActivity : AppCompatActivity() {
             HeaderItem::class.java,
             HeaderStickyHeaderModel::class.java
         )
+    }
+
+    override fun onStart() {
+        super.onStart()
+        println("lifecycle dashboard onStart")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        println("lifecycle dashboard onRestart")
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        println("lifecycle dashboard onResume")
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+        println("lifecycle dashboard onPause")
+
+    }
+
+    override fun onStop() {
+        super.onStop()
+        println("lifecycle dashboard onStop")
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        println("lifecycle dashboard onDestroy")
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        println("lifecycle dashboard onSaveInstanceState")
+
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
+        println("lifecycle dashboard onRestoreInstanceState")
+
     }
 
     @TraceDelay

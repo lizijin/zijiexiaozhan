@@ -17,14 +17,11 @@ class LifeCycleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_life_cycle)
+        println("lifecycle life onCreate")
+
         lifecycle.addObserver(myObserver)
 
 
-        CoroutineScope(Job()).launch {
-            coroutineScope {
-
-            }
-        }
         lifecycleScope.launchWhenResumed {
             Toast.makeText(
                 this@LifeCycleActivity,
@@ -34,16 +31,45 @@ class LifeCycleActivity : AppCompatActivity() {
         }
     }
 
-    override fun onResume() {
-        println("jiangbin kotlin onResume1")
+    override fun onStart() {
+        super.onStart()
+        println("lifecycle life onStart")
 
+    }
+
+    override fun onResume() {
         super.onResume()
-        println("jiangbin kotlin onResume2")
+        println("lifecycle life onResume")
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+        println("lifecycle life onPause")
+
+    }
+
+    override fun onStop() {
+        super.onStop()
+        println("lifecycle life onStop")
+
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        println("lifecycle life onSaveInstanceState")
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
+        println("lifecycle life onRestoreInstanceState")
 
     }
 
     override fun onDestroy() {
         super.onDestroy()
+        println("lifecycle life onDestroy")
+
         lifecycle.removeObserver(myObserver)
     }
 
