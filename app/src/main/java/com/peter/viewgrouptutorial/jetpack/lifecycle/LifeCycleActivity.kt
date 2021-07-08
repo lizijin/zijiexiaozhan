@@ -1,13 +1,12 @@
 package com.peter.viewgrouptutorial.jetpack.lifecycle
 
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
-import androidx.lifecycle.lifecycleScope
+import androidx.core.app.ActivityCompat
+import androidx.lifecycle.*
 import com.peter.viewgrouptutorial.R
 import kotlinx.coroutines.*
 
@@ -19,7 +18,6 @@ class LifeCycleActivity : AppCompatActivity() {
         setContentView(R.layout.activity_life_cycle)
         println("lifecycle life onCreate")
 
-        lifecycle.addObserver(myObserver)
 
 
         lifecycleScope.launchWhenResumed {
@@ -39,6 +37,8 @@ class LifeCycleActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        lifecycle.addObserver(myObserver)
+
         println("lifecycle life onResume")
 
     }
@@ -73,32 +73,37 @@ class LifeCycleActivity : AppCompatActivity() {
         lifecycle.removeObserver(myObserver)
     }
 
-    inner class MyObserver : LifecycleObserver {
-
-        @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
-        fun connectListener() {
-            println("OnLifecycleEvent ON_RESUME")
+    inner class MyObserver : LifecycleEventObserver {
+        override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
+            println("MyObserver onStateChanged $event")
         }
 
-        @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
-        fun disconnectListener() {
-            println("OnLifecycleEvent ON_PAUSE")
-
-        }
     }
+    private val PERMISSIONS_STORAGE = arrayOf(
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE"
+    )
+    private val REQUEST_EXTERNAL_STORAGE = 1
+
 
     fun clickButton2(view: View) {
 //        lifecycleScope.cancel()
-        lifecycleScope.launch {
-            val string = withContext(Dispatchers.IO) {
-                Thread.sleep(1000L)
-                "after 10s"
-            }
-            Toast.makeText(
-                this@LifeCycleActivity,
-                string + "${Thread.currentThread().name}",
-                Toast.LENGTH_SHORT
-            ).show()
+//        lifecycleScope.launch {
+//            val string = withContext(Dispatchers.IO) {
+//                Thread.sleep(1000L)
+//                "after 10s"
+//            }
+//            Toast.makeText(
+//                this@LifeCycleActivity,
+//                string + "${Thread.currentThread().name}",
+//                Toast.LENGTH_SHORT
+//            ).show()
+//        }
+//        Dialog(this).show()
+        val result =
+            ActivityCompat.checkSelfPermission(this, "android.permission.WRITE_EXTERNAL_STORAGE");
+        if (result != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, PERMISSIONS_STORAGE, REQUEST_EXTERNAL_STORAGE)
         }
     }
 }

@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
+    <TextView android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="This is test Fragment stack111111111111"></TextView>
+        android:text="This is the top Fragment"></TextView>
 </FrameLayout>

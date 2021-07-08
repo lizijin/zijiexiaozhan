@@ -68,18 +68,17 @@ class DashboardActivity : AppCompatActivity() {
         println("lifecycle dashboard onCreate")
         setContentView(R.layout.activity_dashboard)
         mRecyclerView = findViewById(R.id.main_recycler_view)
-        mRecyclerView!!.addOnAttachStateChangeListener(object :View.OnAttachStateChangeListener{
-            override fun onViewAttachedToWindow(v: View?) {
-                println("lifecycle dashboard onViewAttachedToWindow")
-            }
-
-            override fun onViewDetachedFromWindow(v: View?) {
-                println("lifecycle dashboard onViewDetachedFromWindow")
-            }
-
-        })
+//        mRecyclerView!!.addOnAttachStateChangeListener(object :View.OnAttachStateChangeListener{
+//            override fun onViewAttachedToWindow(v: View?) {
+//                println("lifecycle dashboard onViewAttachedToWindow")
+//            }
+//
+//            override fun onViewDetachedFromWindow(v: View?) {
+//                println("lifecycle dashboard onViewDetachedFromWindow")
+//            }
+//
+//        })
 //        mRecyclerView?.itemAnimator = null
-        Thread.sleep(1000)
         mHeaderLayout = findViewById(R.id.header_layout)
 //        mRecyclerView!!.layoutManager = LinearLayoutManager(this)
         if (useStaggeredGridLayoutManager) {
@@ -102,7 +101,6 @@ class DashboardActivity : AppCompatActivity() {
         })
 
         addJetpack()
-
         addRecyclerView()
         addPerformance()
         addAms()
@@ -561,6 +559,9 @@ class DashboardActivity : AppCompatActivity() {
         addRouteItem("Jetpack库之ViewModel", "ViewModel 演示代码", MyViewModelActivity::class.java)
         addRouteItem("Jetpack库之LifeCycle", "LifeCycle 演示代码", LifeCycleActivity::class.java)
         addRouteItem("协程研究", "协程研究", CoroutinesActivity::class.java)
+        addRouteItem("Fragment", "研究Fragment原理", TestFragmentActivity::class.java)
+        addRouteItem("Fragment ViewModel", "研究Fragment之间通信", FragmentCommunicatingActivity::class.java)
+
     }
 
     private fun addMeasure() {
@@ -700,4 +701,6 @@ class DashboardActivity : AppCompatActivity() {
     fun refreshData(view: View) {
         mRecyclerView?.adapter?.notifyDataSetChanged()
     }
+
+
 }

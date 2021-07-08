@@ -15,7 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".coroutines.CoroutinesActivity"></activity>
+        <activity android:name=".activity.FragmentCommunicatingActivity"></activity>
+        <activity android:name=".activity.TestFragmentActivity" />
+        <activity android:name=".coroutines.CoroutinesActivity" />
         <activity android:name=".recyclerview.PubuliuActivity" />
         <activity android:name=".jetpack.lifecycle.LifeCycleActivity" />
         <activity android:name=".jetpack.viewmodel.MyViewModelActivity" />
