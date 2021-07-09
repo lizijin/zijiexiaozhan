@@ -9,11 +9,11 @@ import androidx.fragment.app.commit
 import com.peter.viewgrouptutorial.R
 
 class TestFragmentActivity : AppCompatActivity() {
-    private lateinit var mSpecTopFragment: TopFragment
+    private lateinit var mSpecTopFragment: SpecialFragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test_fragment)
-        mSpecTopFragment = TopFragment()
+        mSpecTopFragment = SpecialFragment()
         mSpecTopFragment.arguments = Bundle().apply {
             putCharSequence("key", "指定增加 移除观察生命周期")
         }
@@ -87,6 +87,12 @@ class TestFragmentActivity : AppCompatActivity() {
     fun removeSpecFragment(view: View) {
         supportFragmentManager.commit {
             remove(mSpecTopFragment)
+        }
+    }
+
+    fun showAllFragments(view: View) {
+        for (fragment in supportFragmentManager.fragments) {
+            println("showAllFragments $fragment")
         }
     }
 }

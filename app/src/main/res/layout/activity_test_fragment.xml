@@ -31,11 +31,26 @@
         android:layout_gravity="bottom"
         android:orientation="vertical">
 
-        <Button
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="lifecycle"
-            android:text="观察生命周期"></Button>
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:onClick="showAllFragments"
+                android:text="查看有多少个Fragment"></Button>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:onClick="lifecycle"
+                android:text="观察生命周期"></Button>
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,6 +70,7 @@
                 android:onClick="removeSpecFragment"
                 android:text="移除指定的Fragment"></Button>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

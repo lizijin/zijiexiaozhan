@@ -12,4 +12,10 @@ class CommunicatingViewModel : ViewModel() {
     fun selectItem(item: Int) {
         mutableSelectedItem.value = item
     }
+
+    override fun onCleared() {
+        super.onCleared()
+
+        println("CommunicatingViewModel onCleared")
+    }
 }
