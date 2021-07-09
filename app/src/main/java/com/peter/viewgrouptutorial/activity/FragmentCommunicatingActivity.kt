@@ -13,7 +13,8 @@ import com.peter.viewgrouptutorial.R
  */
 class FragmentCommunicatingActivity : AppCompatActivity() {
     private lateinit var mResultTextView: TextView
-    private val mCommunicatingFragment: CommunicatingFragment = CommunicatingFragment()
+    private val mTopCommunicatingFragment: CommunicatingFragment = CommunicatingFragment()
+    private val mBottomCommunicatingFragment: CommunicatingFragment = CommunicatingFragment()
     private val mCommunicatingViewModel: CommunicatingViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,13 +30,15 @@ class FragmentCommunicatingActivity : AppCompatActivity() {
 
     fun addFragment(view: View) {
         supportFragmentManager.commit {
-            add(R.id.fragment_container_view, mCommunicatingFragment)
+            add(R.id.top_fragment_container_view, mTopCommunicatingFragment)
+            add(R.id.bottom_fragment_container_view, mBottomCommunicatingFragment)
         }
     }
 
     fun removeFragment(view: View) {
         supportFragmentManager.commit {
-            remove(mCommunicatingFragment)
+            remove(mTopCommunicatingFragment)
+            remove(mBottomCommunicatingFragment)
         }
     }
 }

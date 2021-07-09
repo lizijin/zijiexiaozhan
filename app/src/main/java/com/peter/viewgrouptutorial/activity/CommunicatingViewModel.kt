@@ -16,6 +16,6 @@ class CommunicatingViewModel : ViewModel() {
     override fun onCleared() {
         super.onCleared()
 
-        println("CommunicatingViewModel onCleared")
+        println("communication ViewModel onCleared")
     }
 }
