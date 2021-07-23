@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.FragmentNavTestActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/top_fragment_container_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"></androidx.fragment.app.FragmentContainerView>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/bottom_fragment_container_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+
+            android:layout_weight="1"></androidx.fragment.app.FragmentContainerView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1"
+            android:onClick="navFragment"
+            android:text="navFragment"></Button>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1"
+            android:onClick="addFragment"
+            android:text="addFragment"></Button>
+
+        <CheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="check"></CheckBox>
+    </LinearLayout>
+</FrameLayout>

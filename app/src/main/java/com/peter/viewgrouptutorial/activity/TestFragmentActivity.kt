@@ -31,7 +31,6 @@ class TestFragmentActivity : AppCompatActivity() {
     fun addFragmentTwice(view: View) {
         supportFragmentManager.commit {
             setReorderingAllowed(true)
-
             add<TopFragment>(R.id.top_fragment_container_view, args = Bundle().apply {
                 count++
                 putCharSequence("key", "aaa$count")

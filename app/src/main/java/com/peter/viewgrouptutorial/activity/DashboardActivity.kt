@@ -1,8 +1,10 @@
 package com.peter.viewgrouptutorial.activity
 
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.Choreographer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -84,7 +86,7 @@ class DashboardActivity : AppCompatActivity() {
                 delay(400)
                 emit("item ${count++} ${Thread.currentThread()}")
             }
-        }.observe(this){
+        }.observe(this) {
             println(it)
         }
 //        mRecyclerView!!.addOnAttachStateChangeListener(object :View.OnAttachStateChangeListener{
@@ -153,8 +155,9 @@ class DashboardActivity : AppCompatActivity() {
         super.onSaveInstanceState(outState, outPersistentState)
         println("lifecycle dashboard onSaveInstanceState here")
 
-        outPersistentState?.putString("test","test")
+        outPersistentState?.putString("test", "test")
     }
+
     override fun onStart() {
         super.onStart()
         println("lifecycle dashboard onStart")
@@ -586,6 +589,8 @@ class DashboardActivity : AppCompatActivity() {
         addRouteItem("Jetpack库之LifeCycle", "LifeCycle 演示代码", LifeCycleActivity::class.java)
         addRouteItem("协程研究", "协程研究", CoroutinesActivity::class.java)
         addRouteItem("Fragment", "研究Fragment原理", TestFragmentActivity::class.java)
+        addRouteItem("Fragment", "研究Fragment Nav原理", FragmentNavTestActivity::class.java)
+
         addRouteItem(
             "Fragment ViewModel",
             "研究Fragment之间通信",
@@ -730,7 +735,25 @@ class DashboardActivity : AppCompatActivity() {
 
     fun refreshData(view: View) {
         mRecyclerView?.adapter?.notifyDataSetChanged()
-        1/0
+//        1/0
+
+        val translateAnimator = ObjectAnimator.ofFloat(mRecyclerView, "translationX", 0f, 200f)
+        translateAnimator.setDuration(10000L)
+        translateAnimator.addUpdateListener {
+            println("zijiexiaozhan test  addUpdateListener ----")
+        }
+        translateAnimator.start()
+
+
+//        Choreographer.getInstance().postFrameCallback(object :Choreographer.FrameCallback{
+//            override fun doFrame(frameTimeNanos: Long) {
+//                println("zijiexiaozhan test  postFrameCallback $frameTimeNanos----")
+//
+//                Choreographer.getInstance().postFrameCallback(this)
+//
+//            }
+//
+//        })
     }
 
 
