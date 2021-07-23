@@ -7,6 +7,10 @@ import android.os.Build
 import android.os.Handler
 import android.os.SystemClock
 import androidx.annotation.RequiresApi
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.ProcessLifecycleOwner
 import com.tencent.matrix.Matrix
 import com.tencent.matrix.iocanary.IOCanaryPlugin
 import com.tencent.matrix.iocanary.config.IOConfig
@@ -118,6 +122,19 @@ class MyApp : Application() {
         println("zijiexiaozhan AutoApplication 333 " + (time4 - time3))
 
         mHandler.postAtFrontOfQueue(ApplicationTask())
+        ProcessLifecycleOwner.get().lifecycle.addObserver(object : LifecycleObserver{
+            @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+            fun onForeground(){
+                println("zijiexiaozhan ProcessLifecycleOwner onForeground ")
+
+            }
+
+            @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+            fun onBackground(){
+                println("zijiexiaozhan ProcessLifecycleOwner onBackground ")
+
+            }
+        })
 
 
     }

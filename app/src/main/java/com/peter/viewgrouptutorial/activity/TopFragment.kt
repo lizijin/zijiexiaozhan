@@ -7,25 +7,30 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.peter.viewgrouptutorial.R
+import com.peter.viewgrouptutorial.jetpack.viewmodel.MyViewModel
 
 class TopFragment : Fragment(R.layout.top_fragment) {
+    private val vm: MyViewModel by activityViewModels<MyViewModel>(factoryProducer = { defaultViewModelProviderFactory })
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        println("TopFragment onAttach")
+        println("lifecycle TopFragment onAttach")
 
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        println("TopFragment onCreate $savedInstanceState")
+        println("lifecycle TopFragment onCreate $savedInstanceState")
+
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        println("TopFragment onViewCreated $savedInstanceState")
+        println("lifecycle TopFragment onViewCreated $savedInstanceState")
     }
 
     override fun onCreateView(
@@ -34,7 +39,7 @@ class TopFragment : Fragment(R.layout.top_fragment) {
         savedInstanceState: Bundle?
     ): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
-        println("TopFragment onCreateView $savedInstanceState $arguments")
+        println("lifecycle TopFragment onCreateView $savedInstanceState $arguments")
 
         view?.findViewById<TextView>(R.id.textView)?.text = arguments?.getCharSequence("key")
         return view
@@ -42,45 +47,45 @@ class TopFragment : Fragment(R.layout.top_fragment) {
 
     override fun onStart() {
         super.onStart()
-        println("TopFragment onStart ")
+        println("lifecycle TopFragment onStart ")
     }
 
     override fun onResume() {
         super.onResume()
-        println("TopFragment onResume ")
+        println("lifecycle TopFragment onResume ")
     }
 
     override fun onPause() {
         super.onPause()
-        println("TopFragment onPause ")
+        println("lifecycle TopFragment onPause ")
     }
 
     override fun onStop() {
         super.onStop()
-        println("TopFragment onStop ")
+        println("lifecycle TopFragment onStop ")
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        println("TopFragment onSaveInstanceState ")
+        println("lifecycle TopFragment onSaveInstanceState ")
 
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        println("TopFragment onDestroy ")
+        println("lifecycle TopFragment onDestroy ")
 
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        println("TopFragment onDestroyView ")
+        println("lifecycle TopFragment onDestroyView ")
 
     }
 
     override fun onDetach() {
         super.onDetach()
-        println("TopFragment onDetach ")
+        println("lifecycle TopFragment onDetach ")
 
     }
 }

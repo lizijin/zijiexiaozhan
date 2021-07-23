@@ -2,12 +2,14 @@ package com.peter.viewgrouptutorial.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.liveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -48,6 +50,7 @@ import com.xuanyu.stickyheader.BaseStickyHeaderModel
 import com.xuanyu.stickyheader.StickyHeaderAdapter
 import com.xuanyu.stickyheader.StickyHeaderHelper
 import com.xuanyu.stickyheader.StickyHeaderRegistry
+import kotlinx.coroutines.delay
 import java.lang.reflect.Method
 import java.util.*
 
@@ -63,11 +66,27 @@ class DashboardActivity : AppCompatActivity() {
 
     }
 
+    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onCreate(savedInstanceState, persistentState)
+        println("lifecycle dashboard onCreate here")
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         println("lifecycle dashboard onCreate")
         setContentView(R.layout.activity_dashboard)
         mRecyclerView = findViewById(R.id.main_recycler_view)
+
+        liveData<String> {
+            var count = 0
+            while (true) {
+                delay(400)
+                emit("item ${count++} ${Thread.currentThread()}")
+            }
+        }.observe(this){
+            println(it)
+        }
 //        mRecyclerView!!.addOnAttachStateChangeListener(object :View.OnAttachStateChangeListener{
 //            override fun onViewAttachedToWindow(v: View?) {
 //                println("lifecycle dashboard onViewAttachedToWindow")
@@ -129,6 +148,13 @@ class DashboardActivity : AppCompatActivity() {
         )
     }
 
+
+    override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {
+        super.onSaveInstanceState(outState, outPersistentState)
+        println("lifecycle dashboard onSaveInstanceState here")
+
+        outPersistentState?.putString("test","test")
+    }
     override fun onStart() {
         super.onStart()
         println("lifecycle dashboard onStart")
@@ -560,7 +586,11 @@ class DashboardActivity : AppCompatActivity() {
         addRouteItem("Jetpack库之LifeCycle", "LifeCycle 演示代码", LifeCycleActivity::class.java)
         addRouteItem("协程研究", "协程研究", CoroutinesActivity::class.java)
         addRouteItem("Fragment", "研究Fragment原理", TestFragmentActivity::class.java)
-        addRouteItem("Fragment ViewModel", "研究Fragment之间通信", FragmentCommunicatingActivity::class.java)
+        addRouteItem(
+            "Fragment ViewModel",
+            "研究Fragment之间通信",
+            FragmentCommunicatingActivity::class.java
+        )
 
     }
 
@@ -700,6 +730,7 @@ class DashboardActivity : AppCompatActivity() {
 
     fun refreshData(view: View) {
         mRecyclerView?.adapter?.notifyDataSetChanged()
+        1/0
     }
 
 

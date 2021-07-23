@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <application
+        <application android:persistableMode="persistAcrossReboots"
         android:name=".MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,7 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.FragmentCommunicatingActivity"></activity>
+        <activity android:name=".jetpack.lifecycle.LifecycleActivity2"></activity>
+        <activity android:name=".activity.LifecycleFragmentActivity" />
+        <activity android:name=".activity.FragmentCommunicatingActivity" />
         <activity android:name=".activity.TestFragmentActivity" />
         <activity android:name=".coroutines.CoroutinesActivity" />
         <activity android:name=".recyclerview.PubuliuActivity" />
@@ -97,7 +99,7 @@
         <activity android:name=".textview.TransformationTextViewActivity" />
         <activity android:name=".textview.PromiseTextViewActivity" />
         <activity android:name=".jetpack.navigation.NavigationActivity" />
-        <activity android:name=".activity.DashboardActivity">
+        <activity android:name=".activity.DashboardActivity" android:persistableMode="persistAcrossReboots">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
