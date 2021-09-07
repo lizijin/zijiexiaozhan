@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".MyApp"
+        android:name=".MyAppJava"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,7 +16,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.FragmentNavTestActivity"></activity>
+        <activity android:name=".MultiActivityOnePicture">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MultiActivityOnePicture1"></activity>
+        <activity android:name=".MultiActivityOnePicture2"></activity>
+        <activity android:name=".MultiActivityOnePicture3"></activity>
+        <activity android:name=".MultiActivityOnePicture4"></activity>
+        <activity android:name=".activity.FragmentNavTestActivity" />
         <activity android:name=".jetpack.lifecycle.LifecycleActivity2" />
         <activity android:name=".activity.LifecycleFragmentActivity" />
         <activity android:name=".activity.FragmentCommunicatingActivity" />
@@ -104,11 +115,7 @@
         <activity
             android:name=".activity.DashboardActivity"
             android:persistableMode="persistAcrossReboots">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".RemoveViewsActivity" />
         <activity android:name=".coordinatorlayout.CoordinatorEventActivity" />
@@ -130,6 +137,7 @@
         <activity android:name=".recyclerview.ViewPagerSnapRecyclerViewActivity" />
         <activity android:name=".recyclerview.RecyclerViewActivityComplexLayout" />
         <activity android:name=".recyclerview.RemoveItemsRecyclerViewActivity" />
+        <activity android:name=".recyclerview.CustomCacheRecyclerViewActivity" />
         <activity android:name=".recyclerview.InsertItemsRecyclerViewActivity" />
         <activity android:name=".recyclerview.UpdateItemsRecyclerViewActivity" />
         <activity android:name=".recyclerview.MoveItemsRecyclerViewActivity" />
@@ -199,200 +207,197 @@
         <activity android:name=".viewpager2.PageTransformerActivity" />
         <activity android:name=".viewpager2.PreviewPagesActivity" />
         <activity android:name=".viewpager2.ParallelNestedScrollingActivity" />
-        <activity android:name=".viewpager2.BrowseActivity" /> <!-- <provider -->
-        <!-- android:name=".FileProvider1" -->
-        <!-- android:authorities="com.peter.viewgrouptutorial1" -->
-        <!-- android:exported="false" -->
-        <!-- android:grantUriPermissions="true"> -->
-        <!-- <meta-data -->
-        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
-        <!-- android:resource="@xml/test1" /> -->
-        <!-- </provider> -->
-        <!-- <provider -->
-        <!-- android:name=".FileProvider2" -->
-        <!-- android:authorities="com.peter.viewgrouptutorial2" -->
-        <!-- android:exported="false" -->
-        <!-- android:grantUriPermissions="true"> -->
-        <!-- <meta-data -->
-        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
-        <!-- android:resource="@xml/test2" /> -->
-        <!-- </provider> -->
-        <!-- <provider -->
-        <!-- android:name=".FileProvider3" -->
-        <!-- android:authorities="com.peter.viewgrouptutorial3" -->
-        <!-- android:exported="false" -->
-        <!-- android:grantUriPermissions="true"> -->
-        <!-- <meta-data -->
-        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
-        <!-- android:resource="@xml/test3" /> -->
-        <!-- </provider> -->
-        <!-- <provider -->
-        <!-- android:name=".FileProvider4" -->
-        <!-- android:authorities="com.peter.viewgrouptutorial4" -->
-        <!-- android:exported="false" -->
-        <!-- android:grantUriPermissions="true"> -->
-        <!-- <meta-data -->
-        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
-        <!-- android:resource="@xml/test4" /> -->
-        <!-- </provider> -->
-        <!-- <provider -->
-        <!-- android:name=".FileProvider5" -->
-        <!-- android:authorities="com.peter.viewgrouptutorial5" -->
-        <!-- android:exported="false" -->
-        <!-- android:grantUriPermissions="true"> -->
-        <!-- <meta-data -->
-        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
-        <!-- android:resource="@xml/test5" /> -->
-        <!-- </provider> -->
-        <!-- <provider -->
-        <!-- android:name=".FileProvider6" -->
-        <!-- android:authorities="com.peter.viewgrouptutorial6" -->
-        <!-- android:exported="false" -->
-        <!-- android:grantUriPermissions="true"> -->
-        <!-- <meta-data -->
-        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
-        <!-- android:resource="@xml/test6" /> -->
-        <!-- </provider> -->
-        <!-- <provider -->
-        <!-- android:name=".FileProvider7" -->
-        <!-- android:authorities="com.peter.viewgrouptutorial7" -->
-        <!-- android:exported="false" -->
-        <!-- android:grantUriPermissions="true"> -->
-        <!-- <meta-data -->
-        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
-        <!-- android:resource="@xml/test7" /> -->
-        <!-- </provider> -->
-        <!-- <provider -->
-        <!-- android:name=".FileProvider8" -->
-        <!-- android:authorities="com.peter.viewgrouptutorial8" -->
-        <!-- android:exported="false" -->
-        <!-- android:grantUriPermissions="true"> -->
-        <!-- <meta-data -->
-        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
-        <!-- android:resource="@xml/test8" /> -->
-        <!-- </provider> -->
-        <!-- <provider -->
-        <!-- android:name=".FileProvider9" -->
-        <!-- android:authorities="com.peter.viewgrouptutorial9" -->
-        <!-- android:exported="false" -->
-        <!-- android:grantUriPermissions="true"> -->
-        <!-- <meta-data -->
-        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
-        <!-- android:resource="@xml/test8" /> -->
-        <!-- </provider> -->
-        <!-- <provider -->
-        <!-- android:name=".FileProvider10" -->
-        <!-- android:authorities="com.peter.viewgrouptutorial10" -->
-        <!-- android:exported="false" -->
-        <!-- android:grantUriPermissions="true"> -->
-        <!-- <meta-data -->
-        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
-        <!-- android:resource="@xml/test8" /> -->
-        <!-- </provider> -->
-        <!-- <provider -->
-        <!-- android:name=".FileProvider11" -->
-        <!-- android:authorities="com.peter.viewgrouptutorial11" -->
-        <!-- android:exported="false" -->
-        <!-- android:grantUriPermissions="true"> -->
-        <!-- <meta-data -->
-        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
-        <!-- android:resource="@xml/test8" /> -->
-        <!-- </provider> -->
-        <!-- <provider -->
-        <!-- android:name=".FileProvider12" -->
-        <!-- android:authorities="com.peter.viewgrouptutorial12" -->
-        <!-- android:exported="false" -->
-        <!-- android:grantUriPermissions="true"> -->
-        <!-- <meta-data -->
-        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
-        <!-- android:resource="@xml/test8" /> -->
-        <!-- </provider> -->
-        <!-- <provider -->
-        <!-- android:name=".FileProvider13" -->
-        <!-- android:authorities="com.peter.viewgrouptutorial13" -->
-        <!-- android:exported="false" -->
-        <!-- android:grantUriPermissions="true"> -->
-        <!-- <meta-data -->
-        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
-        <!-- android:resource="@xml/test8" /> -->
-        <!-- </provider> -->
-        <!-- <provider -->
-        <!-- android:name=".FileProvider14" -->
-        <!-- android:authorities="com.peter.viewgrouptutorial14" -->
-        <!-- android:exported="false" -->
-        <!-- android:grantUriPermissions="true"> -->
-        <!-- <meta-data -->
-        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
-        <!-- android:resource="@xml/test8" /> -->
-        <!-- </provider> -->
-        <!-- <provider -->
-        <!-- android:name=".FileProvider15" -->
-        <!-- android:authorities="com.peter.viewgrouptutorial15" -->
-        <!-- android:exported="false" -->
-        <!-- android:grantUriPermissions="true"> -->
-        <!-- <meta-data -->
-        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
-        <!-- android:resource="@xml/test8" /> -->
-        <!-- </provider> -->
-        <!-- <provider -->
-        <!-- android:name=".FileProvider16" -->
-        <!-- android:authorities="com.peter.viewgrouptutorial16" -->
-        <!-- android:exported="false" -->
-        <!-- android:grantUriPermissions="true"> -->
-        <!-- <meta-data -->
-        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
-        <!-- android:resource="@xml/test8" /> -->
-        <!-- </provider> -->
-        <!-- <provider -->
-        <!-- android:name=".FileProvider17" -->
-        <!-- android:authorities="com.peter.viewgrouptutorial17" -->
-        <!-- android:exported="false" -->
-        <!-- android:grantUriPermissions="true"> -->
-        <!-- <meta-data -->
-        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
-        <!-- android:resource="@xml/test8" /> -->
-        <!-- </provider> -->
-        <!-- <provider -->
-        <!-- android:name=".FileProvider18" -->
-        <!-- android:authorities="com.peter.viewgrouptutorial18" -->
-        <!-- android:exported="false" -->
-        <!-- android:grantUriPermissions="true"> -->
-        <!-- <meta-data -->
-        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
-        <!-- android:resource="@xml/test8" /> -->
-        <!-- </provider> -->
-        <!-- <provider -->
-        <!-- android:name=".FileProvider19" -->
-        <!-- android:authorities="com.peter.viewgrouptutorial19" -->
-        <!-- android:exported="false" -->
-        <!-- android:grantUriPermissions="true"> -->
-        <!-- <meta-data -->
-        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
-        <!-- android:resource="@xml/test8" /> -->
-        <!-- </provider> -->
-        <!-- <provider -->
-        <!-- android:name=".MeituanFileProvider" -->
-        <!-- android:authorities="com.meituan.install" -->
-        <!-- android:exported="false" -->
-        <!-- android:grantUriPermissions="true"> -->
-        <!-- <meta-data -->
-        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
-        <!-- android:resource="@xml/meituan" /> -->
-        <!-- </provider> -->
-        <!-- <provider -->
-        <!-- android:name=".ToutiaoFileProvider" -->
-        <!-- android:authorities="com.toutiao.install" -->
-        <!-- android:exported="false" -->
-        <!-- android:grantUriPermissions="true"> -->
-        <!-- <meta-data -->
-        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
-        <!-- android:resource="@xml/toutiao" /> -->
-        <!-- </provider> -->
+        <activity android:name=".viewpager2.BrowseActivity" />
+
         <provider
-            android:name=".DispatchFileProvider"
-            android:authorities="com.peter.dispatch"
+            android:name=".FileProvider1"
+            android:authorities="com.peter.viewgrouptutorial1"
             android:exported="false"
-            android:grantUriPermissions="true" />
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/test1" />
+        </provider>
+        <provider
+            android:name=".FileProvider2"
+            android:authorities="com.peter.viewgrouptutorial2"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/test2" />
+        </provider>
+        <provider
+            android:name=".FileProvider3"
+            android:authorities="com.peter.viewgrouptutorial3"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/test3" />
+        </provider>
+        <provider
+            android:name=".FileProvider4"
+            android:authorities="com.peter.viewgrouptutorial4"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/test4" />
+        </provider>
+        <provider
+            android:name=".FileProvider5"
+            android:authorities="com.peter.viewgrouptutorial5"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/test5" />
+        </provider>
+        <provider
+            android:name=".FileProvider6"
+            android:authorities="com.peter.viewgrouptutorial6"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/test6" />
+        </provider>
+        <provider
+            android:name=".FileProvider7"
+            android:authorities="com.peter.viewgrouptutorial7"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/test7" />
+        </provider>
+        <provider
+            android:name=".FileProvider8"
+            android:authorities="com.peter.viewgrouptutorial8"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/test8" />
+        </provider>
+        <provider
+            android:name=".FileProvider9"
+            android:authorities="com.peter.viewgrouptutorial9"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/test8" />
+        </provider>
+        <provider
+            android:name=".FileProvider10"
+            android:authorities="com.peter.viewgrouptutorial10"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/test8" />
+        </provider>
+        <provider
+            android:name=".FileProvider11"
+            android:authorities="com.peter.viewgrouptutorial11"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/test8" />
+        </provider>
+        <provider
+            android:name=".FileProvider12"
+            android:authorities="com.peter.viewgrouptutorial12"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/test8" />
+        </provider>
+        <provider
+            android:name=".FileProvider13"
+            android:authorities="com.peter.viewgrouptutorial13"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/test8" />
+        </provider>
+        <provider
+            android:name=".FileProvider14"
+            android:authorities="com.peter.viewgrouptutorial14"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/test8" />
+        </provider>
+        <provider
+            android:name=".FileProvider15"
+            android:authorities="com.peter.viewgrouptutorial15"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/test8" />
+        </provider>
+        <provider
+            android:name=".FileProvider16"
+            android:authorities="com.peter.viewgrouptutorial16"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/test8" />
+        </provider>
+        <provider
+            android:name=".FileProvider17"
+            android:authorities="com.peter.viewgrouptutorial17"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/test8" />
+        </provider>
+        <provider
+            android:name=".FileProvider18"
+            android:authorities="com.peter.viewgrouptutorial18"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/test8" />
+        </provider>
+        <provider
+            android:name=".FileProvider19"
+            android:authorities="com.peter.viewgrouptutorial19"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/test8" />
+        </provider>
+        <provider
+            android:name=".MeituanFileProvider"
+            android:authorities="com.meituan.install"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/meituan" />
+        </provider>
+        <provider
+            android:name=".ToutiaoFileProvider"
+            android:authorities="com.toutiao.install"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/toutiao" />
+        </provider>
     </application>
 
 </manifest>

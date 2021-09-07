@@ -1,25 +1,25 @@
 package com.peter.viewgrouptutorial.activity
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.os.Looper
 import android.os.PersistableBundle
-import android.view.Choreographer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.liveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.peter.aspect.TraceDelay
-import com.peter.viewgrouptutorial.ChoreographerActivity
-import com.peter.viewgrouptutorial.InstallAppActivity
-import com.peter.viewgrouptutorial.LockActivity
-import com.peter.viewgrouptutorial.R
+import com.peter.viewgrouptutorial.*
 import com.peter.viewgrouptutorial.ams.AnrServiceActivity
 import com.peter.viewgrouptutorial.ams.CrashActivity
 import com.peter.viewgrouptutorial.bean.HeaderItem
@@ -52,9 +52,10 @@ import com.xuanyu.stickyheader.BaseStickyHeaderModel
 import com.xuanyu.stickyheader.StickyHeaderAdapter
 import com.xuanyu.stickyheader.StickyHeaderHelper
 import com.xuanyu.stickyheader.StickyHeaderRegistry
-import kotlinx.coroutines.delay
 import java.lang.reflect.Method
 import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.concurrent.thread
 
 class DashboardActivity : AppCompatActivity() {
     private var mRecyclerView: RecyclerView? = null
@@ -64,13 +65,14 @@ class DashboardActivity : AppCompatActivity() {
     private lateinit var checkForGapMethod: Method
 
     companion object {
-        var useStaggeredGridLayoutManager: Boolean = true
-
+        var useStaggeredGridLayoutManager: Boolean = false
+        var sCustomViewCaches: ArrayList<View> = arrayListOf()
     }
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
         println("lifecycle dashboard onCreate here")
+
 
     }
 
@@ -80,15 +82,52 @@ class DashboardActivity : AppCompatActivity() {
         setContentView(R.layout.activity_dashboard)
         mRecyclerView = findViewById(R.id.main_recycler_view)
 
-        liveData<String> {
-            var count = 0
-            while (true) {
-                delay(400)
-                emit("item ${count++} ${Thread.currentThread()}")
+        Looper.myQueue().addIdleHandler {
+            thread {
+                repeat(10) {
+                    val linearLayout = LinearLayout(this@DashboardActivity).apply {
+                        orientation = LinearLayout.VERTICAL
+                    }
+                    val view = LayoutInflater.from(this@DashboardActivity)
+                        .inflate(R.layout.custom_cache_view_item, linearLayout)
+                    linearLayout.removeView(view)
+                    view.setBackgroundColor(Color.RED)
+                    view.layoutParams = RecyclerView.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT
+                    )
+                    val filed =
+                        RecyclerView.LayoutParams::class.java.getDeclaredField("mViewHolder")
+                            .apply {
+                                isAccessible = true
+                            }
+                    val viewHolder = object : RecyclerView.ViewHolder(view) {};
+                    with(
+                        RecyclerView.ViewHolder::class.java.getDeclaredField("mItemViewType")
+                            .apply {
+                                isAccessible = true
+                            }) {
+                        set(viewHolder, 0)
+                    }
+
+                    filed.set(view.layoutParams, viewHolder)
+                    sCustomViewCaches.add(view)
+                }
+
+                println("custom  view cache ok")
+
             }
-        }.observe(this) {
-            println(it)
+            false
         }
+//        liveData<String> {
+//            var count = 0
+//            while (true) {
+//                delay(400)
+//                emit("item ${count++} ${Thread.currentThread()}")
+//            }
+//        }.observe(this) {
+//            println(it)
+//        }
 //        mRecyclerView!!.addOnAttachStateChangeListener(object :View.OnAttachStateChangeListener{
 //            override fun onViewAttachedToWindow(v: View?) {
 //                println("lifecycle dashboard onViewAttachedToWindow")
@@ -120,10 +159,11 @@ class DashboardActivity : AppCompatActivity() {
 //                }
             }
         })
+        addRecyclerView()
+
+        addPerformance()
 
         addJetpack()
-        addRecyclerView()
-        addPerformance()
         addAms()
         addLayoutInflater()
         addExpandTouch()
@@ -151,7 +191,7 @@ class DashboardActivity : AppCompatActivity() {
     }
 
 
-    override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {
+    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
         super.onSaveInstanceState(outState, outPersistentState)
         println("lifecycle dashboard onSaveInstanceState here")
 
@@ -198,7 +238,7 @@ class DashboardActivity : AppCompatActivity() {
 
     }
 
-    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         println("lifecycle dashboard onRestoreInstanceState")
 
@@ -208,6 +248,9 @@ class DashboardActivity : AppCompatActivity() {
     private fun addPerformance() {
         addHeaderItem("性能优化")
         addRouteItem("锁竞争", "锁竞争", LockActivity::class.java)
+        addRouteItem("多个Activity引用同一张图片", "多个Activity引用同一张图片", MultiActivityOnePicture::class.java)
+        addRouteItem("多个Activity引用不同图片", "多个Activity引用不同图片", MultiActivityOnePicture1::class.java)
+
     }
 
     private fun addAms() {
@@ -465,6 +508,12 @@ class DashboardActivity : AppCompatActivity() {
 //            "ClipChild",
 //            ClipChildrenActivity::class.java
 //        )
+
+        addRouteItem(
+            "开发者自定义缓存",
+            "开发者自定义缓存",
+            CustomCacheRecyclerViewActivity::class.java
+        )
         addRouteItem(
             "瀑布流",
             "测试瀑布流",
@@ -742,6 +791,12 @@ class DashboardActivity : AppCompatActivity() {
         translateAnimator.addUpdateListener {
             println("zijiexiaozhan test  addUpdateListener ----")
         }
+        translateAnimator.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator?) {
+                super.onAnimationEnd(animation)
+            }
+
+        })
         translateAnimator.start()
 
 

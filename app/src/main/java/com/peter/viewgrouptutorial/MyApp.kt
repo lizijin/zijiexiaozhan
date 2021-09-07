@@ -1,12 +1,13 @@
 package com.peter.viewgrouptutorial;
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.Application
 import android.content.Context
-import android.os.Build
-import android.os.Handler
-import android.os.SystemClock
+import android.os.*
+import android.view.Choreographer
 import androidx.annotation.RequiresApi
+import androidx.core.os.TraceCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
@@ -20,6 +21,7 @@ import com.tencent.matrix.util.MatrixLog
 import com.tencent.sqlitelint.SQLiteLint
 import com.tencent.sqlitelint.SQLiteLintPlugin
 import com.tencent.sqlitelint.config.SQLiteLintConfig
+import curtains.onNextDraw
 
 class MyApp : Application() {
 
@@ -121,16 +123,65 @@ class MyApp : Application() {
         println("zijiexiaozhan AutoApplication 222 " + (time2 - time1))
         println("zijiexiaozhan AutoApplication 333 " + (time4 - time3))
 
+        Choreographer.getInstance().postFrameCallback {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                println("zijiexiaozhan AutoApplication 666 ${SystemClock.elapsedRealtime() - android.os.Process.getStartElapsedRealtime()}")
+                println("zijiexiaozhan AutoApplication 6662 ${SystemClock.uptimeMillis() - android.os.Process.getStartUptimeMillis()}")
+
+            }
+        }
+
+        var firstDraw = false
+        val handler = Handler()
+
+        registerActivityLifecycleCallbacks(
+            object : ActivityLifecycleCallbacks {
+                @RequiresApi(Build.VERSION_CODES.N)
+                override fun onActivityCreated(
+                    activity: Activity,
+                    savedInstanceState: Bundle?
+                ) {
+                    val window = activity.window
+                        window.onNextDraw {
+                            if (firstDraw) return@onNextDraw
+                            firstDraw = true
+                            handler.postAtFrontOfQueue {
+                                println("zijiexiaozhan AutoApplication 6666 ${SystemClock.elapsedRealtime() - android.os.Process.getStartElapsedRealtime()}")
+                                println("zijiexiaozhan AutoApplication 66662 ${SystemClock.uptimeMillis() - android.os.Process.getStartUptimeMillis()}")
+
+                            }
+                        }
+                }
+
+                override fun onActivityStarted(p0: Activity) {
+                }
+
+                override fun onActivityResumed(p0: Activity) {
+                }
+
+                override fun onActivityPaused(p0: Activity) {
+                }
+
+                override fun onActivityStopped(p0: Activity) {
+                }
+
+                override fun onActivitySaveInstanceState(p0: Activity, p1: Bundle) {
+                }
+
+                override fun onActivityDestroyed(p0: Activity) {
+                }
+            })
+
         mHandler.postAtFrontOfQueue(ApplicationTask())
-        ProcessLifecycleOwner.get().lifecycle.addObserver(object : LifecycleObserver{
+        ProcessLifecycleOwner.get().lifecycle.addObserver(object : LifecycleObserver {
             @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
-            fun onForeground(){
+            fun onForeground() {
                 println("zijiexiaozhan ProcessLifecycleOwner onForeground ")
 
             }
 
             @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-            fun onBackground(){
+            fun onBackground() {
                 println("zijiexiaozhan ProcessLifecycleOwner onBackground ")
 
             }
@@ -202,7 +253,9 @@ class MyApp : Application() {
 
     inner class ApplicationTask : Runnable {
         override fun run() {
+            TraceCompat.beginSection("ApplicationTask")
             A()
+            TraceCompat.endSection()
         }
     }
 }

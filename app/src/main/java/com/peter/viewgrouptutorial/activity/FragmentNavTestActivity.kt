@@ -27,30 +27,12 @@ class FragmentNavTestActivity : AppCompatActivity() {
         }
     }
 
-//    fun navFragment(view: View) {
-//        val fragment = supportFragmentManager.findFragmentById(R.id.bottom_fragment_container_view)
-//        supportFragmentManager.commit {
-//            setPrimaryNavigationFragment(fragment)
-//        }
-//        fragment?.childFragmentManager?.commit {
-//            setReorderingAllowed(true)
-//            val bundle = Bundle().apply {
-//                putCharSequence("key", "this is a nav Fragment")
-//            }
-//            add<TopFragment>(R.id.nav_fragment, args = bundle)
-//            addToBackStack(null)
-//
-//        }
-//        println("the fragment is $fragment")
-//    }
-
-
     fun navFragment(view: View) {
-//        val fragment = supportFragmentManager.findFragmentById(R.id.bottom_fragment_container_view)
-//        supportFragmentManager.commit {
-//            setPrimaryNavigationFragment(fragment)
-//        }
+        val fragment = supportFragmentManager.findFragmentById(R.id.bottom_fragment_container_view)
         supportFragmentManager.commit {
+            setPrimaryNavigationFragment(fragment)
+        }
+        fragment?.childFragmentManager?.commit {
             setReorderingAllowed(true)
             val bundle = Bundle().apply {
                 putCharSequence("key", "this is a nav Fragment")
@@ -59,6 +41,34 @@ class FragmentNavTestActivity : AppCompatActivity() {
             addToBackStack(null)
 
         }
-//        println("the fragment is $fragment")
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            val bundle = Bundle().apply {
+                putCharSequence("key", "this is a single Fragment")
+            }
+            add<TopFragment>(R.id.top_fragment_container_view, args = bundle)
+            add<NavFragment>(R.id.bottom_fragment_container_view, args = bundle)
+
+            addToBackStack(null)
+        }
+        println("the fragment is $fragment")
     }
+
+
+//    fun navFragment(view: View) {
+////        val fragment = supportFragmentManager.findFragmentById(R.id.bottom_fragment_container_view)
+////        supportFragmentManager.commit {
+////            setPrimaryNavigationFragment(fragment)
+////        }
+//        supportFragmentManager.commit {
+//            setReorderingAllowed(true)
+//            val bundle = Bundle().apply {
+//                putCharSequence("key", "this is a nav Fragment")
+//            }
+//            add<TopFragment>(R.id.nav_fragment, args = bundle)
+//            addToBackStack(null)
+//
+//        }
+////        println("the fragment is $fragment")
+//    }
 }

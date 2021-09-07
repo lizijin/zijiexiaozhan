@@ -14,18 +14,25 @@ apply plugin: 'kotlin-android-extensions'
 //    ]
 //}
 android {
+
+        lintOptions {
+            checkReleaseBuilds false
+            // Or, if you prefer, you can continue to check for errors in release builds,
+            // but continue the build even when errors are found:
+            abortOnError false
+        }
     packagingOptions {
         //解决More than one file was found with OS independent path 'lib/arm64-v8a/libswscale.so'. If you are using jniLibs and CMake IMPORTED targets, see https://developer.android.com/studio/preview/features#automatic_packaging_of_prebuilt_dependencies_used_by_cmake
         pickFirst 'lib/armeabi-v7a/*'
         pickFirst 'lib/arm64-v8a/*'
     }
-    compileSdkVersion 28
+    compileSdkVersion 30
     buildToolsVersion "29.0.2"
 
     defaultConfig {
         applicationId "com.peter.viewgrouptutorial"
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
@@ -60,6 +67,7 @@ matrix {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'com.squareup.curtains:curtains:1.2.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation group: "com.tencent.matrix", name: "matrix-android-lib", version: MATRIX_VERSION, changing: true
     implementation group: "com.tencent.matrix", name: "matrix-android-commons", version: MATRIX_VERSION, changing: true
@@ -78,6 +86,7 @@ dependencies {
     implementation project(":library")
     implementation 'com.squareup.curtains:curtains:1.0.1'
 
+    implementation 'com.alibaba.android:alpha:1.0.0.1@aar'
 
 //    implementation 'com.xuanyu.stickyheader:stickyheader:1.0.1'
     implementation 'androidx.vectordrawable:vectordrawable:1.1.0'

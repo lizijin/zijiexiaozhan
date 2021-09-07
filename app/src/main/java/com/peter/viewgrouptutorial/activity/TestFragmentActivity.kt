@@ -59,6 +59,18 @@ class TestFragmentActivity : AppCompatActivity() {
 
             addToBackStack("ccc$count")
         }
+
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            val bundle = Bundle().apply {
+                count++
+                putCharSequence("key", "ccc$count")
+            }
+            add<TopFragment>(R.id.top_fragment_container_view, args = bundle)
+            add<TopFragment>(R.id.bottom_fragment_container_view, args = bundle)
+
+//            addToBackStack("ccc$count")
+        }
     }
 
     fun lifecycle(view: View) {

@@ -60,7 +60,7 @@ class LifeCycleActivity : AppCompatActivity() {
         println("lifecycle life onSaveInstanceState")
     }
 
-    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         println("lifecycle life onRestoreInstanceState")
 
