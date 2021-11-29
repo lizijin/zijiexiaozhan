@@ -1,14 +1,25 @@
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlin.concurrent.thread
+import kotlin.coroutines.resumeWithException
 
 fun main() = runBlocking<Unit> {
-    val text = launch (Dispatchers.Default) {
-        delay(2000)
-        println(Thread.currentThread().name)
-        "value from ${Thread.currentThread().name}"
-    }
-    println("ee"+Thread.currentThread().name)
 
+    try {
+        suspendCancellableCoroutine {
+            thread {
+                Thread.sleep(1000)
+                try {
+                    1 / 0
+
+                } catch (ex: Exception) {
+                    it.resumeWithException(ex)
+                }
+
+            }
+        }
+    } catch (e: Exception) {
+        println("the exception $e")
+//        e.printStackTrace()
+    }
 }

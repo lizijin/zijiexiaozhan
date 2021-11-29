@@ -1,6 +1,7 @@
 package com.peter.viewgrouptutorial.coroutines
 
 import androidx.lifecycle.*
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 
 class TodoViewModel : ViewModel() {
@@ -18,9 +19,19 @@ class TodoViewModel : ViewModel() {
     private val idLiveData: MutableLiveData<Int> by lazy {
         MutableLiveData<Int>()
     }
+    val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
+        println("jiangbin excpetion $throwable")
+    }
     val todoLiveDataSwitchMap = idLiveData.switchMap {
-        liveData {
-            emit(repository.getTodo(it))
+        liveData(exceptionHandler) {
+//            emit(repository.getTodo(it))
+            val id = it
+//            repeat(10000){
+//                println("repeat jiangbin")
+//                repository.getTodo(id)
+//            }
+                emit(repository.getTodo(it))
+
         }
     }
 
@@ -42,7 +53,7 @@ class TodoViewModel : ViewModel() {
 
 
     fun fetchTodo(id: Int) {
-        viewModelScope.launch {
+        viewModelScope.launch(exceptionHandler) {
             val todo = repository.getTodo(id)
             todoLiveData.value = todo
         }

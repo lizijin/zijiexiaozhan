@@ -14,7 +14,7 @@ class CoroutinesActivity : AppCompatActivity() {
     private lateinit var mContent: TextView
     private lateinit var mMapContent: TextView
     private lateinit var mSwitchMapContent: TextView
-    private lateinit var mEditTextView :EditText
+    private lateinit var mEditTextView: EditText
     private lateinit var mTodoViewModel: TodoViewModel
 
 
@@ -44,6 +44,16 @@ class CoroutinesActivity : AppCompatActivity() {
     var count = 1
     fun normalUseLiveData(view: View) {
         mTodoViewModel.fetchTodo(count++)
+//        lifecycleScope.launch {
+//            repeat(100000) {
+//                try {
+//                    TodoRepository().getTodo(1)
+//
+//                } catch (ex: Exception) {
+//                    println("jiangbin x $ex")
+//                }
+//            }
+//        }
     }
 
     fun liveDataWithMap(view: View) {

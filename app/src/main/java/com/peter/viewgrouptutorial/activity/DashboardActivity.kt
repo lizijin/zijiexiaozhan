@@ -26,7 +26,7 @@ import com.peter.viewgrouptutorial.bean.HeaderItem
 import com.peter.viewgrouptutorial.bean.RouteItem
 import com.peter.viewgrouptutorial.coordinatorlayout.*
 import com.peter.viewgrouptutorial.coordinatorlayout.jd.JdStickyHeaderAppBarLayoutActivity
-import com.peter.viewgrouptutorial.coroutines.CoroutinesActivity
+import com.peter.viewgrouptutorial.coroutines.*
 import com.peter.viewgrouptutorial.dispatchevent.*
 import com.peter.viewgrouptutorial.dispatchevent.CoordinatorLayoutActivity
 import com.peter.viewgrouptutorial.expandtouch.ExpandTouchActivity1
@@ -119,26 +119,6 @@ class DashboardActivity : AppCompatActivity() {
             }
             false
         }
-//        liveData<String> {
-//            var count = 0
-//            while (true) {
-//                delay(400)
-//                emit("item ${count++} ${Thread.currentThread()}")
-//            }
-//        }.observe(this) {
-//            println(it)
-//        }
-//        mRecyclerView!!.addOnAttachStateChangeListener(object :View.OnAttachStateChangeListener{
-//            override fun onViewAttachedToWindow(v: View?) {
-//                println("lifecycle dashboard onViewAttachedToWindow")
-//            }
-//
-//            override fun onViewDetachedFromWindow(v: View?) {
-//                println("lifecycle dashboard onViewDetachedFromWindow")
-//            }
-//
-//        })
-//        mRecyclerView?.itemAnimator = null
         mHeaderLayout = findViewById(R.id.header_layout)
 //        mRecyclerView!!.layoutManager = LinearLayoutManager(this)
         if (useStaggeredGridLayoutManager) {
@@ -159,6 +139,7 @@ class DashboardActivity : AppCompatActivity() {
 //                }
             }
         })
+        addCoroutines()
         addRecyclerView()
 
         addPerformance()
@@ -187,6 +168,53 @@ class DashboardActivity : AppCompatActivity() {
         StickyHeaderRegistry.registerTransfer(
             HeaderItem::class.java,
             HeaderStickyHeaderModel::class.java
+        )
+    }
+
+    private fun addCoroutines() {
+        addHeaderItem("Coroutines")
+        addRouteItem("协程研究", "协程研究", CoroutinesActivity::class.java)
+
+        addRouteItem(
+            "主线程开协程",
+            "主线程开协程",
+            MainThreadCoroutineActivity::class.java
+        )
+        addRouteItem(
+            "协程异常处理",
+            "协程异常处理",
+            CoroutinesExceptionActivity::class.java
+        )
+
+        addRouteItem(
+            "简单例子",
+            "简单例子",
+            CoroutinesSimpleActivity::class.java
+        )
+
+        addRouteItem(
+            "RelationShip",
+            "RelationShip",
+            RelationShipActivity::class.java
+        )
+
+        addRouteItem(
+            "递归",
+            "递归",
+            RecursionActivity::class.java
+        )
+
+
+        addRouteItem(
+            "CoroutinesScope 例子",
+            "CoroutinesScope 例子",
+            CoroutinesScopeActivity::class.java
+        )
+
+        addRouteItem(
+            "PhotoActivity",
+            "PhotoActivity",
+            PhotoActivity::class.java
         )
     }
 
@@ -636,7 +664,6 @@ class DashboardActivity : AppCompatActivity() {
         addRouteItem("Jetpack库之Navigation", "Navigation库研究", NavigationActivity::class.java)
         addRouteItem("Jetpack库之ViewModel", "ViewModel 演示代码", MyViewModelActivity::class.java)
         addRouteItem("Jetpack库之LifeCycle", "LifeCycle 演示代码", LifeCycleActivity::class.java)
-        addRouteItem("协程研究", "协程研究", CoroutinesActivity::class.java)
         addRouteItem("Fragment", "研究Fragment原理", TestFragmentActivity::class.java)
         addRouteItem("Fragment", "研究Fragment Nav原理", FragmentNavTestActivity::class.java)
 

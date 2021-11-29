@@ -90,7 +90,7 @@ public class DispatchFileProvider extends ContentProvider {
 
         pathItems.add(new PathItem(TAG_EXTERNAL, "sankuai", "meituan"));
         pathItems.add(new PathItem(TAG_EXTERNAL_FILES, "external_file_path", "img_external_file_path"));
-        pathItems.add(new PathItem(TAG_EXTERNAL_CACHE, "external_cache_path", "img_external_cache_path"));
+        pathItems.add(new PathItem(TAG_EXTERNAL_CACHE, "external_cache_path", "."));
         ProviderItem providerItem = new ProviderItem("com.peter.viewgrouptutorial", pathItems);
         providerItems.add(providerItem);
 
