@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.peter.viewgrouptutorial" >
+    package="com.peter.viewgrouptutorial">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 8.0之后安装apk需要该权限 -->
@@ -15,7 +15,8 @@
         android:persistableMode="persistAcrossReboots"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
+        <activity android:name=".coroutines.MyExceptionActivity"></activity>
         <activity
             android:name=".coroutines.JobRelationActivity"
             android:exported="false" />
@@ -119,7 +120,7 @@
         <activity android:name=".jetpack.navigation.NavigationActivity" />
         <activity
             android:name=".activity.DashboardActivity"
-            android:persistableMode="persistAcrossReboots" >
+            android:persistableMode="persistAcrossReboots">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
