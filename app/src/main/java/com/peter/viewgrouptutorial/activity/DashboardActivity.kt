@@ -173,6 +173,9 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun addCoroutines() {
         addHeaderItem("Coroutines")
+        addRouteItem("Job结构", "Job结构", JobHierarchyActivity::class.java)
+
+        addRouteItem("CancelJob", "CancelJob", CancelJobActivity::class.java)
         addRouteItem("协程Exception", "协程Exception 研究", MyExceptionActivity::class.java)
 
         addRouteItem("CoroutineContext", "CoroutineContext 研究", CoroutineContextActivity::class.java)

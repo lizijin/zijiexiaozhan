@@ -86,6 +86,7 @@ class JobRelationActivity : AppCompatActivity() {
             println("JobRelationActivity job1")
             delay(1_000)
 
+
         }
         val job2 = mainScope.launch {
             delay(1_000)
