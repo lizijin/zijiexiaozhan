@@ -16,6 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".coroutines.ScopeNestScopeActivity"></activity>
         <activity
             android:name=".coroutines.JobBlogActivity"
             android:exported="false" />

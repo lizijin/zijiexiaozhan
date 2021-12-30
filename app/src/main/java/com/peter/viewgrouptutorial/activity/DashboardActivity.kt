@@ -174,6 +174,8 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun addCoroutines() {
         addHeaderItem("Coroutines")
+        addRouteItem("Scope Nest", "Scope Nest", ScopeNestScopeActivity::class.java)
+
         addRouteItem("Job Blog", "Job Blog", JobBlogActivity::class.java)
 
         addRouteItem("Job结构", "Job结构", JobHierarchyActivity::class.java)
