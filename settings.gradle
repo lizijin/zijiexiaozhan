@@ -1,3 +1,5 @@
+include ':serviceimpl'
+include ':serviceLoader'
 include ':library'
 include ':app'
 rootProject.name = "ViewGroupTutorial"

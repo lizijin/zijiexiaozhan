@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.peter.aspect.TraceDelay
+import com.peter.serviceloader.MyClient
 import com.peter.viewgrouptutorial.*
 import com.peter.viewgrouptutorial.ams.AnrServiceActivity
 import com.peter.viewgrouptutorial.ams.CrashActivity
@@ -81,7 +82,7 @@ class DashboardActivity : AppCompatActivity() {
         println("lifecycle dashboard onCreate")
         setContentView(R.layout.activity_dashboard)
         mRecyclerView = findViewById(R.id.main_recycler_view)
-
+        println("jiangbinbin "+ MyClient.getContent())
         Looper.myQueue().addIdleHandler {
             thread {
                 repeat(10) {
@@ -173,6 +174,10 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun addCoroutines() {
         addHeaderItem("Coroutines")
+        addRouteItem("Flow Activity", "Flow Activity", FlowActivity::class.java)
+
+        addRouteItem("Scope Nest", "Scope Nest", ScopeNestScopeActivity::class.java)
+
         addRouteItem("Job Blog", "Job Blog", JobBlogActivity::class.java)
         addRouteItem("Job And SupervisorJob", "Job And SupervisorJob", JobAndSupervisorJob::class.java)
 

@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_cancel_job.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_job_and_supervisor_job.xml" value="0.1" />
       </map>
     </option>
   </component>
