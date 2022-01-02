@@ -174,6 +174,7 @@ class DashboardActivity : AppCompatActivity() {
     private fun addCoroutines() {
         addHeaderItem("Coroutines")
         addRouteItem("Job Blog", "Job Blog", JobBlogActivity::class.java)
+        addRouteItem("Job And SupervisorJob", "Job And SupervisorJob", JobAndSupervisorJob::class.java)
 
         addRouteItem("Job结构", "Job结构", JobHierarchyActivity::class.java)
 
