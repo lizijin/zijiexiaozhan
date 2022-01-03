@@ -175,6 +175,7 @@ class DashboardActivity : AppCompatActivity() {
     private fun addCoroutines() {
         addHeaderItem("Coroutines")
         addRouteItem("Flow Activity", "Flow Activity", FlowActivity::class.java)
+        addRouteItem("Coroutine Exception", "Coroutine Exception Step By Step ", CoroutineException::class.java)
 
         addRouteItem("Scope Nest", "Scope Nest", ScopeNestScopeActivity::class.java)
 

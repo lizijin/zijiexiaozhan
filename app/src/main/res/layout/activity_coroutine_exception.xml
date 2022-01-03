@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".coroutines.CoroutineException">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:onClick="case1"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="case1"></Button>
+        <Button
+            android:onClick="case2"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="case2"></Button>
+        <Button
+            android:onClick="case3"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="case3"></Button>
+        <Button
+            android:onClick="case4"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="case4"></Button>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:onClick="case5"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="case5"></Button>
+        <Button
+            android:onClick="case6"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="case6"></Button>
+        <Button
+            android:onClick="case7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="case7"></Button>
+        <Button
+            android:onClick="case8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="case8"></Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:onClick="case9"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="case9"></Button>
+
+        <Button
+            android:onClick="case10"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="case10"></Button>
+
+        <Button
+            android:onClick="case11"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="case11"></Button>
+    </LinearLayout>
+
+</LinearLayout>
