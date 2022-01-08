@@ -1,10 +1,12 @@
 package com.peter.viewgrouptutorial
 
 import android.content.res.ColorStateList
+import android.content.res.Resources
 import android.graphics.drawable.GradientDrawable
 import android.os.Build
 
 class CodeGradientDrawable private constructor(
+    private val theme:Resources.Theme,
     private val shapeType: Int,
     private val gradient: Gradient?,
     private val corner: Corner?,
@@ -68,6 +70,7 @@ class CodeGradientDrawable private constructor(
             setSize(width, height)
         }
 
+        applyTheme(theme)
     }
 
     class Builder {
@@ -81,8 +84,12 @@ class CodeGradientDrawable private constructor(
         private var corner: Corner? = null
         private var stroke: Stroke? = null
         private var padding: Padding? = null
+        private lateinit var theme:Resources.Theme
 
 
+        fun theme(theme: Resources.Theme) =apply{
+            this.theme = theme
+        }
         fun shape(shape: Int) = apply {
             this.shape = shape
         }
@@ -116,6 +123,7 @@ class CodeGradientDrawable private constructor(
 
         fun build(): CodeGradientDrawable {
             return CodeGradientDrawable(
+                theme,
                 shape,
                 gradient,
                 corner,

@@ -15,6 +15,8 @@ class GradientActivity : AppCompatActivity() {
         initImageView1()
         initImageView2()
 
+       println("jiangbinbin "+resources.getDisplayMetrics().densityDpi)
+
         twoGradientSrc()
         twoGradientBackground()
 
@@ -60,7 +62,8 @@ class GradientActivity : AppCompatActivity() {
         findViewById<ImageView>(R.id.imageview1).setImageResource(R.drawable.gradient_test1)
 
         val drawable = CodeGradientDrawable.Builder().apply {
-            size((resources.displayMetrics.density*100).toInt(),(resources.displayMetrics.density*100).toInt())
+            theme(theme)
+            size(100,100)
             solidColor(ColorStateList.valueOf(Color.parseColor("#ff0000")))
         }.build()
 
@@ -73,7 +76,8 @@ class GradientActivity : AppCompatActivity() {
         findViewById<ImageView>(R.id.imageview3).setBackgroundResource(R.drawable.gradient_test1)
 
         val drawable = CodeGradientDrawable.Builder().apply {
-            size((resources.displayMetrics.density*100).toInt(),(resources.displayMetrics.density*100).toInt())
+            theme(theme)
+            size(100,100)
             solidColor(ColorStateList.valueOf(Color.parseColor("#ff0000")))
         }.build()
 
@@ -85,6 +89,7 @@ class GradientActivity : AppCompatActivity() {
         findViewById<ImageView>(R.id.imageview5).setImageResource(R.drawable.gradient_test2)
 
         val gradient = Gradient.Builder().apply {
+
             val colors = IntArray(2).apply {
                 this[0]= Color.parseColor("#ff0000")
                 this[1]= Color.parseColor("#00ff00")
@@ -92,7 +97,9 @@ class GradientActivity : AppCompatActivity() {
             this.gradientColors(colors)
         }.build()
         val drawable = CodeGradientDrawable.Builder().apply {
-            size((resources.displayMetrics.density*100).toInt(),(resources.displayMetrics.density*100).toInt())
+            theme(theme)
+
+//            size(100,100)
             gradient(gradient)
         }.build()
 
@@ -112,7 +119,9 @@ class GradientActivity : AppCompatActivity() {
             this.gradientColors(colors)
         }.build()
         val drawable = CodeGradientDrawable.Builder().apply {
-            size((resources.displayMetrics.density*100).toInt(),(resources.displayMetrics.density*100).toInt())
+            theme(theme)
+
+            size(100,100)
             gradient(gradient)
         }.build()
 
@@ -132,11 +141,13 @@ class GradientActivity : AppCompatActivity() {
         }.build()
 
         val corner = Corner.Builder().apply {
-            this.radius(resources.displayMetrics.density*12)
+            this.radius(12f)
         }.build()
 
         val drawable = CodeGradientDrawable.Builder().apply {
-            size((resources.displayMetrics.density*100).toInt(),(resources.displayMetrics.density*100).toInt())
+            theme(theme)
+
+            size(100,100)
             gradient(gradient)
             corner(corner)
         }.build()
@@ -157,11 +168,13 @@ class GradientActivity : AppCompatActivity() {
         }.build()
 
         val corner = Corner.Builder().apply {
-            this.radius(resources.displayMetrics.density*12)
+            this.radius(12f)
         }.build()
 
         val drawable = CodeGradientDrawable.Builder().apply {
-            size((resources.displayMetrics.density*100).toInt(),(resources.displayMetrics.density*100).toInt())
+            theme(theme)
+
+            size(100,100)
             gradient(gradient)
             corner(corner)
         }.build()
@@ -174,6 +187,7 @@ class GradientActivity : AppCompatActivity() {
         findViewById<ImageView>(R.id.imageview13).setBackgroundResource(R.drawable.gradient_test5)
 
         val gradient = Gradient.Builder().apply {
+
             val colors = IntArray(2).apply {
                 this[0]= Color.parseColor("#ff0000")
                 this[1]= Color.parseColor("#00ff00")
@@ -182,7 +196,8 @@ class GradientActivity : AppCompatActivity() {
             this.orientation(GradientDrawable.Orientation.BL_TR)
         }.build()
         val drawable = CodeGradientDrawable.Builder().apply {
-            size((resources.displayMetrics.density*100).toInt(),(resources.displayMetrics.density*100).toInt())
+            theme(theme)
+            size(100,100)
             gradient(gradient)
         }.build()
 

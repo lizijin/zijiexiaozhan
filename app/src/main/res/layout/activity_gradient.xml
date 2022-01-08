@@ -59,8 +59,8 @@
 
             <ImageView
                 android:id="@+id/imageview3"
-                android:layout_width="200dp"
-                android:layout_height="200dp"></ImageView>
+                android:layout_width="150dp"
+                android:layout_height="150dp"></ImageView>
 
             <View
                 android:layout_width="10dp"
@@ -68,8 +68,8 @@
 
             <ImageView
                 android:id="@+id/imageview4"
-                android:layout_width="200dp"
-                android:layout_height="200dp"></ImageView>
+                android:layout_width="150dp"
+                android:layout_height="150dp"></ImageView>
         </LinearLayout>
 
         <TextView
@@ -86,8 +86,8 @@
 
             <ImageView
                 android:id="@+id/imageview5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"></ImageView>
+                android:layout_width="100dp"
+                android:layout_height="100dp"></ImageView>
 
             <View
                 android:layout_width="10dp"
@@ -95,8 +95,8 @@
 
             <ImageView
                 android:id="@+id/imageview6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"></ImageView>
+                android:layout_width="100dp"
+                android:layout_height="100dp"></ImageView>
         </LinearLayout>
 
         <TextView
@@ -113,8 +113,8 @@
 
             <ImageView
                 android:id="@+id/imageview7"
-                android:layout_width="200dp"
-                android:layout_height="200dp"></ImageView>
+                android:layout_width="150dp"
+                android:layout_height="150dp"></ImageView>
 
             <View
                 android:layout_width="10dp"
@@ -122,8 +122,8 @@
 
             <ImageView
                 android:id="@+id/imageview8"
-                android:layout_width="200dp"
-                android:layout_height="200dp"></ImageView>
+                android:layout_width="150dp"
+                android:layout_height="150dp"></ImageView>
         </LinearLayout>
 
         <TextView
@@ -196,8 +196,8 @@
 
             <ImageView
                 android:id="@+id/imageview13"
-                android:layout_width="200dp"
-                android:layout_height="200dp"></ImageView>
+                android:layout_width="150dp"
+                android:layout_height="150dp"></ImageView>
 
             <View
                 android:layout_width="10dp"
@@ -205,8 +205,8 @@
 
             <ImageView
                 android:id="@+id/imageview14"
-                android:layout_width="200dp"
-                android:layout_height="200dp"></ImageView>
+                android:layout_width="150dp"
+                android:layout_height="150dp"></ImageView>
 
         </LinearLayout>
         <View
