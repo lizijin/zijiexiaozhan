@@ -17,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activity.GradientActivity2"
+            android:exported="false" />
+        <activity
             android:name=".activity.GradientActivity"
             android:exported="false" />
         <activity
