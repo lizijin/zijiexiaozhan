@@ -18,14 +18,12 @@ public class GradientActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gradient2);
         ImageView imageView = findViewById(R.id.imageview1);
-        Corner corner = new Corner.Builder().radius(12f).build();
-        Gradient gradient = new Gradient.Builder().gradientColors(new int[]{
+        Corner corner = new Corner.Builder(this).radius(12F).build();
+        Gradient gradient = new Gradient.Builder(this).gradientColors(new int[]{
                 Color.parseColor("#ff0000"), Color.parseColor("#00ff00")}).build();
-        CodeGradientDrawable drawable =  new CodeGradientDrawable.Builder()
+        CodeGradientDrawable drawable =  new CodeGradientDrawable.Builder(this)
                 .gradient(gradient)
                 .corner(corner)
-                .size(100,100)
-                .theme(getTheme())
                 .build();
 
 

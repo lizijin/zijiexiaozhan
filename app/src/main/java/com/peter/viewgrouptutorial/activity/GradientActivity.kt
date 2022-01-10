@@ -25,7 +25,7 @@ class GradientActivity : AppCompatActivity() {
         threeGradient()
         twoGradientBackgroundAngle()
 //        val solidColor = ColorStateList.valueOf(Color.parseColor("#ff0000"))
-//        val gradient = Gradient.Builder().apply {
+//        val gradient = Gradient.Builder(this@GradientActivity).apply {
 //            this.gradientColors(IntArray(2).apply {
 //                this[0]=Color.parseColor("#ff0000")
 //                this[1] = Color.parseColor("#00ff00")
@@ -33,18 +33,18 @@ class GradientActivity : AppCompatActivity() {
 //            this.gradientRadius(10f)
 //        }.build()
 //
-//        val corner = Corner.Builder().apply {
+//        val corner = Corner.Builder(this@GradientActivity).apply {
 //            this.radius(40f)
 //            this.radii(topLeftRadius = 100f)
 //        }.build()
 //
-//        val stroke = Stroke.Builder().apply {
+//        val stroke = Stroke.Builder(this@GradientActivity).apply {
 //            setStroke(10, ColorStateList.valueOf(Color.parseColor("#890800")),10f,20f)
 //        }.build()
 //
-//        val padding = Padding.Builder().setPadding(top = 100).build()
+//        val padding = Padding.Builder(this@GradientActivity).setPadding(top = 100).build()
 //        findViewById<TextView>(R.id.imageview2).setBackgroundDrawable(
-//            CodeGradientDrawable.Builder().apply {
+//            CodeGradientDrawable.Builder(this@GradientActivity).apply {
 //                color( solidColor)
 //                gradient(gradient)
 //                stroke(stroke )
@@ -61,9 +61,8 @@ class GradientActivity : AppCompatActivity() {
     private fun initImageView1() {
         findViewById<ImageView>(R.id.imageview1).setImageResource(R.drawable.gradient_test1)
 
-        val drawable = CodeGradientDrawable.Builder().apply {
-            theme(theme)
-            size(100,100)
+        val drawable = CodeGradientDrawable.Builder(this).apply {
+            size(width = 100,  height = 100)
             solidColor(ColorStateList.valueOf(Color.parseColor("#ff0000")))
         }.build()
 
@@ -75,9 +74,8 @@ class GradientActivity : AppCompatActivity() {
     private fun initImageView2() {
         findViewById<ImageView>(R.id.imageview3).setBackgroundResource(R.drawable.gradient_test1)
 
-        val drawable = CodeGradientDrawable.Builder().apply {
-            theme(theme)
-            size(100,100)
+        val drawable = CodeGradientDrawable.Builder(this).apply {
+            size(width = 100,  height = 100)
             solidColor(ColorStateList.valueOf(Color.parseColor("#ff0000")))
         }.build()
 
@@ -88,7 +86,7 @@ class GradientActivity : AppCompatActivity() {
     private fun twoGradientSrc() {
         findViewById<ImageView>(R.id.imageview5).setImageResource(R.drawable.gradient_test2)
 
-        val gradient = Gradient.Builder().apply {
+        val gradient = Gradient.Builder(this@GradientActivity).apply {
 
             val colors = IntArray(2).apply {
                 this[0]= Color.parseColor("#ff0000")
@@ -96,8 +94,7 @@ class GradientActivity : AppCompatActivity() {
             }
             this.gradientColors(colors)
         }.build()
-        val drawable = CodeGradientDrawable.Builder().apply {
-            theme(theme)
+        val drawable = CodeGradientDrawable.Builder(this).apply {
 
 //            size(100,100)
             gradient(gradient)
@@ -111,17 +108,16 @@ class GradientActivity : AppCompatActivity() {
     private fun twoGradientBackground() {
         findViewById<ImageView>(R.id.imageview7).setBackgroundResource(R.drawable.gradient_test2)
 
-        val gradient = Gradient.Builder().apply {
+        val gradient = Gradient.Builder(this@GradientActivity).apply {
             val colors = IntArray(2).apply {
                 this[0]= Color.parseColor("#ff0000")
                 this[1]= Color.parseColor("#00ff00")
             }
             this.gradientColors(colors)
         }.build()
-        val drawable = CodeGradientDrawable.Builder().apply {
-            theme(theme)
+        val drawable = CodeGradientDrawable.Builder(this@GradientActivity).apply {
 
-            size(100,100)
+            size(width = 100,  height = 100)
             gradient(gradient)
         }.build()
 
@@ -132,7 +128,7 @@ class GradientActivity : AppCompatActivity() {
     private fun cornerDemo() {
         findViewById<ImageView>(R.id.imageview9).setImageResource(R.drawable.gradient_test3)
 
-        val gradient = Gradient.Builder().apply {
+        val gradient = Gradient.Builder(this@GradientActivity).apply {
             val colors = IntArray(2).apply {
                 this[0]= Color.parseColor("#ff0000")
                 this[1]= Color.parseColor("#00ff00")
@@ -140,14 +136,13 @@ class GradientActivity : AppCompatActivity() {
             this.gradientColors(colors)
         }.build()
 
-        val corner = Corner.Builder().apply {
+        val corner = Corner.Builder(this@GradientActivity).apply {
             this.radius(12f)
         }.build()
 
-        val drawable = CodeGradientDrawable.Builder().apply {
-            theme(theme)
+        val drawable = CodeGradientDrawable.Builder(this@GradientActivity).apply {
 
-            size(100,100)
+            size(width = 100,  height = 100)
             gradient(gradient)
             corner(corner)
         }.build()
@@ -158,7 +153,7 @@ class GradientActivity : AppCompatActivity() {
     private fun threeGradient() {
         findViewById<ImageView>(R.id.imageview11).setImageResource(R.drawable.gradient_test4)
 
-        val gradient = Gradient.Builder().apply {
+        val gradient = Gradient.Builder(this@GradientActivity).apply {
             val colors = IntArray(3).apply {
                 this[0]= Color.parseColor("#ff0000")
                 this[1]= Color.parseColor("#0000ff")
@@ -167,14 +162,13 @@ class GradientActivity : AppCompatActivity() {
             this.gradientColors(colors)
         }.build()
 
-        val corner = Corner.Builder().apply {
+        val corner = Corner.Builder(this@GradientActivity).apply {
             this.radius(12f)
         }.build()
 
-        val drawable = CodeGradientDrawable.Builder().apply {
-            theme(theme)
+        val drawable = CodeGradientDrawable.Builder(this@GradientActivity).apply {
 
-            size(100,100)
+            size(width = 100,  height = 100)
             gradient(gradient)
             corner(corner)
         }.build()
@@ -186,7 +180,7 @@ class GradientActivity : AppCompatActivity() {
     private fun twoGradientBackgroundAngle() {
         findViewById<ImageView>(R.id.imageview13).setBackgroundResource(R.drawable.gradient_test5)
 
-        val gradient = Gradient.Builder().apply {
+        val gradient = Gradient.Builder(this@GradientActivity).apply {
 
             val colors = IntArray(2).apply {
                 this[0]= Color.parseColor("#ff0000")
@@ -195,9 +189,8 @@ class GradientActivity : AppCompatActivity() {
             this.gradientColors(colors)
             this.orientation(GradientDrawable.Orientation.BL_TR)
         }.build()
-        val drawable = CodeGradientDrawable.Builder().apply {
-            theme(theme)
-            size(100,100)
+        val drawable = CodeGradientDrawable.Builder(this@GradientActivity).apply {
+            size(width = 100,  height = 100)
             gradient(gradient)
         }.build()
 
