@@ -12,11 +12,19 @@
         android:layout_margin="10dp"
         android:orientation="vertical">
 
-        <TextView
+        <TextView android:textColor="@color/selector_test"
+            android:id="@+id/textview21"
             android:layout_width="match_parent"
-
             android:layout_height="wrap_content"
+            android:onClick="testOnclick"
             android:text="左边xml生成 右边代码生成"
+            android:textSize="18sp"></TextView>
+
+        <TextView android:textColor="@color/selector_test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="testOnclick"
+            android:text="左边xml生成 右边代码生成 颜色代码生成"
             android:textSize="18sp"></TextView>
 
         <TextView
