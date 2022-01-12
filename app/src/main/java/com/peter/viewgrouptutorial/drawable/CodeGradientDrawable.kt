@@ -1,26 +1,31 @@
 @file:JvmName("CodeGradientDrawableKt")
 
-package com.peter.viewgrouptutorial
+package com.peter.viewgrouptutorial.drawable
 
 import android.content.Context
-import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.graphics.drawable.GradientDrawable
 import android.os.Build
 import android.util.DisplayMetrics
 import android.util.TypedValue
+import java.lang.ref.WeakReference
+import kotlin.collections.HashMap
 
 class CodeGradientDrawable private constructor(
-    private val theme: Resources.Theme,
-    private val shapeType: Int,
-    private val gradient: Gradient?,
-    private val corner: Corner?,
-    private val solidColor: ColorStateList?,
-    private val stroke: Stroke?,
-    private val padding: Padding?,
-    private val width: Int,
-    private val height: Int
+    theme: Resources.Theme,
+    shapeType: Int,
+    gradient: Gradient?,
+    corner: Corner?,
+    solidColor: CodeColorStateList?,
+    stroke: Stroke?,
+    padding: Padding?,
+    width: Int,
+    height: Int
 ) : GradientDrawable() {
+
+    companion object {
+        private val sCache = HashMap<Int, WeakReference<CodeGradientDrawable>>()
+    }
 
     init {
         applyTheme(theme)
@@ -32,36 +37,36 @@ class CodeGradientDrawable private constructor(
         }
         gradient?.let {
             with(it) {
-                setGradientCenter(centerX, centerY)
-                setUseLevel(useLevel)
-                setGradientType(gradientType)
-                setGradientRadius(gradientRadius)
-                setOrientation(orientation)
-                colors = gradientColors
+                setGradientCenter(this.centerX, this.centerY)
+                setUseLevel(this.useLevel)
+                setGradientType(this.gradientType)
+                setGradientRadius(this.gradientRadius)
+                setOrientation(this.orientation)
+                colors = this.gradientColors
             }
         }
 
         corner?.let {
             with(it) {
-                if (radii == null) {
-                    cornerRadius = radius
+                if (this.radii == null) {
+                    cornerRadius = this.radius
                 } else {
-                    for (index in radii.indices) {
-                        if (radii[index] === 0.0f) {
-                            radii[index] = radius
+                    for (index in this.radii.indices) {
+                        if (this.radii[index] === 0.0f) {
+                            this.radii[index] = radius
                         }
                     }
-                    cornerRadii = radii
+                    cornerRadii = this.radii
                 }
             }
         }
 
         stroke?.let {
             with(it) {
-                if (dashWidth !== 0.0f) {
-                    setStroke(width, colorStateList, dashWidth, dashGap)
+                if (this.dashWidth !== 0.0f) {
+                    setStroke(this.width, this.colorStateList, this.dashWidth, this.dashGap)
                 } else {
-                    setStroke(width, colorStateList)
+                    setStroke(this.width, this.colorStateList)
                 }
             }
         }
@@ -69,7 +74,7 @@ class CodeGradientDrawable private constructor(
         padding?.let {
             with(it) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                    setPadding(left, top, right, bottom)
+                    setPadding(this.left, this.top, this.right, this.bottom)
                 }
             }
         }
@@ -80,43 +85,47 @@ class CodeGradientDrawable private constructor(
     }
 
     class Builder constructor(context: Context) {
-        private var solidColor: ColorStateList? = null
+        private var debugName: String? = "Debug"
+        private var solidColor: CodeColorStateList? = null
         private var shape: Int = RECTANGLE
 
         private var width: Int = -1
         private var height: Int = -1
 
-        private var gradient: Gradient? = null
-        private var corner: Corner? = null
-        private var stroke: Stroke? = null
-        private var padding: Padding? = null
+        private var gradient: Gradient.Builder? = null
+        private var corner: Corner.Builder? = null
+        private var stroke: Stroke.Builder? = null
+        private var padding: Padding.Builder? = null
         private var theme: Resources.Theme = context.theme
         private val metrics = context.resources.displayMetrics
 
+        fun debugName(debugName: String) = apply {
+            this.debugName = debugName
+        }
 
         fun shape(shape: Int) = apply {
             this.shape = shape
         }
 
-        fun solidColor(solidColor: ColorStateList) = apply {
+        fun solidColor(solidColor: CodeColorStateList) = apply {
             this.solidColor = solidColor
             this.gradient = null
         }
 
-        fun gradient(gradient: Gradient) = apply {
+        fun gradient(gradient: Gradient.Builder) = apply {
             this.gradient = gradient
             this.corner = null
         }
 
-        fun corner(corner: Corner) = apply {
+        fun corner(corner: Corner.Builder) = apply {
             this.corner = corner
         }
 
-        fun stroke(stroke: Stroke) = apply {
+        fun stroke(stroke: Stroke.Builder) = apply {
             this.stroke = stroke
         }
 
-        fun padding(padding: Padding) = apply {
+        fun padding(padding: Padding.Builder) = apply {
             this.padding = padding
         }
 
@@ -128,17 +137,67 @@ class CodeGradientDrawable private constructor(
             }
 
         fun build(): CodeGradientDrawable {
-            return CodeGradientDrawable(
-                theme,
-                shape,
-                gradient,
-                corner,
-                solidColor,
-                stroke,
-                padding,
-                width,
-                height
-            )
+            synchronized(sCache) {
+                val key = hashCode()
+                val cached = sCache[key]?.get()
+                if (cached == null) {
+                    println("jiangbin CodeGradientDrawable is null $this")
+                    val drawable = CodeGradientDrawable(
+                        theme,
+                        shape,
+                        gradient?.build(),
+                        corner?.build(),
+                        solidColor,
+                        stroke?.build(),
+                        padding?.build(),
+                        width,
+                        height
+                    )
+                    sCache[key] = WeakReference(drawable)
+                    return drawable
+                } else {
+                    println("jiangbin CodeGradientDrawable not null $this")
+
+                    return cached
+                }
+            }
+
+        }
+
+        override fun equals(other: Any?): Boolean {
+            if (this === other) return true
+            if (javaClass != other?.javaClass) return false
+
+            other as Builder
+
+            if (solidColor != other.solidColor) return false
+            if (shape != other.shape) return false
+            if (width != other.width) return false
+            if (height != other.height) return false
+            if (gradient != other.gradient) return false
+            if (corner != other.corner) return false
+            if (stroke != other.stroke) return false
+            if (padding != other.padding) return false
+            if (debugName != other.debugName) return false
+
+            return true
+        }
+
+        override fun hashCode(): Int {
+            var result = solidColor?.hashCode() ?: 0
+            result = 31 * result + shape
+            result = 31 * result + width
+            result = 31 * result + height
+            result = 31 * result + (gradient?.hashCode() ?: 0)
+            result = 31 * result + (corner?.hashCode() ?: 0)
+            result = 31 * result + (stroke?.hashCode() ?: 0)
+            result = 31 * result + (padding?.hashCode() ?: 0)
+            result = 31 * result + (debugName?.hashCode() ?: 0)
+            return result
+        }
+
+        override fun toString(): String {
+            return "Builder(debugName=$debugName, solidColor=$solidColor, shape=$shape, width=$width, height=$height, gradient=$gradient, corner=$corner, stroke=$stroke, padding=$padding)"
         }
     }
 }
@@ -181,6 +240,7 @@ class Gradient private constructor(
             this.orientation = orientation
         }
 
+        @JvmOverloads
         fun gradientRadius(gradientRadius: Float, gradientRadiusUnit: Int = DP_UNIT): Builder =
             apply {
                 this.gradientRadius = getDimension(gradientRadiusUnit, gradientRadius, metrics)
@@ -190,7 +250,7 @@ class Gradient private constructor(
             this.gradientColors = colors
         }
 
-        fun build(): Gradient {
+        internal fun build(): Gradient {
             return Gradient(
                 centerX,
                 centerY,
@@ -201,8 +261,39 @@ class Gradient private constructor(
                 gradientColors
             )
         }
-    }
 
+        override fun equals(other: Any?): Boolean {
+            if (this === other) return true
+            if (javaClass != other?.javaClass) return false
+
+            other as Builder
+
+            if (centerX != other.centerX) return false
+            if (centerY != other.centerY) return false
+            if (useLevel != other.useLevel) return false
+            if (gradientType != other.gradientType) return false
+            if (gradientRadius != other.gradientRadius) return false
+            if (orientation != other.orientation) return false
+            if (!gradientColors.contentEquals(other.gradientColors)) return false
+
+            return true
+        }
+
+        override fun hashCode(): Int {
+            var result = centerX.hashCode()
+            result = 31 * result + centerY.hashCode()
+            result = 31 * result + useLevel.hashCode()
+            result = 31 * result + gradientType
+            result = 31 * result + gradientRadius.hashCode()
+            result = 31 * result + orientation.hashCode()
+            result = 31 * result + gradientColors.contentHashCode()
+            return result
+        }
+
+        override fun toString(): String {
+            return "Gradient.Builder(centerX=$centerX, centerY=$centerY, useLevel=$useLevel, gradientType=$gradientType, gradientRadius=$gradientRadius, orientation=$orientation, gradientColors=${gradientColors.contentToString()})"
+        }
+    }
 }
 
 class Corner private constructor(
@@ -257,28 +348,52 @@ class Corner private constructor(
             radii!![7] = newBottomLeftRadius
         }
 
-        fun build(): Corner {
+        internal fun build(): Corner {
             return Corner(radius = radius, radii)
         }
-    }
 
+        override fun equals(other: Any?): Boolean {
+            if (this === other) return true
+            if (javaClass != other?.javaClass) return false
+
+            other as Builder
+
+            if (radius != other.radius) return false
+            if (radii != null) {
+                if (other.radii == null) return false
+                if (!radii.contentEquals(other.radii)) return false
+            } else if (other.radii != null) return false
+
+            return true
+        }
+
+        override fun hashCode(): Int {
+            var result = radius.hashCode()
+            result = 31 * result + (radii?.contentHashCode() ?: 0)
+            return result
+        }
+
+        override fun toString(): String {
+            return "Corner.Builder(radius=$radius, radii=${radii?.contentToString()})"
+        }
+    }
 }
 
 class Stroke private constructor(
     internal val width: Int,
-    internal val colorStateList: ColorStateList,
+    internal val colorStateList: CodeColorStateList,
     internal val dashWidth: Float,
     internal val dashGap: Float
 ) {
     class Builder constructor(context: Context) {
         private var width: Int = 0
-        private lateinit var colorStateList: ColorStateList
+        private lateinit var colorStateList: CodeColorStateList
         private var dashWidth: Float = 0.0f
         private var dashGap: Float = 0.0f
         private val metrics = context.resources.displayMetrics
 
         @JvmOverloads
-        fun setStroke(width: Float, widthUnit: Int = DP_UNIT, colorStateList: ColorStateList) =
+        fun setStroke(width: Float, widthUnit: Int = DP_UNIT, colorStateList: CodeColorStateList) =
             apply {
                 this.width = getDimensionPixelSize(widthUnit, width, metrics)
                 this.colorStateList = colorStateList
@@ -288,7 +403,7 @@ class Stroke private constructor(
         fun setStroke(
             width: Float,
             widthUnit: Int = DP_UNIT,
-            colorStateList: ColorStateList,
+            colorStateList: CodeColorStateList,
             dashWidth: Float,
             dashWidthUnit: Int = DP_UNIT,
             dashGap: Float,
@@ -301,8 +416,34 @@ class Stroke private constructor(
                 this.dashGap = getDimension(dashGapUnit, dashGap, metrics)
             }
 
-        fun build(): Stroke {
+        internal fun build(): Stroke {
             return Stroke(width, colorStateList, dashWidth, dashGap)
+        }
+
+        override fun equals(other: Any?): Boolean {
+            if (this === other) return true
+            if (javaClass != other?.javaClass) return false
+
+            other as Builder
+
+            if (width != other.width) return false
+            if (colorStateList != other.colorStateList) return false
+            if (dashWidth != other.dashWidth) return false
+            if (dashGap != other.dashGap) return false
+
+            return true
+        }
+
+        override fun hashCode(): Int {
+            var result = width
+            result = 31 * result + colorStateList.hashCode()
+            result = 31 * result + dashWidth.hashCode()
+            result = 31 * result + dashGap.hashCode()
+            return result
+        }
+
+        override fun toString(): String {
+            return "Stroke.Builder(width=$width, colorStateList=$colorStateList, dashWidth=$dashWidth, dashGap=$dashGap)"
         }
     }
 }
@@ -337,8 +478,34 @@ class Padding private constructor(
             this.right = getDimensionPixelSize(rightUnit, right.toFloat(), metrics)
         }
 
-        fun build(): Padding {
+        internal fun build(): Padding {
             return Padding(top, bottom, left, right)
+        }
+
+        override fun equals(other: Any?): Boolean {
+            if (this === other) return true
+            if (javaClass != other?.javaClass) return false
+
+            other as Builder
+
+            if (top != other.top) return false
+            if (bottom != other.bottom) return false
+            if (left != other.left) return false
+            if (right != other.right) return false
+
+            return true
+        }
+
+        override fun hashCode(): Int {
+            var result = top
+            result = 31 * result + bottom
+            result = 31 * result + left
+            result = 31 * result + right
+            return result
+        }
+
+        override fun toString(): String {
+            return "Padding.Builder(top=$top, bottom=$bottom, left=$left, right=$right)"
         }
     }
 }
