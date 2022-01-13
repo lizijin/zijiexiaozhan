@@ -2,10 +2,10 @@ package com.peter.viewgrouptutorial.activity
 
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.peter.viewgrouptutorial.*
 import com.peter.viewgrouptutorial.drawable.*
 
@@ -29,13 +29,15 @@ class GradientActivity : AppCompatActivity() {
         val codeColor = CodeColorStateList.Builder().apply {
             this.addSelectorItem(SelectorColorItem.Builder().apply {
                 this.color(Color.parseColor("#ff0000"))
-                this.state(android.R.attr.state_pressed)
-                this.state(-android.R.attr.state_checked)
+                this.addState(StatePressed)
+                this.minusState(StateChecked)
             })
             this.addSelectorItem(SelectorColorItem.Builder().apply {
                 this.color(Color.parseColor("#00ff00"))
-                this.state(-android.R.attr.state_pressed)
-                this.state(android.R.attr.state_checked)
+//                this.addState(-android.R.attr.state_pressed)
+//                this.addState(android.R.attr.state_checked)
+                this.minusState(StatePressed)
+                this.addState(StateChecked)
             })
             this.addSelectorItem(SelectorColorItem.Builder().apply {
                 this.color(Color.parseColor("#0000ff"))
@@ -45,13 +47,13 @@ class GradientActivity : AppCompatActivity() {
         val codeColor2 = CodeColorStateList.Builder().apply {
             this.addSelectorItem(SelectorColorItem.Builder().apply {
                 this.color(Color.parseColor("#ff0000"))
-                this.state(-android.R.attr.state_checked)
-                this.state(android.R.attr.state_pressed)
+                this.minusState(StateChecked)
+                this.addState(StatePressed)
             })
             this.addSelectorItem(SelectorColorItem.Builder().apply {
                 this.color(Color.parseColor("#00ff00"))
-                this.state(-android.R.attr.state_pressed)
-                this.state(android.R.attr.state_checked)
+                this.minusState(StatePressed)
+                this.addState(StateChecked)
             })
             this.addSelectorItem(SelectorColorItem.Builder().apply {
                 this.color(Color.parseColor("#0000ff"))
@@ -206,20 +208,20 @@ class GradientActivity : AppCompatActivity() {
     }
 
     fun testOnclick(view: android.view.View) {
-                val codeColor2 = CodeColorStateList.Builder().apply {
-            this.addSelectorItem(SelectorColorItem.Builder().apply {
-                this.color(Color.parseColor("#ff0000"))
-                this.state(-android.R.attr.state_checked)
-                this.state(android.R.attr.state_pressed)
-            })
-            this.addSelectorItem(SelectorColorItem.Builder().apply {
-                this.color(Color.parseColor("#00ff00"))
-                this.state(-android.R.attr.state_pressed)
-                this.state(android.R.attr.state_checked)
-            })
-            this.addSelectorItem(SelectorColorItem.Builder().apply {
-                this.color(Color.parseColor("#0000ff"))
-            })
-        }.build()
+//                val codeColor2 = CodeColorStateList.Builder().apply {
+//            this.addSelectorItem(SelectorColorItem.Builder().apply {
+//                this.color(Color.parseColor("#ff0000"))
+//                this.addState(-android.R.attr.state_checked)
+//                this.addState(android.R.attr.state_pressed)
+//            })
+//            this.addSelectorItem(SelectorColorItem.Builder().apply {
+//                this.color(Color.parseColor("#00ff00"))
+//                this.addState(-android.R.attr.state_pressed)
+//                this.addState(android.R.attr.state_checked)
+//            })
+//            this.addSelectorItem(SelectorColorItem.Builder().apply {
+//                this.color(Color.parseColor("#0000ff"))
+//            })
+//        }.build()
     }
 }
