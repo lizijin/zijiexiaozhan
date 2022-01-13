@@ -27,35 +27,35 @@ class GradientActivity : AppCompatActivity() {
         twoGradientBackgroundAngle()
 
         val codeColor = CodeColorStateList.Builder().apply {
-            this.addSelectorItem(SelectorColorItem.Builder().apply {
+            this.addSelectorColorItem(SelectorColorItem.Builder().apply {
                 this.color(Color.parseColor("#ff0000"))
                 this.addState(StatePressed)
                 this.minusState(StateChecked)
             })
-            this.addSelectorItem(SelectorColorItem.Builder().apply {
+            this.addSelectorColorItem(SelectorColorItem.Builder().apply {
                 this.color(Color.parseColor("#00ff00"))
 //                this.addState(-android.R.attr.state_pressed)
 //                this.addState(android.R.attr.state_checked)
                 this.minusState(StatePressed)
                 this.addState(StateChecked)
             })
-            this.addSelectorItem(SelectorColorItem.Builder().apply {
+            this.addSelectorColorItem(SelectorColorItem.Builder().apply {
                 this.color(Color.parseColor("#0000ff"))
             })
         }.build()
 
         val codeColor2 = CodeColorStateList.Builder().apply {
-            this.addSelectorItem(SelectorColorItem.Builder().apply {
+            this.addSelectorColorItem(SelectorColorItem.Builder().apply {
                 this.color(Color.parseColor("#ff0000"))
                 this.minusState(StateChecked)
                 this.addState(StatePressed)
             })
-            this.addSelectorItem(SelectorColorItem.Builder().apply {
+            this.addSelectorColorItem(SelectorColorItem.Builder().apply {
                 this.color(Color.parseColor("#00ff00"))
                 this.minusState(StatePressed)
                 this.addState(StateChecked)
             })
-            this.addSelectorItem(SelectorColorItem.Builder().apply {
+            this.addSelectorColorItem(SelectorColorItem.Builder().apply {
                 this.color(Color.parseColor("#0000ff"))
             })
         }.build()
@@ -63,6 +63,20 @@ class GradientActivity : AppCompatActivity() {
         println("xiaozhan equals ${codeColor == codeColor2}")
 
         findViewById<TextView>(R.id.textview21).setTextColor(codeColor)
+
+
+       val addDrawable = CodeStateListDrawable.Builder().apply {
+            this.addSelectorDrawableItem(SelectorDrawableItem.Builder().apply {
+                this.drawable(resources.getDrawable(R.drawable.common_ic_btn_add_nor))
+                this.minusState(StatePressed)
+            })
+
+           this.addSelectorDrawableItem(SelectorDrawableItem.Builder().apply {
+               this.drawable(resources.getDrawable(R.drawable.common_ic_btn_add_pre))
+               this.addState(StatePressed)
+           })
+        }.build()
+        findViewById<ImageView>(R.id.selector_image).setImageDrawable(addDrawable)
     }
 
 
