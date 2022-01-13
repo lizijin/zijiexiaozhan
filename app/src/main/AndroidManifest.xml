@@ -17,6 +17,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activity.FactoryActivity"
+            android:exported="true" />
+        <activity android:name=".svg.SvgActivity" />
+        <activity
             android:name=".coroutines.CoroutineException"
             android:exported="false" />
         <activity android:name=".coroutines.FlowActivity" />

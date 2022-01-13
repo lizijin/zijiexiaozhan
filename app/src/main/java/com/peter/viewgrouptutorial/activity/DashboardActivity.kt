@@ -46,6 +46,7 @@ import com.peter.viewgrouptutorial.performance.*
 import com.peter.viewgrouptutorial.popupwindow.PopupWindowActivity
 import com.peter.viewgrouptutorial.recyclerview.*
 import com.peter.viewgrouptutorial.stickyheader.MyRecyclerViewActivity
+import com.peter.viewgrouptutorial.svg.SvgActivity
 import com.peter.viewgrouptutorial.textview.PromiseTextViewActivity
 import com.peter.viewgrouptutorial.textview.TransformationTextViewActivity
 import com.peter.viewgrouptutorial.viewpager2.*
@@ -174,6 +175,9 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun addCoroutines() {
         addHeaderItem("Coroutines")
+        addRouteItem("SVG", "SVG", SvgActivity::class.java)
+        addRouteItem("Factory", "Factory", FactoryActivity::class.java)
+
         addRouteItem("Flow Activity", "Flow Activity", FlowActivity::class.java)
         addRouteItem("Coroutine Exception", "Coroutine Exception Step By Step ", CoroutineException::class.java)
 
