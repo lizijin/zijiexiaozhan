@@ -21,6 +21,12 @@
             android:exported="true" />
         <activity android:name=".svg.SvgActivity" />
         <activity
+            android:name=".activity.GradientActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".activity.GradientActivity"
+            android:exported="false" />
+        <activity
             android:name=".coroutines.CoroutineException"
             android:exported="false" />
         <activity android:name=".coroutines.FlowActivity" />

@@ -179,6 +179,9 @@ class DashboardActivity : AppCompatActivity() {
         addRouteItem("Factory", "Factory", FactoryActivity::class.java)
 
         addRouteItem("Flow Activity", "Flow Activity", FlowActivity::class.java)
+        addRouteItem("Gradient Activity", "Gradient Activity", GradientActivity::class.java)
+        addRouteItem("Gradient Activity2", "Gradient Activity2", GradientActivity2::class.java)
+
         addRouteItem("Coroutine Exception", "Coroutine Exception Step By Step ", CoroutineException::class.java)
 
         addRouteItem("Scope Nest", "Scope Nest", ScopeNestScopeActivity::class.java)

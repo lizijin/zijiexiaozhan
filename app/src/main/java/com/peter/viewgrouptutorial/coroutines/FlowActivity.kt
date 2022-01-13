@@ -3,14 +3,8 @@ package com.peter.viewgrouptutorial.coroutines
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.peter.viewgrouptutorial.R
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.filter
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.*
 
 class FlowActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,19 +13,20 @@ class FlowActivity : AppCompatActivity() {
         val flow = flow<Int> {
             for (i in 1..3) {
                 delay(100)
-                println("emit running in ${Thread.currentThread().name}")
+                println("emit running in ${Thread.currentThread().name} ${currentCoroutineContext()}")
 
                 emit(i)
             }
-        }.flowOn(Dispatchers.IO).filter {
-            println("filter running in ${Thread.currentThread().name}")
+        }
+            .buffer().filter {
+            println("filter running in ${Thread.currentThread().name} ${currentCoroutineContext()}")
 
             it % 2 == 0
         }
         MainScope().launch {
 
             flow.collect {
-                println("$it running in ${Thread.currentThread().name}")
+                println("$it running in ${Thread.currentThread().name} ${currentCoroutineContext()}")
             }
 
         }
