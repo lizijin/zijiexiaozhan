@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable
 import android.graphics.drawable.StateListDrawable
 import android.os.Build
 
+//todo 增加缓存机制
 class CodeStateListDrawable private constructor() : StateListDrawable() {
     class Builder {
         private var drawableItems: MutableList<SelectorDrawableItem> = arrayListOf()
