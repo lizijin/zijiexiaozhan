@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.peter.viewgrouptutorial.CustomView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        style="@style/CustomView"
+        tools:context=".CustomViewActivity">
+<!--        app:customView_attr1="@drawable/gradient_test1"-->
+<!--        app:customView_attr2="this attr2"-->
+<!--        app:customView_attr3="1.0"-->
+<!--        app:customView_attr4="2dp"-->
+<!--        app:customView_attr6="state1"-->
+
+
+    </com.peter.viewgrouptutorial.CustomView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World -- normal"
+        android:textColor="#000000"
+        android:typeface="normal"></TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:text="Hello World -- sans"
+        android:textColor="#000000"
+        android:typeface="sans"></TextView>
+
+    <TextView
+        android:id="@+id/text_view_custom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World -- serif"
+        android:textAppearance="@style/MyTextAppearance"
+        android:typeface="serif"></TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:text="Hello World -- monospace"
+        android:textColor="#000000"
+        android:typeface="monospace"></TextView>
+</LinearLayout>

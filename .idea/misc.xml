@@ -3,8 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../.gradle/caches/transforms-2/files-2.1/2e204c0dda7285633fb0cc36f6e5302a/appcompat-1.2.0/res/layout/abc_alert_dialog_material.xml" value="0.13728470111448834" />
+        <entry key="../../Library/Android/sdk/platforms/android-30/data/res/drawable/ic_ab_back_holo_light.xml" value="0.1" />
+        <entry key="../../Library/Android/sdk/platforms/android-30/data/res/layout/dialog_title_icons_holo.xml" value="0.1" />
+        <entry key="../../Library/Android/sdk/platforms/android-30/data/res/layout/list_gestures_overlay.xml" value="0.13697916666666668" />
+        <entry key="app/src/main/res/layout/activity_auto_size_text_view.xml" value="0.17604166666666668" />
+        <entry key="app/src/main/res/layout/activity_base_line.xml" value="0.2682291666666667" />
         <entry key="app/src/main/res/layout/activity_cancel_job.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_custom_view.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_job_and_supervisor_job.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_life_cycle.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/activity_single_task.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_single_taskb.xml" value="0.11822916666666666" />
+        <entry key="app/src/main/res/layout/activity_standard.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_standard_b.xml" value="0.11822916666666666" />
+        <entry key="app/src/main/res/layout/gesture_overlay_view.xml" value="0.13697916666666668" />
       </map>
     </option>
   </component>

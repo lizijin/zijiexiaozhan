@@ -15,6 +15,7 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -47,6 +48,8 @@ import com.peter.viewgrouptutorial.popupwindow.PopupWindowActivity
 import com.peter.viewgrouptutorial.recyclerview.*
 import com.peter.viewgrouptutorial.stickyheader.MyRecyclerViewActivity
 import com.peter.viewgrouptutorial.svg.SvgActivity
+import com.peter.viewgrouptutorial.textview.AutoSizeTextViewActivity
+import com.peter.viewgrouptutorial.textview.BaseLineActivity
 import com.peter.viewgrouptutorial.textview.PromiseTextViewActivity
 import com.peter.viewgrouptutorial.textview.TransformationTextViewActivity
 import com.peter.viewgrouptutorial.viewpager2.*
@@ -54,8 +57,8 @@ import com.xuanyu.stickyheader.BaseStickyHeaderModel
 import com.xuanyu.stickyheader.StickyHeaderAdapter
 import com.xuanyu.stickyheader.StickyHeaderHelper
 import com.xuanyu.stickyheader.StickyHeaderRegistry
+import kotlinx.coroutines.launch
 import java.lang.reflect.Method
-import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.concurrent.thread
 
@@ -74,7 +77,8 @@ class DashboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
         println("lifecycle dashboard onCreate here")
-
+        lifecycleScope.launch {
+        }
 
     }
 
@@ -83,7 +87,7 @@ class DashboardActivity : AppCompatActivity() {
         println("lifecycle dashboard onCreate")
         setContentView(R.layout.activity_dashboard)
         mRecyclerView = findViewById(R.id.main_recycler_view)
-        println("jiangbinbin "+ MyClient.getContent())
+        println("jiangbinbin " + MyClient.getContent())
         Looper.myQueue().addIdleHandler {
             thread {
                 repeat(10) {
@@ -141,12 +145,17 @@ class DashboardActivity : AppCompatActivity() {
 //                }
             }
         })
+        addDispatchTouchEvent()
+
+        addJetpack()
+
+        addLaunchMode()
+        addBasic()
         addCoroutines()
         addRecyclerView()
 
         addPerformance()
 
-        addJetpack()
         addAms()
         addLayoutInflater()
         addExpandTouch()
@@ -158,12 +167,14 @@ class DashboardActivity : AppCompatActivity() {
         addFragment()
         addViewPager2()
 //        addTextView()
-        addDispatchTouchEvent()
         addMeasure()
         addNestedScroll()
         addMaterialDesign()
 
         mMainAdapter = MainAdapter(mRouteItems)
+        mRecyclerView!!.viewTreeObserver.addOnGlobalLayoutListener {
+            println("addOnGlobalLayoutListener")
+        }
         mRecyclerView!!.adapter = mMainAdapter
         mRecyclerView!!.setItemViewCacheSize(10)
         StickyHeaderHelper.init<Any>(mRecyclerView, mHeaderLayout, 0)
@@ -173,28 +184,62 @@ class DashboardActivity : AppCompatActivity() {
         )
     }
 
+    private fun addBasic() {
+        addHeaderItem("Basic")
+        addRouteItem("SVG", "SVG", SvgActivity::class.java)
+        addRouteItem(
+            "GestureOverlayView",
+            "GestureOverlayView",
+            GestureOverlayViewActivity::class.java
+        )
+        addRouteItem("Factory", "Factory", FactoryActivity::class.java)
+        addRouteItem("CustomAttribute", "CustomAttribute", CustomViewActivity::class.java)
+        addRouteItem(
+            "Auto Size TextView",
+            "Auto Size TextView",
+            AutoSizeTextViewActivity::class.java
+        )
+
+        addRouteItem(
+            "TextView firstBaselineToTopHeight&lastBaselineToBottomHeight",
+            "Auto Size TextView",
+            BaseLineActivity::class.java
+        )
+    }
+
     private fun addCoroutines() {
         addHeaderItem("Coroutines")
-        addRouteItem("SVG", "SVG", SvgActivity::class.java)
-        addRouteItem("Factory", "Factory", FactoryActivity::class.java)
+
 
         addRouteItem("Flow Activity", "Flow Activity", FlowActivity::class.java)
         addRouteItem("Gradient Activity", "Gradient Activity", GradientActivity::class.java)
         addRouteItem("Gradient Activity2", "Gradient Activity2", GradientActivity2::class.java)
 
-        addRouteItem("Coroutine Exception", "Coroutine Exception Step By Step ", CoroutineException::class.java)
+        addRouteItem(
+            "Coroutine Exception",
+            "Coroutine Exception Step By Step ",
+            CoroutineException::class.java
+        )
 
         addRouteItem("Scope Nest", "Scope Nest", ScopeNestScopeActivity::class.java)
 
         addRouteItem("Job Blog", "Job Blog", JobBlogActivity::class.java)
-        addRouteItem("Job And SupervisorJob", "Job And SupervisorJob", JobAndSupervisorJob::class.java)
+        addRouteItem(
+            "Job And SupervisorJob",
+            "Job And SupervisorJob",
+            JobAndSupervisorJob::class.java
+        )
 
         addRouteItem("Job结构", "Job结构", JobHierarchyActivity::class.java)
 
         addRouteItem("CancelJob", "CancelJob", CancelJobActivity::class.java)
         addRouteItem("协程Exception", "协程Exception 研究", MyExceptionActivity::class.java)
 
-        addRouteItem("CoroutineContext", "CoroutineContext 研究", CoroutineContextActivity::class.java)
+        addRouteItem(
+            "CoroutineContext",
+            "CoroutineContext 研究",
+            CoroutineContextActivity::class.java
+        )
         addRouteItem("Job Relation", "Job关系 研究", JobRelationActivity::class.java)
 
         addRouteItem("协程研究", "协程研究", CoroutinesActivity::class.java)
@@ -293,6 +338,15 @@ class DashboardActivity : AppCompatActivity() {
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         println("lifecycle dashboard onRestoreInstanceState")
+
+    }
+
+    private fun addLaunchMode() {
+        addHeaderItem("启动模式")
+        addRouteItem("standard", "Standard", StandardActivityA::class.java)
+        addRouteItem("SingleTop", "SingleTop", SingleTopActivity::class.java)
+        addRouteItem("SingleTask", "SingleTask", SingleTaskActivityA::class.java)
+        addRouteItem("SingleInstance", "SingleInstance", SingleInstanceActivity::class.java)
 
     }
 

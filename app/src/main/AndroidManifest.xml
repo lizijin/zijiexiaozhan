@@ -17,6 +17,42 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".textview.BaseLineActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SingleTaskActivityA"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.test.peter" />
+        <activity
+            android:name=".activity.SingleTaskActivityB"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.test.peter2" />
+        <activity
+            android:name=".activity.SingleTopActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".activity.SingleInstanceActivity"
+            android:exported="false"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".activity.StandardActivityA"
+            android:exported="false" />
+        <activity
+            android:name=".activity.StandardActivityB"
+            android:exported="false" />
+        <activity
+            android:name=".textview.AutoSizeTextViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CustomViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GestureOverlayViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.FactoryActivity"
             android:exported="true" />
         <activity android:name=".svg.SvgActivity" />
@@ -147,6 +183,8 @@
         <activity android:name=".jetpack.navigation.NavigationActivity" />
         <activity
             android:name=".activity.DashboardActivity"
+            android:exported="true"
+            android:clearTaskOnLaunch="true"
             android:persistableMode="persistAcrossReboots">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -16,24 +16,24 @@ apply plugin: 'kotlin-kapt'
 //}
 android {
 
-        lintOptions {
-            checkReleaseBuilds false
-            // Or, if you prefer, you can continue to check for errors in release builds,
-            // but continue the build even when errors are found:
-            abortOnError false
-        }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
     packagingOptions {
         //解决More than one file was found with OS independent path 'lib/arm64-v8a/libswscale.so'. If you are using jniLibs and CMake IMPORTED targets, see https://developer.android.com/studio/preview/features#automatic_packaging_of_prebuilt_dependencies_used_by_cmake
         pickFirst 'lib/armeabi-v7a/*'
         pickFirst 'lib/arm64-v8a/*'
     }
-    compileSdkVersion 30
+    compileSdkVersion 29
     buildToolsVersion "29.0.2"
 
     defaultConfig {
         applicationId "com.peter.viewgrouptutorial"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
@@ -115,7 +115,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
-      def fragment_version = "1.3.5"
+    def fragment_version = "1.3.5"
 
     // Java language implementation
     implementation("androidx.fragment:fragment:$fragment_version")

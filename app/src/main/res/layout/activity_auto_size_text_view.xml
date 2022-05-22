@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".textview.AutoSizeTextViewActivity">
+    <TextView
+        android:onClick="appendText"
+        android:id="@+id/default_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:autoSizeTextType="uniform" />
+    <TextView
+        android:onClick="appendText"
+        android:id="@+id/granularity_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:autoSizeMaxTextSize="100sp"
+        android:autoSizeMinTextSize="40sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform" />
+
+    <TextView
+        android:background="#ff0000"
+        android:gravity="center"
+        android:onClick="appendText"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:autoSizeTextType="uniform"
+        app:autoSizePresetSizes="@array/autosize_text_sizes" />
+
+</LinearLayout>

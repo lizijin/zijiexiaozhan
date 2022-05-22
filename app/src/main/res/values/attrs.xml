@@ -5,4 +5,34 @@
         <attr name="layout_pin" format="boolean"/>
     </declare-styleable>
 
+    <declare-styleable name="CustomView">
+        <attr name="customView_attr1" format="reference"></attr>
+        <attr name="customView_attr2" format="string"></attr>
+        <attr name="customView_attr3" format="float"></attr>
+        <attr name="customView_attr4" format="dimension"></attr>
+        <attr name="customView_attr5" format="fraction"></attr>
+        <attr name="customView_attr6" >
+            <flag name="state1" value="1"></flag>
+            <flag name="state2" value="2"></flag>
+            <flag name="state3" value="3"></flag>
+
+        </attr>
+
+
+    </declare-styleable>
+
+    <style name="CustomView">
+        <item name="customView_attr1">@drawable/gradient_test1</item>
+    </style>
+
+    <attr name="lineHeightHint" format="dimension" />
+
+    <declare-styleable name="BaselineGridTextView">
+        <attr name="lineHeightMultiplierHint" format="float" />
+        <attr name="lineHeightHint" />
+        <attr name="maxLinesByHeight" format="boolean" />
+        <attr name="android:textAppearance"/>
+        <attr name="android:fontFamily"/>
+    </declare-styleable>
+
 </resources>

@@ -36,4 +36,10 @@
         <item name="android:windowEnterAnimation">@anim/anim_pop_in</item>
         <item name="android:windowExitAnimation">@anim/anim_pop_out</item>
     </style>
+
+    <style name="MyTextAppearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">#998800</item>
+        <item name="android:textColorHint">#990099</item>
+        <item name="android:textColorHighlight">#ff0000</item>
+    </style>
 </resources>

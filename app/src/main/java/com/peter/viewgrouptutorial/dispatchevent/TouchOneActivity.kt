@@ -2,6 +2,10 @@ package com.peter.viewgrouptutorial.dispatchevent
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
+import android.widget.FrameLayout
+import com.peter.viewgrouptutorial.nestedscroll.Naming
 
 class TouchOneActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,10 +54,77 @@ class TouchOneActivity : AppCompatActivity() {
         view7.name = "view7"
         view8.name = "view8"
         view9.name = "view9"
-        vp1.name ="vp1"
-        vp2.name ="vp2"
-        vp3.name ="vp3"
-        vp4.name ="vp4"
+        vp1.name = "vp1"
+        vp2.name = "vp2"
+        vp3.name = "vp3"
+        vp4.name = "vp4"
+
+
+        preOrder(vp1)
+        println("先序遍历")
+
+        postOrder(vp1)
+        println("后序遍历")
+
+        touchEventOrder(vp1)
+        println("事件分发遍历")
+
 
     }
+
+    //先序 根左右
+    private fun preOrder(view: View) {
+        print("${(view as? Naming)?.getNaming()} -> ")
+        if (view is ViewGroup) {
+            for (index in 0 until view.childCount) {
+                preOrder(view.getChildAt(index))
+            }
+        }
+    }
+
+    //后序 左右根
+    private fun postOrder(view: View) {
+        if (view is ViewGroup) {
+            for (index in 0 until view.childCount) {
+                postOrder(view.getChildAt(index))
+            }
+        }
+        print("${(view as? Naming)?.getNaming()} -> ")
+    }
+
+    private fun touchEventOrder(view: View) {
+        print("${(view as? Naming)?.getNaming()} -> ")
+
+        if (view is ViewGroup) {
+            for (index in view.childCount - 1 downTo 0) {
+                touchEventOrder(view.getChildAt(index))
+            }
+        }
+    }
+
+
 }
+
+// 1. 将ViewGroup转换成树
+// 2. 树的深度遍历(先序->根左右、中序->左根右(多叉树没有)、后序->左右根)
+// 先序遍历结果 vp1-> vp2-> v1 -> v2 -> v3 ->vp3 -> v4 -> v5 ->v6
+// -> vp4 -> v7 -> v8 ->v9
+
+// 后序遍历结果  v1—> v2 -> v3-> vp2 -> v4 -> v5 -> v6 -> vp3 -> v7
+// -> v8 —> v9 -> vp4 -> vp1
+
+// 事件分发遍历顺序
+//vp1 -> vp4 -> view9 -> view8 -> view7 -> vp3 -> view6 ->
+// view5 -> view4 -> vp2 -> view3 -> view2 -> view1
+
+// 3. 聊一聊dispatchTouchEvent、onInterceptTouchEvent、onTouchEvent dispatchTransformedTouchEvent 方法的区别
+
+// 4. DOWN事件的分发流程
+
+// 5. MOVE事件的分发流程
+
+// 6. UP事件的分发流程
+
+// 7. CANCEL 事件的产生
+
+// 8 .看源码
