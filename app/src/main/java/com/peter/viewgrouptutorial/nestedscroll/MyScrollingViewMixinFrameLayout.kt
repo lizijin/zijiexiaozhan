@@ -11,7 +11,7 @@ import kotlin.math.abs
 
 class MyScrollingViewMixinFrameLayout @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr), Naming,NestedScrollingParent2,NestedScrollingChild2 {
+) : FrameLayout(context, attrs, defStyleAttr), Log,NestedScrollingParent2,NestedScrollingChild2 {
     var name = ""
     private var mLastMotionY: Float = 0f
     private var mTouchSlop: Int = 0
@@ -94,7 +94,7 @@ class MyScrollingViewMixinFrameLayout @JvmOverloads constructor(
         )
     }
 
-    override fun getNaming(): String {
+    override fun getLogName(): String {
         return name
     }
 

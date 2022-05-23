@@ -1,5 +1,5 @@
 package com.peter.viewgrouptutorial.nestedscroll
 
-interface Naming {
-    fun getNaming(): String
+interface Log {
+    fun getLogName(): String
 }

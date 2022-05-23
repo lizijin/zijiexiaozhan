@@ -7,11 +7,11 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.annotation.RequiresApi
-import com.peter.viewgrouptutorial.nestedscroll.Naming
 
 open class MyView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : View(context, attrs, defStyleAttr), Naming {
+) : View(context, attrs, defStyleAttr),
+    com.peter.viewgrouptutorial.nestedscroll.Log {
     var name: String = ""
     var mOnTouchValue = false//是否分发事件
 
@@ -26,6 +26,6 @@ open class MyView @JvmOverloads constructor(
         return super.onTouchEvent(event)
     }
 
-    override fun getNaming(): String = name
+    override fun getLogName(): String = name
 
 }

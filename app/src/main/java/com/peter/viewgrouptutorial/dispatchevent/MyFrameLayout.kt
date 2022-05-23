@@ -7,11 +7,11 @@ import android.util.Log
 import android.view.MotionEvent
 import android.widget.FrameLayout
 import androidx.annotation.RequiresApi
-import com.peter.viewgrouptutorial.nestedscroll.Naming
 
 open class MyFrameLayout @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr),Naming {
+) : FrameLayout(context, attrs, defStyleAttr),
+    com.peter.viewgrouptutorial.nestedscroll.Log {
     open var name: String = ""
     var mOnTouchValue = false//是否分发事件
     var mDispatchValueSuper = true //是否调用super.dispatchTouchEvent,如果false 直接return true
@@ -51,7 +51,7 @@ open class MyFrameLayout @JvmOverloads constructor(
         return super.onTouchEvent(event)
     }
 
-    override fun getNaming(): String = name
+    override fun getLogName(): String = name
 
 }
 
