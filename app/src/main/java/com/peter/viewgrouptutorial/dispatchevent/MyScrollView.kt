@@ -14,7 +14,7 @@ class MyScrollView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : ScrollView(context, attrs, defStyleAttr) {
     init {
-        isNestedScrollingEnabled = true
+        isNestedScrollingEnabled = false
     }
     var name = ""
     @RequiresApi(Build.VERSION_CODES.KITKAT)
